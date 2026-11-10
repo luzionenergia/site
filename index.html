@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Luzion Energia</title>
+<meta name="description" content="Luzion Energia: comissionamento de subestações de alta e extra-alta tensão e ensaios de campo até 800 kVcc / 750 kVca. Itumbiara-GO e São Paulo-SP, atendimento em todo o Brasil.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<meta property="og:title" content="Luzion Energia">
+<meta property="og:image" content="assets/hero.jpg">
+<link rel="icon" href="assets/logo-colorida.png">
+<style>
+/* Layout: cenas escuras em fotografia (cinematográfico) alternadas com folhas claras em grid suíço de 12 colunas; dados em mono. */
+:root{
+  --void:#06101d;          /* azul-marinho quase preto, base das cenas */
+  --navy:#0e2545;          /* azul da logo */
+  --teal:#1aa0c6;          /* azul-turquesa da logo */
+  --teal-ink:#0b7593;      /* turquesa legível sobre papel */
+  --paper:#f2f4f7;         /* papel técnico frio */
+  --sheet:#ffffff;
+  --ink:#0b1626;
+  --ink-2:#4a5668;
+  --rule:#d5dbe4;
+  --spectral:#eef1f8;      /* texto sobre escuro */
+  --spectral-2:rgba(238,241,248,.66);
+  --ghost:rgba(238,241,248,.08);
+  --ghost-line:rgba(238,241,248,.32);
+  --live:#e3a521;          /* em andamento */
+  --f-display:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --wrap:1240px;
+  --gut:max(16px, env(safe-area-inset-left, 0px));
+  --gut-r:max(16px, env(safe-area-inset-right, 0px));
+  --sec:clamp(4rem,9vw,8rem);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.65 var(--f-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:150;background:var(--void)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;text-wrap:balance;margin:0;letter-spacing:.005em}
+p{margin:0}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut-r)}
+.label{font:500 .75rem/1.2 var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
+.kicker{display:flex;align-items:center;gap:.75rem;color:var(--teal-ink)}
+.kicker::before{content:"";width:28px;height:2px;background:currentColor}
+.dark .kicker{color:var(--teal)}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- header ---------- */
+.top{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:100;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.top.solid{background:rgba(6,16,29,.92);backdrop-filter:blur(10px);border-color:rgba(238,241,248,.1)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:68px}
+.top .brand img{height:30px;width:auto}
+.nav{display:flex;align-items:center;gap:2rem}
+.nav a{color:var(--spectral);text-decoration:none;font:600 .82rem/1 var(--f-display);letter-spacing:.14em;text-transform:uppercase;opacity:.85;transition:opacity .2s}
+.nav a:hover{opacity:1}
+.ghost{display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1.4rem;border:1.5px solid var(--ghost-line);background:var(--ghost);color:var(--spectral);border-radius:32px;font:600 .82rem/1 var(--f-display);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.ghost:hover{background:rgba(238,241,248,.16);border-color:var(--spectral)}
+.ghost:active{transform:translateY(1px)}
+.ghost.solid-teal{background:var(--teal);border-color:var(--teal);color:#04121f}
+.ghost.solid-teal:hover{background:#3db4d6;border-color:#3db4d6}
+.ghost svg{width:16px;height:16px}
+.nav .ghost{opacity:1;padding:.65rem 1.1rem}
+.menu-btn{display:none;background:none;border:0;color:var(--spectral);padding:.5rem;cursor:pointer}
+.menu-btn svg{width:26px;height:26px}
+@media (max-width:860px){
+  .menu-btn{display:block}
+  .nav{position:fixed;inset:calc(68px + env(safe-area-inset-top,0px)) 0 auto 0;flex-direction:column;align-items:flex-start;gap:0;background:var(--void);padding:.5rem var(--gut-r) 1.5rem var(--gut);border-bottom:1px solid rgba(238,241,248,.12)}
+  .nav a{padding:1rem 0;width:100%;border-bottom:1px solid rgba(238,241,248,.08);font-size:.95rem}
+  .nav .ghost{margin-top:1.25rem;width:auto;border-bottom:1.5px solid var(--ghost-line)}
+  .top:not(.open) .nav{display:none}
+  .top.open{background:var(--void)}
+}
+
+/* ---------- dark scenes ---------- */
+.dark{background:var(--void);color:var(--spectral)}
+.scene{position:relative;isolation:isolate;overflow:hidden}
+.scene>.bg{position:absolute;inset:0;z-index:-2}
+.scene>.bg img,.scene>.bg picture{width:100%;height:100%;object-fit:cover}
+.scene>.shade{position:absolute;inset:0;z-index:-1}
+
+/* hero */
+.hero{min-height:min(92svh,900px);display:flex;align-items:flex-end;padding-block:calc(68px + 4rem) 0}
+.hero .shade{background:linear-gradient(90deg,rgba(6,16,29,.82) 0%,rgba(6,16,29,.55) 45%,rgba(6,16,29,0) 75%),linear-gradient(180deg,rgba(6,16,29,.6) 0%,rgba(6,16,29,.1) 30%,rgba(6,16,29,.4) 62%,rgba(6,16,29,.97) 100%)}
+.hero .bg img{object-position:50% 40%;animation:drift 18s ease-out both}
+@keyframes drift{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero-inner{width:100%}
+.hero h1{font-size:clamp(2.6rem,7vw,5.6rem);line-height:.94;text-transform:uppercase;letter-spacing:.01em;max-width:15ch;margin-top:1.25rem}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.hero .lede{max-width:56ch;color:var(--spectral-2);font-size:clamp(1rem,1.4vw,1.15rem);margin-top:1.5rem}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2.25rem}
+.readout{margin-top:clamp(3rem,7vw,5rem);border-top:1px solid rgba(238,241,248,.18);display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.readout div{padding:1.25rem 1.25rem 1.5rem 0;border-right:1px solid rgba(238,241,248,.12)}
+.readout div:last-child{border-right:0}
+.readout div+div{padding-left:1.25rem}
+.readout b{display:block;font:700 clamp(1.6rem,3vw,2.4rem)/1 var(--f-display);letter-spacing:.01em}
+.readout b small{font-size:.5em;font-weight:600;color:var(--teal);margin-left:.15em;letter-spacing:.06em}
+.readout span{display:block;margin-top:.5rem;color:var(--spectral-2)}
+.fade-up{animation:up .7s cubic-bezier(.2,.7,.2,1) both}
+.d1{animation-delay:.08s}.d2{animation-delay:.18s}.d3{animation-delay:.28s}.d4{animation-delay:.4s}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (max-width:760px){
+  .hero .bg picture img{object-position:50% 30%}
+  .hero .shade{background:linear-gradient(180deg,rgba(6,16,29,.75) 0%,rgba(6,16,29,.72) 60%,rgba(6,16,29,.97) 100%)}
+  .readout{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .readout div:nth-child(2){border-right:0}
+  .readout div:nth-child(3){padding-left:0}
+  .readout div:nth-child(n+3){border-top:1px solid rgba(238,241,248,.12)}
+}
+
+/* ---------- sections ---------- */
+.sec{padding-block:var(--sec)}
+.sec-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:1.5rem 2rem;align-items:end;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.sec-head .t{grid-column:1/span 7}
+.sec-head .d{grid-column:8/span 5;color:var(--ink-2)}
+.dark .sec-head .d{color:var(--spectral-2)}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3.4rem);line-height:1;text-transform:uppercase;margin-top:1rem}
+@media (max-width:860px){.sec-head .t,.sec-head .d{grid-column:1/-1}}
+
+/* services zig-zag */
+.svc{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem;align-items:center;padding-block:clamp(2rem,4vw,3rem);border-top:1px solid var(--rule)}
+.svc:last-of-type{border-bottom:1px solid var(--rule)}
+.svc figure{margin:0;grid-column:1/span 6;position:relative}
+.svc figure img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px}
+.svc figure figcaption{position:absolute;left:12px;bottom:12px;background:rgba(6,16,29,.82);color:var(--spectral);padding:.4rem .6rem;border-radius:3px;font:500 .68rem/1.2 var(--f-mono);letter-spacing:.1em;text-transform:uppercase}
+.svc .txt{grid-column:8/span 5;min-width:0}
+.svc:nth-of-type(even) figure{grid-column:7/span 6;order:2}
+.svc:nth-of-type(even) .txt{grid-column:1/span 5;order:1}
+.svc h3{font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1.05;text-transform:uppercase;margin:.75rem 0 1rem}
+.svc p{color:var(--ink-2)}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem;padding:0;list-style:none}
+.tags li{font:500 .72rem/1 var(--f-mono);letter-spacing:.04em;padding:.45rem .6rem;border:1px solid var(--rule);border-radius:3px;background:var(--sheet);color:var(--navy)}
+.ir-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ir-pair img{aspect-ratio:3/4!important}
+@media (max-width:760px){
+  .svc figure,.svc .txt,.svc:nth-of-type(even) figure,.svc:nth-of-type(even) .txt{grid-column:1/-1;order:0}
+}
+
+.more{margin-top:clamp(3rem,6vw,4.5rem);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem}
+.more h3{grid-column:1/span 4;font-size:1.5rem;text-transform:uppercase;line-height:1.1}
+.more h3 span{display:block;margin-top:.75rem;font:400 .95rem/1.6 var(--f-body);text-transform:none;color:var(--ink-2)}
+.more dl{grid-column:5/span 8;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:2rem}
+.more dl div{padding:1rem 0;border-top:1px solid var(--rule)}
+.more dt{font:700 1.05rem/1.2 var(--f-display);text-transform:uppercase;letter-spacing:.04em;color:var(--navy)}
+.more dd{margin:.35rem 0 0;color:var(--ink-2);font-size:.92rem}
+@media (max-width:860px){.more h3,.more dl{grid-column:1/-1}}
+@media (max-width:560px){.more dl{grid-template-columns:1fr}}
+
+/* why commission */
+.why{padding-block:var(--sec)}
+.why .bg img{object-position:50% 50%}
+.why .shade{background:linear-gradient(90deg,rgba(6,16,29,.96) 0%,rgba(6,16,29,.86) 50%,rgba(6,16,29,.7) 100%)}
+.why blockquote{margin:0;font:600 clamp(1.6rem,3.4vw,2.7rem)/1.1 var(--f-display);text-transform:uppercase;max-width:22ch;letter-spacing:.01em}
+.why blockquote em{font-style:normal;color:var(--teal)}
+.why-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 3rem;margin-top:clamp(2.5rem,5vw,4rem)}
+.why-grid div{padding:1.5rem 0;border-top:1px solid rgba(238,241,248,.18)}
+.why-grid h3{font-size:1.2rem;text-transform:uppercase;letter-spacing:.06em}
+.why-grid p{color:var(--spectral-2);margin-top:.5rem;font-size:.95rem}
+@media (max-width:700px){.why-grid{grid-template-columns:1fr}}
+
+/* method */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;counter-reset:s;border-top:2px solid var(--ink)}
+.steps li{list-style:none;padding:1.5rem 1.5rem 1.5rem 0;border-right:1px solid var(--rule)}
+.steps li+li{padding-left:1.5rem}
+.steps li:last-child{border-right:0}
+.steps .n{font:500 .78rem/1 var(--f-mono);color:var(--teal-ink);letter-spacing:.1em}
+.steps h3{font-size:1.5rem;text-transform:uppercase;margin:.9rem 0 .6rem}
+.steps p{color:var(--ink-2);font-size:.93rem}
+.steps-wrap{padding:0;margin:0}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.steps li:nth-child(2){border-right:0}.steps li:nth-child(3){padding-left:0}.steps li:nth-child(n+3){border-top:1px solid var(--rule)}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}.steps li,.steps li+li{padding-left:0;border-right:0}.steps li+li{border-top:1px solid var(--rule)}}
+
+/* works */
+.works{background:var(--sheet)}
+.works-stats{display:flex;flex-wrap:wrap;gap:2.5rem;margin-bottom:2.5rem}
+.works-stats div b{display:block;font:700 2.6rem/1 var(--f-display);color:var(--navy)}
+.works-stats div span{color:var(--ink-2);font-size:.9rem}
+.panel{border:1px solid var(--rule);border-radius:6px;background:var(--paper)}
+.gantt-wrap{overflow-x:auto;padding:1.5rem}
+.gantt{min-width:720px;font-size:.85rem}
+.g-axis,.g-row{display:grid;grid-template-columns:200px 1fr;align-items:center}
+.g-axis .yrs{display:grid;grid-template-columns:repeat(5,1fr);border-left:1px solid var(--rule)}
+.g-axis .yrs span{font:500 .72rem/1 var(--f-mono);color:var(--ink-2);padding:0 0 .6rem .5rem;border-right:1px solid var(--rule)}
+.g-row{min-height:38px;border-top:1px solid var(--rule)}
+.g-row .nm{font:600 .95rem/1.15 var(--f-display);text-transform:uppercase;letter-spacing:.03em;padding-right:1rem}
+.g-row .nm small{display:block;font:400 .72rem/1.3 var(--f-mono);text-transform:none;color:var(--ink-2);letter-spacing:0}
+.g-track{position:relative;height:38px;background:repeating-linear-gradient(90deg,transparent 0 calc(20% - 1px),var(--rule) calc(20% - 1px) 20%);border-left:1px solid var(--rule)}
+.g-bar{position:absolute;top:12px;height:14px;border-radius:2px;background:var(--navy)}
+.g-bar.live{background:linear-gradient(90deg,var(--navy),var(--teal))}
+.g-bar.live::after{content:"";position:absolute;right:-5px;top:-3px;width:10px;height:20px;border-radius:2px;background:var(--live)}
+.g-now{position:absolute;top:0;bottom:0;width:0;border-left:1.5px dashed var(--teal-ink)}
+.g-legend{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1rem;font:500 .72rem/1 var(--f-mono);color:var(--ink-2);letter-spacing:.06em;text-transform:uppercase}
+.g-legend i{display:inline-block;width:18px;height:8px;border-radius:2px;margin-right:.4rem;vertical-align:middle}
+
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:3rem 0 1.25rem}
+.chip{font:600 .78rem/1 var(--f-display);letter-spacing:.14em;text-transform:uppercase;padding:.65rem 1rem;border-radius:32px;border:1.5px solid var(--rule);background:var(--sheet);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--spectral)}
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.proj{border:1px solid var(--rule);border-radius:6px;padding:1.5rem;background:var(--sheet);display:flex;flex-direction:column;gap:1rem;min-width:0}
+.proj header{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start}
+.proj h3{font-size:1.45rem;text-transform:uppercase;line-height:1.05}
+.proj .who{font-size:.85rem;color:var(--ink-2);margin-top:.3rem}
+.status{flex:none;font:500 .66rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;padding:.4rem .55rem;border-radius:3px;border:1px solid var(--rule);white-space:nowrap}
+.status.live{border-color:var(--live);color:#8a5e00;background:#fff7e2}
+.status.done{color:var(--teal-ink);border-color:#a8d9e8;background:#eef8fb}
+.proj .meta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem;font-size:.85rem}
+.proj .meta .label{color:var(--ink-2);font-size:.64rem;display:block;margin-bottom:.35rem}
+.proj ul{margin:0;padding:0;list-style:none}
+.proj .ses li{padding:.2rem 0;border-bottom:1px dotted var(--rule)}
+.proj .ses li b{font-weight:600}
+.proj .ses li span{font-family:var(--f-mono);font-size:.75rem;color:var(--navy);margin-left:.35rem}
+.proj .period{font:500 .78rem/1 var(--f-mono);color:var(--ink-2);padding-top:.9rem;border-top:1px solid var(--rule);margin-top:auto}
+@media (max-width:800px){.projects{grid-template-columns:1fr}}
+@media (max-width:440px){.proj .meta{grid-template-columns:1fr}}
+
+.kv{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem;margin-top:clamp(3rem,6vw,5rem);align-items:start}
+.kv .intro{grid-column:1/span 4}
+.kv .intro h3{font-size:1.8rem;text-transform:uppercase;line-height:1.05;margin-top:.9rem}
+.kv .intro p{color:var(--ink-2);margin-top:1rem;font-size:.95rem}
+.kv .chart{grid-column:5/span 8;min-width:0}
+.bars{display:grid;gap:.55rem}
+.bar{display:grid;grid-template-columns:96px 1fr 42px;align-items:center;gap:.75rem;font:500 .8rem/1 var(--f-mono)}
+.bar .k{text-align:right;color:var(--ink)}
+.bar .t{height:18px;background:repeating-linear-gradient(90deg,transparent 0 calc(12.5% - 1px),var(--rule) calc(12.5% - 1px) 12.5%);border-radius:2px;position:relative}
+.bar .t i{position:absolute;inset:0 auto 0 0;border-radius:2px;background:var(--navy)}
+.bar.max .t i{background:var(--teal)}
+.bar .v{color:var(--ink-2)}
+.bars .scale{display:grid;grid-template-columns:96px 1fr 42px;gap:.75rem;font:400 .68rem/1 var(--f-mono);color:var(--ink-2)}
+.bars .scale div{display:flex;justify-content:space-between}
+.clients{margin-top:clamp(3rem,6vw,4.5rem);padding-top:1.5rem;border-top:2px solid var(--ink);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:1rem 2rem}
+.clients .label{grid-column:1/span 3;color:var(--ink-2);padding-top:.35rem}
+.clients p{grid-column:4/span 9;font:600 clamp(1.15rem,2vw,1.5rem)/1.45 var(--f-display);text-transform:uppercase;letter-spacing:.05em;color:var(--navy)}
+.clients p span{color:var(--rule)}
+@media (max-width:860px){.kv .intro,.kv .chart,.clients .label,.clients p{grid-column:1/-1}}
+
+/* timeline */
+.tl{position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0;margin:0;padding:0;list-style:none;border-top:1px solid rgba(238,241,248,.22)}
+.tl li{padding:1.75rem 1.25rem 0 0;position:relative}
+.tl li::before{content:"";position:absolute;top:-6px;left:0;width:11px;height:11px;border-radius:50%;background:var(--void);border:2px solid var(--teal)}
+.tl li:last-child::before{background:var(--teal)}
+.tl .y{font:700 1.9rem/1 var(--f-display);color:var(--spectral)}
+.tl h3{font:600 .82rem/1.25 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin:.6rem 0 .5rem}
+.tl p{font-size:.86rem;color:var(--spectral-2)}
+@media (max-width:1000px){.tl{grid-template-columns:1fr;border-top:0;border-left:1px solid rgba(238,241,248,.22);margin-left:6px}.tl li{padding:0 0 2rem 1.75rem}.tl li::before{top:4px;left:-6px}.tl p{max-width:60ch}}
+
+/* differentials */
+.diff{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem}
+.diff .lead{grid-column:1/span 5}
+.diff .lead figure{margin:0 0 0;position:relative}
+.diff .lead img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px}
+.diff ul{grid-column:7/span 6;margin:0;padding:0;list-style:none}
+.diff li{display:grid;grid-template-columns:40px 1fr;gap:1rem;padding:1.25rem 0;border-top:1px solid var(--rule)}
+.diff li svg{width:26px;height:26px;color:var(--teal-ink);margin-top:2px}
+.diff li h3{font-size:1.15rem;text-transform:uppercase;letter-spacing:.05em}
+.diff li p{color:var(--ink-2);font-size:.93rem;margin-top:.3rem}
+.brands{margin-top:2rem;padding:1.25rem;border:1px solid var(--rule);border-radius:6px;background:var(--sheet)}
+.brands .label{color:var(--ink-2)}
+.brands p{margin-top:.6rem;font:600 1.05rem/1.5 var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
+.esg{display:flex;flex-wrap:wrap;gap:1rem 2.5rem;margin-top:1.5rem}
+.esg div b{display:block;font:700 2.2rem/1 var(--f-display);color:var(--navy)}
+.esg div span{font-size:.85rem;color:var(--ink-2)}
+@media (max-width:860px){.diff .lead,.diff ul{grid-column:1/-1}.diff .lead img{aspect-ratio:16/10}}
+
+/* presence */
+.presence{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem;align-items:start}
+.presence .bases{grid-column:1/span 5;display:grid;gap:1rem}
+.base{padding:1.5rem;border-radius:6px;background:var(--navy);color:var(--spectral)}
+.base .label{color:var(--teal)}
+.base h3{font-size:1.8rem;text-transform:uppercase;margin:.6rem 0 .4rem}
+.base p{color:var(--spectral-2);font-size:.92rem}
+.regions{grid-column:7/span 6;margin:0;padding:0;list-style:none}
+.regions li{padding:1.25rem 0;border-top:1px solid var(--rule)}
+.regions li:last-child{border-bottom:1px solid var(--rule)}
+.regions h3{font-size:1.25rem;text-transform:uppercase;letter-spacing:.04em}
+.regions .uf{font:500 .75rem/1 var(--f-mono);color:var(--teal-ink);margin-top:.4rem;letter-spacing:.08em}
+.regions p{color:var(--ink-2);font-size:.92rem;margin-top:.5rem}
+@media (max-width:860px){.presence .bases,.regions{grid-column:1/-1}}
+
+/* contact */
+.contact{padding-block:var(--sec)}
+.contact .bg img{object-position:50% 60%}
+.contact .shade{background:linear-gradient(180deg,rgba(6,16,29,.94),rgba(6,16,29,.8) 50%,rgba(6,16,29,.96))}
+.contact-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2.5rem}
+.contact-grid .l{grid-column:1/span 6}
+.contact-grid .r{grid-column:8/span 5}
+.contact h2{font-size:clamp(2.3rem,5vw,4rem);line-height:.98;text-transform:uppercase;margin-top:1rem}
+.contact .l>p{color:var(--spectral-2);margin-top:1.25rem;max-width:48ch}
+.lines{margin:2rem 0 0;padding:0;list-style:none}
+.lines li{display:grid;grid-template-columns:110px 1fr auto;gap:1rem;align-items:center;padding:.9rem 0;border-top:1px solid rgba(238,241,248,.14)}
+.lines li:last-child{border-bottom:1px solid rgba(238,241,248,.14)}
+.lines .label{color:var(--spectral-2);font-size:.66rem}
+.lines a,.lines span.v{text-decoration:none;font:500 1rem/1.35 var(--f-body);color:var(--spectral);word-break:break-word;min-width:0}
+.lines a:hover{color:var(--teal)}
+.copy{background:none;border:1px solid var(--ghost-line);color:var(--spectral-2);border-radius:20px;font:500 .64rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;padding:.45rem .6rem;cursor:pointer}
+.copy:hover{color:var(--spectral);border-color:var(--spectral)}
+form.msg{display:grid;gap:1rem;padding:1.75rem;border:1px solid rgba(238,241,248,.16);border-radius:8px;background:rgba(6,16,29,.6);backdrop-filter:blur(6px)}
+form.msg h3{font-size:1.3rem;text-transform:uppercase;letter-spacing:.06em}
+form.msg p.h{color:var(--spectral-2);font-size:.88rem;margin-top:-.4rem}
+.field{display:grid;gap:.4rem}
+.field label{font:500 .68rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--spectral-2)}
+.field input,.field select,.field textarea{font:400 1rem/1.4 var(--f-body);color:var(--spectral);background:rgba(238,241,248,.05);border:1px solid rgba(238,241,248,.22);border-radius:4px;padding:.75rem .85rem;width:100%}
+.field select option{color:#0b1626}
+.field textarea{min-height:96px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:transparent}
+form.msg .ghost{justify-content:center}
+.form-note{font-size:.78rem;color:var(--spectral-2)}
+@media (max-width:900px){.contact-grid .l,.contact-grid .r{grid-column:1/-1}}
+@media (max-width:480px){.lines li{grid-template-columns:1fr auto}.lines li .label{grid-column:1/-1}}
+
+footer{background:#040b15;color:var(--spectral-2);padding-block:2.5rem calc(2.5rem + env(safe-area-inset-bottom,0px));font-size:.82rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1.5rem 3rem;justify-content:space-between;align-items:center}
+footer img{height:26px;width:auto;opacity:.9}
+footer .social{display:flex;gap:1.25rem}
+footer .social a{text-decoration:none;font:500 .72rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase}
+footer .social a:hover{color:var(--teal)}
+
+@media (max-width:860px){.sec-head,.svc,.more,.kv,.clients,.diff,.presence,.contact-grid{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Luzion Energia, início"><img src="assets/logo-branca.png" alt="Luzion Energia" width="720" height="170"></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#servicos">Serviços</a>
+      <a href="#metodo">Método</a>
+      <a href="#obras">Obras</a>
+      <a href="#empresa">Empresa</a>
+      <a class="ghost" href="#contato">Fale conosco</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="scene dark hero" id="inicio">
+  <div class="bg"><picture>
+    <source media="(max-width:760px)" srcset="assets/hero-m.jpg">
+    <img src="assets/hero.jpg" alt="Pátio de subestação de alta tensão ao entardecer" width="2000" height="1440" fetchpriority="high">
+  </picture></div>
+  <div class="shade"></div>
+  <div class="wrap hero-inner">
+    <p class="label kicker fade-up">Comissionamento · Ensaios de campo · Desde 2011</p>
+    <h1 class="fade-up d1">Subestações prontas para <em>energizar</em></h1>
+    <p class="lede fade-up d2">Comissionamento de subestações de alta e extra-alta tensão e ensaios de campo, do startup ao diagnóstico, em instalações de até 800&nbsp;kVcc e 750&nbsp;kVca. Equipe própria, laudos rastreáveis e atendimento em todo o Brasil.</p>
+    <div class="ctas fade-up d3">
+      <a class="ghost solid-teal" href="#contato">Solicitar proposta</a>
+      <a class="ghost" href="#obras">Ver obras recentes</a>
+    </div>
+    <div class="readout fade-up d4" aria-label="Números da Luzion">
+      <div><b class="num">+200</b><span class="label">Projetos entregues</span></div>
+      <div><b class="num">800<small>kVcc</small></b><span class="label">Maior tensão atendida</span></div>
+      <div><b class="num">36<small>h</small></b><span class="label">Prazo do laudo técnico</span></div>
+      <div><b class="num">0</b><span class="label">Acidentes desde 2011</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="sec" id="servicos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t"><p class="label kicker">Serviços</p><h2>Do primeiro ensaio à energização</h2></div>
+      <p class="d">Cobrimos o ciclo de vida da subestação: comissionamento inicial, ensaios de campo, diagnósticos preditivos e retrofit de sistemas elétricos de potência, para transmissoras, concessionárias e EPCistas.</p>
+    </div>
+
+    <article class="svc">
+      <figure><img loading="lazy" src="assets/comissionamento.jpg" alt="Técnico da Luzion executando ensaio em equipamento de pátio" width="1100" height="1173"><figcaption>Ensaios de equipamentos de pátio</figcaption></figure>
+      <div class="txt">
+        <p class="label kicker">Comissionamento N0 e N1</p>
+        <h3>Comissionamento de subestações</h3>
+        <p>É a fase que antecede a operação. Analisamos diagramas unifilares, trifilares e funcionais, registramos dados de placa, inspecionamos a montagem e ensaiamos cada equipamento conforme as normas e as instruções do fabricante. Depois verificamos cablagem e interligações e fazemos o teste funcional e integrado dos sistemas de proteção e controle.</p>
+        <ul class="tags"><li>Equipamentos de pátio (N0)</li><li>GIS isolada a SF₆</li><li>Cablagem e fiação</li><li>Suporte ao N1</li><li>Injeção primária de corrente e tensão</li></ul>
+      </div>
+    </article>
+
+    <article class="svc">
+      <figure><img loading="lazy" src="assets/aterramento.jpg" alt="Equipe da Luzion medindo malha de aterramento em subestação, vista aérea" width="1600" height="900"><figcaption>Medição de malha · vista por drone</figcaption></figure>
+      <div class="txt">
+        <p class="label kicker">NBR 15749 · IEEE 81</p>
+        <h3>Malha de aterramento</h3>
+        <p>Medição, análise e adequação de sistemas de aterramento, inclusive em áreas energizadas. Avaliamos resistência de aterramento e potenciais na superfície do solo, escolhendo o método adequado ao porte da instalação, para que as proteções isolem faltas à terra com rapidez e as pessoas estejam seguras.</p>
+        <ul class="tags"><li>Resistência de aterramento</li><li>Potenciais de passo e toque</li><li>Áreas energizadas</li><li>ABNT NBR 5410</li></ul>
+      </div>
+    </article>
+
+    <article class="svc">
+      <figure><img loading="lazy" src="assets/para-raios.jpg" alt="Técnico medindo corrente de fuga em para-raios de subestação" width="900" height="1203"><figcaption>Corrente de fuga · medição on-line</figcaption></figure>
+      <div class="txt">
+        <p class="label kicker">IEC 60099-5</p>
+        <h3>Análise de para-raios</h3>
+        <p>Diagnóstico de para-raios de óxido metálico (MOV) sem desligar o sistema. A corrente resistiva é só 20 a 30% da corrente de fuga total, então medimos a componente de terceiro harmônico (THRC) com compensação, o indicador que de fato revela a degradação dos discos de ZnO.</p>
+        <ul class="tags"><li>Corrente de fuga total</li><li>THRC compensada</li><li>Resistência de isolamento</li><li>Varredura térmica</li></ul>
+      </div>
+    </article>
+
+    <article class="svc">
+      <figure><div class="ir-pair"><img loading="lazy" src="assets/ir-bucha.jpg" alt="Termograma de bucha de equipamento de alta tensão" width="480" height="640"><img loading="lazy" src="assets/termografia-campo.jpg" alt="Técnico da Luzion realizando termografia em campo" width="605" height="1280"></div><figcaption>Termograma · inspeção em campo</figcaption></figure>
+      <div class="txt">
+        <p class="label kicker">Drones · ANAC</p>
+        <h3>Termografia e inspeção com drones</h3>
+        <p>A termovisão mostra pontos quentes sem contato com a instalação. Com drones, inspecionamos áreas de difícil acesso sem parar a operação, e cada anomalia sai com a localização exata para a correção.</p>
+        <ul class="tags"><li>Termografia aérea</li><li>Hot spots georreferenciados</li><li>Linhas e subestações</li><li>Sem interrupção</li></ul>
+      </div>
+    </article>
+
+    <div class="more">
+      <h3>Também executamos<span>Escopos que entram nas nossas obras ou são contratados de forma independente.</span></h3>
+      <dl>
+        <div><dt>Inspeção em fábrica (TAF)</dt><dd>Acompanhamento de testes antes da expedição, garantindo que o equipamento atende à especificação na origem.</dd></div>
+        <div><dt>Retrofit</dt><dd>Modernização e recomissionamento de subestações, inclusive energizadas.</dd></div>
+        <div><dt>Cubículos de MT e VLF</dt><dd>Ensaios em cubículos de média tensão e ensaio VLF em cabos.</dd></div>
+        <div><dt>Bancos de capacitores</dt><dd>Comissionamento de bancos e ensaio de curto-circuito.</dd></div>
+        <div><dt>Qualidade de energia</dt><dd>Harmônicas, afundamentos e desequilíbrios conforme PRODIST/ANEEL.</dd></div>
+        <div><dt>Consultoria técnica</dt><dd>Suporte em proteção, automação e comissionamento para transmissoras, concessionárias e EPCs.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE COMISSIONAR -->
+<section class="scene dark why">
+  <div class="bg"><img loading="lazy" src="assets/aereo-se.jpg" alt="" width="1800" height="1012"></div>
+  <div class="shade"></div>
+  <div class="wrap">
+    <p class="label kicker">Por que comissionar</p>
+    <blockquote style="margin-top:1.25rem">O comissionamento é a <em>última linha de defesa</em> antes da energização.</blockquote>
+    <div class="why-grid">
+      <div><h3>Prevenção de falhas críticas</h3><p>Defeitos de fabricação, erros de montagem e inconsistências de fiação aparecem antes da primeira energização, não depois.</p></div>
+      <div><h3>Vida útil do ativo</h3><p>Equipamento comissionado opera dentro dos parâmetros de projeto, com menos desgaste prematuro e mais retorno sobre o investimento.</p></div>
+      <div><h3>Conformidade regulatória</h3><p>Atendimento às exigências das concessionárias, do ONS e dos órgãos reguladores, com validade técnica em auditorias.</p></div>
+      <div><h3>Segurança operacional</h3><p>Verificação funcional completa de proteção e controle, protegendo pessoas, ativos e o sistema interligado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<section class="sec" id="metodo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t"><p class="label kicker">Metodologia</p><h2>Quatro fases, cada uma aprovada</h2></div>
+      <p class="d">Cada fase é documentada e aprovada pelo cliente antes de seguirmos para a próxima.</p>
+    </div>
+    <ol class="steps steps-wrap">
+      <li><span class="n">FASE 01</span><h3>Planejamento</h3><p>Análise da documentação técnica, procedimentos, cronograma de testes e mobilização de equipe e instrumentação.</p></li>
+      <li><span class="n">FASE 02</span><h3>Execução</h3><p>Ensaios em campo com instrumentação calibrada e equipe especializada, seguindo os procedimentos aprovados.</p></li>
+      <li><span class="n">FASE 03</span><h3>Validação</h3><p>Análise crítica dos resultados contra valores de referência do fabricante e normas ABNT, IEC e IEEE.</p></li>
+      <li><span class="n">FASE 04</span><h3>Entrega</h3><p>Relatório técnico com rastreabilidade em até 36 h e acompanhamento presencial na energização.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- OBRAS -->
+<section class="sec works" id="obras">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t"><p class="label kicker">Portfólio 2022 – 2026</p><h2>Obras recentes</h2></div>
+      <p class="d">Obras executadas e em execução para transmissoras e EPCistas, com subestações, níveis de tensão, períodos e escopo.</p>
+    </div>
+    <div class="works-stats">
+      <div><b class="num">8</b><span>projetos</span></div>
+      <div><b class="num">18</b><span>subestações atendidas</span></div>
+      <div><b class="num">500 kV</b><span>maior tensão nestas obras</span></div>
+      <div><b class="num">+15</b><span>projetos em andamento em 2026</span></div>
+    </div>
+
+    <div class="panel gantt-wrap" role="region" aria-label="Linha do tempo das obras" tabindex="0">
+      <div class="gantt" id="gantt"></div>
+      <div class="g-legend"><span><i style="background:var(--navy)"></i>Concluído</span><span><i style="background:linear-gradient(90deg,var(--navy),var(--teal))"></i>Em andamento</span><span><i style="border-left:1.5px dashed var(--teal-ink);width:1px;height:12px;border-radius:0"></i>Outubro / 2026</span></div>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filtrar obras">
+      <button class="chip" type="button" data-f="all" aria-pressed="true">Todas</button>
+      <button class="chip" type="button" data-f="live" aria-pressed="false">Em andamento</button>
+      <button class="chip" type="button" data-f="done" aria-pressed="false">Concluídas</button>
+    </div>
+    <div class="projects" id="projects"></div>
+
+    <div class="kv">
+      <div class="intro">
+        <p class="label kicker">Histórico completo</p>
+        <h3>Obras por classe de tensão</h3>
+        <p>Da distribuição à extra-alta tensão. Obras concluídas desde a fundação, por classe de tensão da instalação.</p>
+      </div>
+      <div class="chart"><div class="bars" id="bars" role="img" aria-label="Número de obras por classe de tensão"></div></div>
+    </div>
+
+    <div class="clients">
+      <p class="label">Clientes e contratantes</p>
+      <p>ISA Energia <span>/</span> Siemens <span>/</span> Axia Energia <span>/</span> State Grid <span>/</span> Neoenergia <span>/</span> TAESA <span>/</span> EDF <span>/</span> SENDI <span>/</span> Grantel <span>/</span> Grupo Cobra</p>
+    </div>
+  </div>
+</section>
+
+<!-- EMPRESA / TRAJETÓRIA -->
+<section class="sec dark" id="empresa">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t"><p class="label kicker">Trajetória</p><h2>Quinze anos de especialização</h2></div>
+      <p class="d">Começamos na montagem elétrica de subestações. Em 2014 escolhemos fazer uma coisa só, e bem feita: comissionamento.</p>
+    </div>
+    <ol class="tl">
+      <li><span class="y">2011</span><h3>Fundação</h3><p>Início em Itumbiara-GO com montagem elétrica de subestações e formação da equipe técnica.</p></li>
+      <li><span class="y">2014</span><h3>Foco em comissionamento</h3><p>Fim da montagem. Ensaios de N0, ensaios funcionais e interligação de proteção e controle.</p></li>
+      <li><span class="y">2022</span><h3>Filial São Paulo</h3><p>Base na Av. Paulista para os projetos da Grande São Paulo.</p></li>
+      <li><span class="y">800 kV</span><h3>Alta tensão</h3><p>Diagnósticos avançados em ativos de até 800 kV em todo o Brasil.</p></li>
+      <li><span class="y">2023</span><h3>Educação técnica</h3><p>Palestras e cursos sobre O&amp;M de subestações para profissionais do setor.</p></li>
+      <li><span class="y">2025</span><h3>Malhas de aterramento</h3><p>Especialização em malhas de aterramento em áreas energizadas.</p></li>
+      <li><span class="y">2026</span><h3>Consultoria e IA</h3><p>Consultoria em comissionamento e inteligência artificial na análise e aprovação de ensaios.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t"><p class="label kicker">Diferenciais</p><h2>Rigor técnico em campo</h2></div>
+      <p class="d">Instrumentação própria e calibrada elimina o envio a laboratórios externos. Na prática, prazos de comissionamento até 40% menores e menos tempo de ativo parado.</p>
+    </div>
+    <div class="diff">
+      <div class="lead">
+        <figure><img loading="lazy" src="assets/montagem.jpg" alt="Equipe da Luzion instalando bucha de transformador em subestação" width="1100" height="1320"></figure>
+        <div class="brands">
+          <p class="label">Instrumentação · calibração rastreável RBC/INMETRO</p>
+          <p>OMICRON · Megger · Fluke · Doble · SMC · B2 Electronics · Wisegroup · Utili</p>
+        </div>
+      </div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M16 3.1a4 4 0 0 1 0 7.8M21 21v-2a4 4 0 0 0-3-3.9"/></svg><div><h3>Equipe qualificada</h3><p>Profissionais especializados, com formação contínua e experiência em projetos de alta complexidade.</p></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><div><h3>Segurança</h3><p>Equipes certificadas NR-10 e NR-35. Zero acidentes registrados em campo desde 2011.</p></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg><div><h3>Rastreabilidade total</h3><p>Laudos rastreáveis, assinados digitalmente e entregues em até 36 horas após os ensaios.</p></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><div><h3>Mobilização rápida</h3><p>Logística própria e cronogramas cumpridos, em qualquer estado do país.</p></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg><div><h3>Base normativa</h3><p>ABNT, IEC, IEEE e requisitos dos fabricantes, com conformidade técnica e jurídica.</p></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/><path d="M2 21c0-3 1.9-5.4 5.1-6"/></svg><div><h3>Compromisso ESG</h3><p>Perdas eliminadas durante os ensaios e descarte correto de PCBs e óleos isolantes.</p>
+          <div class="esg"><div><b class="num">0</b><span>acidentes de trabalho</span></div><div><b class="num">100%</b><span>conformidade ambiental</span></div><div><b class="num">100%</b><span>atendimento no prazo</span></div></div></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRESENÇA -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t"><p class="label kicker">Presença nacional</p><h2>Onde a obra estiver</h2></div>
+      <p class="d">A partir de Itumbiara, no centro do país, mobilizamos equipes para centros urbanos, áreas industriais e regiões remotas.</p>
+    </div>
+    <div class="presence">
+      <div class="bases">
+        <div class="base"><p class="label">Matriz</p><h3>Itumbiara · GO</h3><p>Rua João Ribeiro Filho, 263, Casa 01, Setor Santos Dumont, CEP 75530-400</p></div>
+        <div class="base"><p class="label">Filial</p><h3>São Paulo · SP</h3><p>Av. Paulista, 2028, 11º andar, cj. 111, Bela Vista</p></div>
+      </div>
+      <ul class="regions">
+        <li><h3>Sudeste e Centro-Oeste</h3><p class="uf">MG · SP · GO · MT · RJ · ES</p><p>Base principal de operações e maior concentração de frentes ativas, com mobilização ágil para demandas urgentes.</p></li>
+        <li><h3>Nordeste</h3><p class="uf">BA · PI · CE · RN · MA</p><p>Presença consolidada em parques eólicos e solares, acompanhando a expansão renovável da região.</p></li>
+        <li><h3>Norte e Sul</h3><p class="uf">Todo o território</p><p>Mobilização contínua para projetos de transmissão e geração distribuída, com equipes prontas para longas distâncias.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="scene dark contact" id="contato">
+  <div class="bg"><img loading="lazy" src="assets/noite.jpg" alt="" width="1800" height="1560"></div>
+  <div class="shade"></div>
+  <div class="wrap contact-grid">
+    <div class="l">
+      <p class="label kicker">Contato</p>
+      <h2>Vamos comissionar seu próximo projeto</h2>
+      <p>Conte qual é a subestação, o nível de tensão e o escopo. Respondemos com uma proposta técnica.</p>
+      <ul class="lines">
+        <li><span class="label">WhatsApp</span><a href="https://wa.me/5564996671258" target="_blank" rel="noopener">+55 (64) 99667-1258</a><button class="copy" type="button" data-copy="+55 64 99667-1258">Copiar</button></li>
+        <li><span class="label">Comercial</span><span class="v">comercial@luzionenergia.com.br</span><button class="copy" type="button" data-copy="comercial@luzionenergia.com.br">Copiar</button></li>
+        <li><span class="label">Telefone</span><span class="v">(64) 3431-1258</span><button class="copy" type="button" data-copy="(64) 3431-1258">Copiar</button></li>
+        <li><span class="label">Instagram</span><a href="https://www.instagram.com/luzionenergia/" target="_blank" rel="noopener">@luzionenergia</a><span></span></li>
+      </ul>
+    </div>
+    <div class="r">
+      <form class="msg" id="msgForm" novalidate>
+        <h3>Pedir proposta</h3>
+        <p class="h">A mensagem abre no WhatsApp da equipe comercial.</p>
+        <div class="field"><label for="f-nome">Nome e empresa</label><input id="f-nome" name="nome" autocomplete="name" placeholder="Ex.: Ana Souza, Transmissora X"></div>
+        <div class="field"><label for="f-serv">Serviço</label>
+          <select id="f-serv" name="servico">
+            <option>Comissionamento de subestação</option>
+            <option>Malha de aterramento</option>
+            <option>Análise de para-raios</option>
+            <option>Termografia / drones</option>
+            <option>Inspeção em fábrica (TAF)</option>
+            <option>Retrofit</option>
+            <option>Consultoria técnica</option>
+            <option>Outro</option>
+          </select></div>
+        <div class="field"><label for="f-msg">Subestação, tensão e escopo</label><textarea id="f-msg" name="mensagem" placeholder="Ex.: SE 500/230 kV, comissionamento N0 e suporte ao N1, início em março"></textarea></div>
+        <a class="ghost solid-teal" id="sendWa" href="https://wa.me/5564996671258" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>Enviar pelo WhatsApp</a>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-branca.png" alt="Luzion Energia" width="720" height="170">
+    <p>Luzion Serviços e Soluções em Energia Ltda · CNPJ 14.207.734/0001-50</p>
+    <div class="social">
+      <a href="https://www.instagram.com/luzionenergia/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/search/results/all/?keywords=Luzion%20Energia" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.tiktok.com/@luzionenergia" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* header */
+  var top=document.getElementById('top'),btn=document.getElementById('menuBtn');
+  function onScroll(){top.classList.toggle('solid',window.scrollY>40)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  btn.addEventListener('click',function(){var o=top.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
+  document.querySelectorAll('#nav a').forEach(function(a){a.addEventListener('click',function(){top.classList.remove('open');btn.setAttribute('aria-expanded','false')})});
+
+  /* obras: dados do Portfólio de Obras 2025-2026 */
+  var P=[
+    {n:'OITI',c:'Cliente final EDF · Contratante SENDI',s:'live',p:'jul/2026 – atual',a:[2026,7],b:[2026,10],
+     se:[['Porto do Açu','345/138 kV'],['GNA I',''],['Campos',''],['Seccionamento LTs GNA–Campos C1 e C2','']],
+     e:['Comissionamento N0','Cablagem','Malha de aterramento','Suporte ao N1','Injeção de corrente e tensão','Cubículos de MT']},
+    {n:'Grande São Paulo',c:'Cliente final ISA Energia · Contratante Siemens',s:'live',p:'jan/2023 – atual',a:[2023,1],b:[2026,10],
+     se:[['Ramon Rebert','345/88/20 kV']],
+     e:['Retrofit','Comissionamento N0','GIS (SF₆)','Cablagem','Suporte ao N1','Injeção de corrente e tensão','Cubículos de 20 kV','VLF em cabos de MT','Banco de capacitores']},
+    {n:'12OP / 5OP',c:'Cliente final Axia Energia · Contratante Grantel',s:'live',p:'mar/2026 – atual',a:[2026,3],b:[2026,10],
+     se:[['Itumbiara','500/345 kV']],
+     e:['Retrofit de equipamentos de pátio','Comissionamento N0','Cablagem','Suporte ao N1','Injeção de corrente e tensão']},
+    {n:'Reator de Barra LTMC',c:'Cliente final State Grid · Contratante Grantel',s:'done',p:'jun – ago/2026',a:[2026,6],b:[2026,8],
+     se:[['Itabirito 2','500/345 kV']],
+     e:['Comissionamento N0','Cablagem','Malha de aterramento','Suporte ao N1','Injeção de corrente e tensão']},
+    {n:'REA',c:'Cliente Neoenergia',s:'done',p:'mai – jun/2026',a:[2026,5],b:[2026,6],
+     se:[['Paraíso 2','230/138 kV']],
+     e:['Comissionamento N0','Cablagem','Malha de aterramento','Suporte ao N1','Injeção de corrente e tensão']},
+    {n:'Tangará',c:'Cliente final TAESA · Contratante SENDI',s:'done',p:'jun/2025 – abr/2026',a:[2025,6],b:[2026,4],
+     se:[['Encruzo Novo','230 kV'],['Santa Luzia','500/230/138 kV'],['Açailândia','500/230/69 kV'],['Dom Eliseu 2','230/69 kV']],
+     e:['Comissionamento N0','Cablagem','Malha de aterramento','Suporte ao N1','Injeção de corrente e tensão','Cubículos de MT','Ensaio de curto-circuito','Apoio no compensador síncrono']},
+    {n:'Piraquê',c:'Cliente final ISA Energia · Contratante Grupo Cobra',s:'done',p:'jun/2025 – abr/2026',a:[2025,6],b:[2026,4],
+     se:[['Jaíba','500/230 kV'],['Capelinha','500 kV'],['Governador Valadares','500 kV'],['Viana','345 kV'],['Viana 2','500/345 kV'],['João Neiva','500 kV']],
+     e:['Comissionamento N0','Suporte ao N1','Injeção de corrente e tensão','Cubículos de 20 kV','VLF em cabos de MT']},
+    {n:'Grande São Paulo',c:'Cliente final ISA Energia · Contratante Siemens',s:'done',p:'nov/2022 – set/2026',a:[2022,11],b:[2026,9],
+     se:[['Miguel Reale','345/88/20 kV']],
+     e:['Comissionamento N0','GIS (SF₆)','Cablagem','Suporte ao N1','Injeção de corrente e tensão','Cubículos de 20 kV','VLF em cabos de MT']}
+  ];
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  var M0=2022*12, SPAN=60; function pos(ym){return ((ym[0]*12+ym[1]-1)-M0)/SPAN*100}
+  var g='<div class="g-axis"><span></span><div class="yrs"><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span></div></div>';
+  var now=pos([2026,10])+ (1/SPAN*100);
+  P.forEach(function(p){
+    var l=pos(p.a),r=pos(p.b)+100/SPAN;
+    g+='<div class="g-row"><div class="nm">'+esc(p.n)+'<small>'+esc(p.se.length>1?p.se.length+' subestações':'SE '+p.se[0][0])+'</small></div><div class="g-track"><span class="g-bar '+(p.s==='live'?'live':'')+'" style="left:'+l.toFixed(2)+'%;width:'+(r-l).toFixed(2)+'%" title="'+esc(p.p)+'"></span><span class="g-now" style="left:'+now.toFixed(2)+'%"></span></div></div>';
+  });
+  document.getElementById('gantt').innerHTML=g;
+
+  var box=document.getElementById('projects');
+  function render(f){
+    box.innerHTML=P.filter(function(p){return f==='all'||p.s===f}).map(function(p){
+      return '<article class="proj"><header><div><h3>'+esc(p.n)+'</h3><p class="who">'+esc(p.c)+'</p></div><span class="status '+p.s+'">'+(p.s==='live'?'Em andamento':'Concluído')+'</span></header>'+
+      '<div class="meta"><div><span class="label">Subestações</span><ul class="ses">'+p.se.map(function(s){return '<li><b>'+esc(s[0].indexOf('Seccionamento')===0?s[0]:'SE '+s[0])+'</b>'+(s[1]?'<span>'+esc(s[1])+'</span>':'')+'</li>'}).join('')+'</ul></div>'+
+      '<div><span class="label">Escopo executado</span><ul>'+p.e.map(function(e){return '<li>'+esc(e)+'</li>'}).join('')+'</ul></div></div>'+
+      '<p class="period">'+esc(p.p)+'</p></article>';
+    }).join('');
+  }
+  render('all');
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    document.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',x===c)});render(c.dataset.f);
+  })});
+
+  /* classes de tensão: Apresentação Institucional 2026 */
+  var K=[['500 kV',75],['230 kV',57],['69 / 34,5 kV',40],['138 kV',38],['440 kV',12],['345 kV',6],['750 kV CA',3],['800 kV CC',2]], MAX=80;
+  document.getElementById('bars').innerHTML=K.map(function(k,i){return '<div class="bar'+(i===0?' max':'')+'"><span class="k">'+k[0]+'</span><span class="t"><i style="width:'+(k[1]/MAX*100)+'%"></i></span><span class="v num">'+k[1]+'</span></div>'}).join('')+
+    '<div class="scale"><span></span><div><span>0</span><span>20</span><span>40</span><span>60</span><span>80</span></div><span></span></div>';
+
+  /* copiar */
+  document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click',function(){
+    var t=b.dataset.copy,old=b.textContent;
+    function ok(){b.textContent='Copiado';setTimeout(function(){b.textContent=old},1600)}
+    try{navigator.clipboard.writeText(t).then(ok,function(){sel(b)})}catch(e){sel(b)}
+  })});
+  function sel(b){var el=b.previousElementSibling,r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+
+  /* formulário -> link do WhatsApp */
+  var form=document.getElementById('msgForm'),wa=document.getElementById('sendWa');
+  function upd(){
+    var t='Olá, Luzion! Sou '+(form.nome.value||'[nome / empresa]')+'.\nServiço: '+form.servico.value+'\n'+(form.mensagem.value||'');
+    wa.href='https://wa.me/5564996671258?text='+encodeURIComponent(t.trim());
+  }
+  form.addEventListener('input',upd);form.addEventListener('submit',function(e){e.preventDefault()});upd();
+})();
+</script>
+</body>
+</html>
