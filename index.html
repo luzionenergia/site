@@ -307,15 +307,15 @@ footer img{height:26px;width:auto;opacity:.9}
 /* clientes: logotipos */
 .clients{margin-top:clamp(3rem,6vw,4.5rem);padding-top:1.5rem;border-top:2px solid var(--ink)}
 .clients .label{color:var(--ink-2)}
-.logos{margin:1.25rem 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
-.logos li{height:104px;display:flex;align-items:center;justify-content:center;padding:1rem 1.25rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--sheet);transition:background .2s}
-.logos li:hover{background:var(--paper)}
-.logos img{max-height:46px;max-width:100%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.65;transition:filter .25s,opacity .25s}
-.logos li:hover img{filter:none;opacity:1}
-.logos span{font:700 1.05rem/1.1 var(--f-display);text-transform:uppercase;letter-spacing:.08em;color:#8a96a8;text-align:center;transition:color .2s}
-.logos li:hover span{color:var(--navy)}
-@media (max-width:860px){.logos{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:480px){.logos{grid-template-columns:repeat(2,minmax(0,1fr))}.logos li{height:84px}}
+.marquee{position:relative;display:flex;overflow:hidden;margin-top:1.25rem;padding:.5rem 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.logos{flex:none;display:flex;align-items:center;gap:clamp(2.5rem,5vw,4.5rem);margin:0;padding:0 clamp(1.25rem,2.5vw,2.25rem);list-style:none;animation:marquee 48s linear infinite}
+.marquee:hover .logos{animation-play-state:paused}
+.logos li{flex:none;height:88px;display:flex;align-items:center}
+.logos img{height:var(--h,48px);width:auto;max-width:none;object-fit:contain;opacity:.9;transition:opacity .25s,transform .25s}
+.logos li:hover img{opacity:1;transform:scale(1.06)}
+@keyframes marquee{to{transform:translateX(-100%)}}
+@media (max-width:600px){.logos li{height:68px}.logos img{height:calc(var(--h,48px)*.75)}.logos{animation-duration:36s}}
+@media (prefers-reduced-motion:reduce){.marquee{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.logos{animation:none}.logos[aria-hidden]{display:none}}
 
 /* trajetória: linha energizada */
 .cable{position:relative;--fill:100%}
@@ -521,19 +521,11 @@ footer .social svg{width:17px;height:17px}
 
     <div class="clients">
       <p class="label">Clientes e contratantes</p>
-      <!-- Para usar o logotipo: troque <span>Nome</span> por <img src="assets/clientes/arquivo.png" alt="Nome"> -->
-      <ul class="logos">
-        <li><span>ISA Energia</span></li>
-        <li><span>Siemens</span></li>
-        <li><span>Axia Energia</span></li>
-        <li><span>State Grid</span></li>
-        <li><span>Neoenergia</span></li>
-        <li><span>TAESA</span></li>
-        <li><span>EDF</span></li>
-        <li><span>SENDI</span></li>
-        <li><span>Grantel</span></li>
-        <li><span>Grupo Cobra</span></li>
-      </ul>
+      <!-- Logotipos em assets/clientes/. Para incluir um cliente: adicione o arquivo e uma linha <li> nas DUAS listas abaixo (a segunda repete a primeira para o giro contínuo). -->
+      <div class="marquee">
+        <ul class="logos"><li><img src="assets/clientes/isa-energia.png" alt="ISA Energia" width="307" height="140" loading="lazy" style="--h:57px"></li><li><img src="assets/clientes/siemens-energy.png" alt="Siemens Energy" width="408" height="140" loading="lazy" style="--h:50px"></li><li><img src="assets/clientes/axia-energia.png" alt="Axia Energia" width="177" height="140" loading="lazy" style="--h:62px"></li><li><img src="assets/clientes/state-grid.png" alt="State Grid" width="520" height="111" loading="lazy" style="--h:39px"></li><li><img src="assets/clientes/neoenergia.png" alt="Neoenergia" width="351" height="140" loading="lazy" style="--h:54px"></li><li><img src="assets/clientes/edp.png" alt="EDP" width="378" height="140" loading="lazy" style="--h:52px"></li><li><img src="assets/clientes/celeo.png" alt="Celeo" width="227" height="140" loading="lazy" style="--h:62px"></li><li><img src="assets/clientes/grupo-cobra.png" alt="Grupo Cobra" width="396" height="140" loading="lazy" style="--h:50px"></li><li><img src="assets/clientes/elecnor.png" alt="Elecnor Brasil" width="274" height="140" loading="lazy" style="--h:61px"></li><li><img src="assets/clientes/sendi.png" alt="Sendi" width="393" height="140" loading="lazy" style="--h:51px"></li><li><img src="assets/clientes/sieyuan.png" alt="Sieyuan" width="499" height="140" loading="lazy" style="--h:45px"></li><li><img src="assets/clientes/dax-energy.png" alt="DAX Energy" width="335" height="140" loading="lazy" style="--h:55px"></li><li><img src="assets/clientes/kanopus.png" alt="Kanopus" width="496" height="140" loading="lazy" style="--h:45px"></li><li><img src="assets/clientes/engelt.png" alt="Engelt" width="355" height="140" loading="lazy" style="--h:53px"></li><li><img src="assets/clientes/fauke.png" alt="Fauke Engenharia" width="520" height="106" loading="lazy" style="--h:38px"></li><li><img src="assets/clientes/dunas.png" alt="Dunas Construções" width="308" height="140" loading="lazy" style="--h:57px"></li></ul>
+        <ul class="logos" aria-hidden="true"><li><img src="assets/clientes/isa-energia.png" alt="" width="307" height="140" loading="lazy" style="--h:57px"></li><li><img src="assets/clientes/siemens-energy.png" alt="" width="408" height="140" loading="lazy" style="--h:50px"></li><li><img src="assets/clientes/axia-energia.png" alt="" width="177" height="140" loading="lazy" style="--h:62px"></li><li><img src="assets/clientes/state-grid.png" alt="" width="520" height="111" loading="lazy" style="--h:39px"></li><li><img src="assets/clientes/neoenergia.png" alt="" width="351" height="140" loading="lazy" style="--h:54px"></li><li><img src="assets/clientes/edp.png" alt="" width="378" height="140" loading="lazy" style="--h:52px"></li><li><img src="assets/clientes/celeo.png" alt="" width="227" height="140" loading="lazy" style="--h:62px"></li><li><img src="assets/clientes/grupo-cobra.png" alt="" width="396" height="140" loading="lazy" style="--h:50px"></li><li><img src="assets/clientes/elecnor.png" alt="" width="274" height="140" loading="lazy" style="--h:61px"></li><li><img src="assets/clientes/sendi.png" alt="" width="393" height="140" loading="lazy" style="--h:51px"></li><li><img src="assets/clientes/sieyuan.png" alt="" width="499" height="140" loading="lazy" style="--h:45px"></li><li><img src="assets/clientes/dax-energy.png" alt="" width="335" height="140" loading="lazy" style="--h:55px"></li><li><img src="assets/clientes/kanopus.png" alt="" width="496" height="140" loading="lazy" style="--h:45px"></li><li><img src="assets/clientes/engelt.png" alt="" width="355" height="140" loading="lazy" style="--h:53px"></li><li><img src="assets/clientes/fauke.png" alt="" width="520" height="106" loading="lazy" style="--h:38px"></li><li><img src="assets/clientes/dunas.png" alt="" width="308" height="140" loading="lazy" style="--h:57px"></li></ul>
+      </div>
     </div>
   </div>
 </section>
