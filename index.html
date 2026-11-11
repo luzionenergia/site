@@ -11,7 +11,6 @@
 <meta property="og:title" content="Luzion Energia">
 <meta property="og:image" content="assets/hero.jpg">
 <link rel="icon" href="assets/logo-colorida.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <style>
 /* Layout: cenas escuras em fotografia (cinematográfico) alternadas com folhas claras em grid suíço de 12 colunas; dados em mono. */
 :root{
@@ -270,42 +269,40 @@ footer img{height:26px;width:auto;opacity:.9}
 
 [hidden]{display:none!important}
 /* atuação: obras em andamento (dados ao vivo do Nexus) */
-.ob-wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem;align-items:start}
-.ob-mapbox{grid-column:1/span 8;min-width:0}
-.ob-map{height:clamp(380px,52vw,560px);border-radius:8px;border:1px solid var(--rule);background:#e8ebee;overflow:hidden;position:relative;z-index:0}
-.ob-map.loading{background:linear-gradient(100deg,#e8ebee 30%,#f3f5f7 50%,#e8ebee 70%) 0 0/300% 100%;animation:shimmer 1.4s linear infinite}
-@keyframes shimmer{to{background-position:-150% 0}}
-.ob-map .leaflet-tile-pane{filter:grayscale(1) contrast(.92) brightness(1.04)}
-.ob-map .leaflet-container,.ob-map.leaflet-container{font-family:var(--f-body)}
-.ob-map .leaflet-popup-content-wrapper{border-radius:6px;box-shadow:0 6px 24px rgba(11,22,38,.18)}
-.ob-map .leaflet-popup-content{margin:.8rem 1rem;font-size:.85rem;line-height:1.45;color:var(--ink)}
-.ob-pop b{display:block;font:700 1rem/1.15 var(--f-display);text-transform:uppercase;letter-spacing:.04em;color:var(--ink)}
-.ob-pop .kv{font:500 .75rem var(--f-mono);color:var(--navy)}
-.ob-pop .loc{color:var(--ink-2)}
-.ob-pop .st{display:inline-flex;align-items:center;gap:.4rem;margin-top:.35rem;font:500 .68rem/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
-.ob-dot{display:inline-block;width:10px;height:10px;border-radius:50%;flex:none}
-.ob-legend{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;margin-top:1rem;font-size:.9rem;color:var(--ink)}
-.ob-legend span{display:inline-flex;align-items:center;gap:.5rem}
-.ob-side{grid-column:9/span 4;min-width:0}
-.ob-count{font:700 clamp(2.4rem,4vw,3.2rem)/1 var(--f-display);color:var(--navy)}
-.ob-count small{display:block;margin-top:.4rem;font:400 .95rem/1.3 var(--f-body);color:var(--ink-2)}
-.ob-list{margin:1.25rem 0 0;padding:0;list-style:none;max-height:clamp(380px,46vw,500px);overflow:auto;border-top:2px solid var(--ink)}
-.ob-list>li{padding:.85rem 0;border-bottom:1px solid var(--rule)}
-.ob-uf{display:flex;align-items:baseline;gap:.6rem;margin-bottom:.35rem}
-.ob-uf b{font:700 1.25rem/1 var(--f-display);color:var(--navy)}
-.ob-uf span{font:600 .78rem/1 var(--f-display);text-transform:uppercase;letter-spacing:.1em;color:var(--ink-2)}
-.ob-list ul{margin:0;padding:0;list-style:none;display:grid;gap:.15rem}
-.ob-item{display:grid;grid-template-columns:10px minmax(0,1fr);gap:.6rem;align-items:start;width:100%;text-align:left;background:none;border:0;padding:.35rem .4rem;margin-left:-.4rem;border-radius:4px;font:inherit;color:inherit;cursor:default}
-button.ob-item{cursor:pointer}
-button.ob-item:hover{background:var(--paper)}
-.ob-item .ob-dot{margin-top:.35rem}
-.ob-item b{font-weight:600;font-size:.92rem}
-.ob-item em{font-style:normal;font:500 .72rem var(--f-mono);color:var(--navy);margin-left:.3rem}
-.ob-item small{display:block;font-size:.8rem;color:var(--ink-2)}
+.ops{position:relative;background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:clamp(1rem,2.5vw,2rem)}
+.ops-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.5rem 1.5rem;padding-bottom:1rem;margin-bottom:1rem;border-bottom:1px solid var(--rule)}
+.ops-count{display:flex;align-items:baseline;gap:.6rem;margin:0}
+.ops-count b{font:700 clamp(2.2rem,4vw,3rem)/1 var(--f-display);color:var(--navy)}
+.ops-count span{font-size:1rem;color:var(--ink-2)}
+.ops-src{margin:0;font:400 .75rem/1.4 var(--f-mono);letter-spacing:.04em;color:var(--ink-2);display:inline-flex;align-items:center;gap:.5rem}
+.ops-src i{width:8px;height:8px;border-radius:50%;background:var(--st-campo);box-shadow:0 0 0 4px rgba(76,174,92,.18)}
+.ops svg{width:100%;height:auto;display:block}
+.ops svg.loading .br-shape{animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.55}}
+.br-shape{fill:#e9ebe6;stroke:#fff;stroke-width:1.5;stroke-linejoin:round}
+.lead{fill:none;stroke:#9aa3ad;stroke-width:1;stroke-dasharray:4 3}
+.lead-dot{fill:#9aa3ad}
+.op .dot{stroke:#fff;stroke-width:3}
+.op .halo{opacity:.22;transform-box:fill-box;transform-origin:center;animation:breathe 3.2s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.25);opacity:.1}}
+.op.hub .dot{fill:var(--navy)}
+.op.hub .halo{fill:var(--navy);opacity:.12}
+.lbl .n{font:700 13px var(--f-display);letter-spacing:.06em;text-transform:uppercase;fill:var(--ink)}
+.lbl .c{font:400 11.5px var(--f-body);fill:var(--ink-2)}
+.hub-lbl{font:600 10px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;fill:var(--navy)}
+.ops-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem 1.75rem;margin-top:1.25rem;font-size:.95rem;color:var(--ink)}
+.ops-legend span{display:inline-flex;align-items:center;gap:.5rem}
+.ops-legend i,.ops-list i{display:inline-block;width:12px;height:12px;border-radius:50%;flex:none}
+.ops-list{display:none;margin:1.25rem 0 0;padding:0;list-style:none}
+.ops-list li{display:grid;grid-template-columns:12px minmax(0,1fr);gap:.75rem;padding:.7rem 0;border-top:1px solid var(--rule)}
+.ops-list li i{margin-top:.3rem}
+.ops-list b{display:block;font:700 1rem/1.2 var(--f-display);text-transform:uppercase;letter-spacing:.04em}
+.ops-list span{font-size:.85rem;color:var(--ink-2)}
+@media (max-width:760px){.ops .lbls,.ops .leads{display:none}.ops-list{display:block}}
+@media (prefers-reduced-motion:reduce){.op .halo,.ops svg.loading .br-shape{animation:none}}
 .ob-fallback{padding:clamp(2rem,5vw,3.5rem);border-radius:8px;background:var(--navy);color:var(--spectral)}
 .ob-fallback b{display:block;font:700 clamp(1.8rem,4vw,2.8rem)/1.05 var(--f-display);text-transform:uppercase}
 .ob-fallback span{display:block;margin-top:.75rem;color:var(--spectral-2);max-width:56ch}
-@media (max-width:900px){.ob-mapbox,.ob-side{grid-column:1/-1}.ob-list{max-height:none}}
 
 /* clientes: logotipos */
 .clients{margin-top:clamp(3rem,6vw,4.5rem);padding-top:1.5rem;border-top:2px solid var(--ink)}
@@ -511,15 +508,14 @@ footer .social svg{width:17px;height:17px}
       <p class="d">Onde nossas equipes estão agora e em que etapa está cada obra. O mapa é atualizado automaticamente a partir do nosso sistema de gestão de obras.</p>
     </div>
     <!-- Dados ao vivo: GET https://luzion-nexus.lovable.app/api/public/site/obras (Nexus). Nada é guardado no site. -->
-    <div class="ob-wrap" id="obLive">
-      <div class="ob-mapbox">
-        <div class="ob-map loading" id="obMap" role="region" aria-label="Mapa das obras em andamento"></div>
-        <div class="ob-legend" id="obLegend"></div>
-      </div>
-      <div class="ob-side">
-        <p class="ob-count" id="obCount" aria-live="polite">&nbsp;<small>Carregando obras em andamento</small></p>
-        <ul class="ob-list" id="obList"></ul>
-      </div>
+    <div class="ops" id="obLive">
+      <div class="ops-top"><p class="ops-count" id="obCount" aria-live="polite"><b>&nbsp;</b><span>Carregando obras em andamento</span></p><p class="ops-src"><i></i>Atualizado automaticamente</p></div>
+      <svg id="obMap" class="loading" viewBox="0 0 1000 514" role="img" aria-labelledby="opsT"><title id="opsT">Mapa das obras da Luzion em andamento, por etapa</title>
+        <path class="br-shape" d="M354.9 71.3L357.9 74.1L360.1 76.1L361.0 76.8L361.6 77.0L362.8 76.8L364.4 76.6L365.1 76.3L365.9 75.6L367.2 74.7L368.3 74.3L368.7 74.2L369.2 74.3L370.1 74.9L370.6 75.9L370.1 77.0L370.2 77.7L371.2 77.7L371.9 76.5L372.5 75.6L373.6 74.8L374.7 73.7L375.4 72.7L376.3 72.1L377.7 71.4L378.8 70.9L379.8 71.0L380.5 70.5L381.5 69.6L382.1 68.8L382.6 68.6L383.5 68.6L384.7 68.5L385.9 67.6L386.9 66.6L387.4 64.7L387.8 63.1L388.2 62.8L388.5 62.6L388.9 62.4L390.0 62.3L391.9 61.4L393.2 60.6L394.5 60.4L394.8 60.1L395.2 59.3L395.5 57.9L395.3 57.1L393.0 56.8L391.6 56.8L389.1 56.6L387.9 56.2L387.7 56.0L387.6 55.7L387.9 55.1L388.1 53.9L387.8 52.4L386.6 49.9L385.7 47.5L385.6 45.9L385.6 44.1L385.6 43.0L385.0 42.1L381.6 39.2L380.5 37.8L380.1 36.9L378.8 35.2L379.1 34.7L379.8 34.7L380.5 35.2L381.1 36.1L381.6 36.3L382.1 36.3L385.3 36.3L386.0 36.5L386.4 36.8L386.8 37.2L387.4 38.3L388.0 38.8L389.2 38.8L391.2 38.8L392.2 38.7L392.9 39.0L393.7 39.3L395.4 38.7L395.9 38.7L396.4 38.9L398.2 40.9L399.3 41.8L400.2 42.9L401.5 42.9L402.5 41.9L402.8 38.7L403.2 37.8L403.7 37.5L404.3 37.5L405.1 37.0L405.9 36.3L406.6 36.1L409.6 36.8L410.5 36.5L413.5 35.6L416.6 34.5L417.4 33.2L418.7 32.8L419.7 31.8L420.6 31.9L421.8 32.0L422.6 31.8L423.0 31.6L423.4 31.1L424.1 29.8L425.0 29.2L426.0 28.7L426.7 28.1L427.3 27.3L427.6 26.6L427.6 26.1L427.2 25.0L426.8 24.0L426.3 23.7L426.0 23.6L427.0 23.4L427.9 23.7L429.3 23.7L429.8 23.5L430.7 23.6L431.8 22.9L432.5 23.1L433.0 23.1L433.4 23.7L433.7 24.3L434.7 25.0L434.6 26.1L434.4 27.1L434.3 28.2L434.2 29.1L433.8 30.0L433.1 30.8L433.0 31.2L432.9 31.6L433.3 31.9L434.1 32.0L435.0 32.0L435.7 32.2L436.5 32.3L437.6 33.0L438.0 33.4L438.1 33.8L437.8 34.6L437.6 35.3L437.9 35.7L438.2 36.1L439.0 37.7L439.4 38.3L439.7 38.5L439.8 38.8L439.5 39.4L439.2 40.2L438.4 41.0L438.3 41.6L437.7 42.0L436.3 43.0L436.5 44.5L436.6 45.2L436.6 45.8L436.1 46.6L435.2 49.0L434.9 50.1L434.6 52.8L434.7 53.7L435.1 54.9L435.9 57.6L436.3 58.1L437.4 58.7L437.6 60.5L437.5 62.5L437.4 63.2L437.6 63.5L438.1 63.7L438.4 63.9L438.5 64.5L438.5 65.0L439.3 65.4L440.0 65.6L440.6 66.4L441.8 67.7L442.3 67.9L442.5 68.4L443.5 69.5L445.0 69.9L446.6 70.3L447.2 71.0L447.8 71.6L448.2 71.6L448.7 71.5L449.3 71.0L449.8 70.6L450.7 70.7L451.8 70.6L452.0 70.2L452.1 69.8L451.9 68.7L452.3 68.4L453.2 68.2L453.4 67.6L453.6 67.3L453.8 67.0L454.1 66.9L454.5 67.1L455.1 67.2L455.8 67.4L456.1 67.8L456.7 67.8L457.4 67.8L457.6 67.5L457.8 67.1L458.0 66.2L458.4 66.2L459.3 66.0L460.1 65.6L461.3 65.5L462.5 65.6L463.1 65.3L463.6 64.7L464.6 63.1L465.1 62.7L465.7 62.4L466.2 62.5L467.2 62.2L468.0 61.8L468.3 61.9L468.9 62.8L469.3 63.0L469.7 63.0L471.3 63.4L472.1 63.3L472.9 63.0L473.8 62.9L474.4 63.1L474.9 62.9L475.4 62.7L475.7 62.8L476.5 62.9L478.3 63.4L480.7 63.9L481.4 63.7L481.8 63.3L481.9 62.3L482.0 61.5L481.4 60.8L480.7 60.1L480.1 59.2L479.4 58.9L479.5 58.4L480.0 57.9L480.5 57.6L480.7 57.3L481.0 56.0L481.2 55.8L481.5 55.7L481.7 55.8L482.2 56.1L484.1 57.1L484.9 57.0L488.1 56.7L488.5 56.1L489.2 56.0L490.4 55.4L490.8 55.4L491.2 55.5L491.7 55.4L492.5 54.9L492.8 54.8L492.9 55.4L493.4 56.0L494.0 56.6L494.3 56.7L495.3 56.5L495.8 56.7L496.0 57.2L496.1 57.7L496.5 58.1L497.0 58.1L497.3 58.2L497.8 58.5L498.2 59.1L499.1 59.5L500.7 60.1L501.5 60.2L502.2 60.3L502.7 60.6L503.1 60.2L504.8 59.2L505.6 58.7L506.1 58.2L506.5 57.8L506.8 57.7L507.0 58.0L507.2 58.3L507.8 58.5L509.2 58.8L509.8 59.0L510.7 58.6L511.5 58.1L511.9 57.9L512.4 58.5L512.8 59.2L513.1 59.5L513.6 59.5L514.8 59.6L515.6 59.8L516.1 59.8L516.8 59.5L517.2 58.8L518.3 58.2L519.2 57.6L519.8 56.9L520.6 55.7L520.8 55.1L520.9 54.2L522.1 51.6L522.5 51.2L522.7 50.3L523.2 49.4L523.2 48.6L523.5 47.8L524.2 47.2L524.6 46.7L525.4 45.6L526.0 44.6L527.3 42.2L527.4 41.6L528.0 41.2L528.1 40.7L528.7 40.1L529.3 39.6L529.6 38.8L530.0 38.1L531.0 37.5L531.4 37.3L532.4 35.2L532.6 34.3L533.6 34.2L535.1 35.3L536.4 36.9L538.0 41.9L538.3 46.6L539.0 49.1L540.9 54.2L541.0 55.1L541.3 56.3L542.0 57.5L542.6 59.5L542.7 59.8L542.2 60.4L542.9 60.4L543.5 60.7L543.8 62.0L544.3 62.9L545.2 64.0L547.0 64.4L548.3 64.6L549.9 65.2L551.0 66.1L551.9 69.0L551.6 70.8L551.7 72.0L551.2 72.5L550.0 73.4L549.7 73.8L547.1 76.0L546.5 77.0L545.1 78.3L543.8 81.0L541.8 83.3L541.0 83.9L540.0 84.1L539.3 84.4L537.7 86.4L535.6 87.0L535.5 88.1L534.2 90.7L533.2 92.1L532.5 92.6L530.8 95.1L530.6 96.3L530.6 98.2L529.4 99.4L528.2 100.2L528.1 101.8L527.6 102.4L527.1 102.8L524.7 102.3L520.9 104.2L519.6 104.6L523.7 104.7L525.1 105.7L527.9 105.0L531.4 102.7L532.7 102.2L535.5 100.7L536.6 99.6L538.6 98.4L539.0 97.8L540.1 97.2L540.8 98.0L540.8 98.5L539.9 99.4L540.1 100.0L540.7 100.7L540.9 101.7L541.0 102.5L541.4 103.9L542.6 105.7L542.7 106.3L542.5 107.1L543.1 107.8L543.7 108.2L545.8 110.2L547.5 109.1L548.5 108.8L549.1 108.3L550.5 108.0L551.6 108.4L553.8 109.1L555.3 108.4L558.4 106.8L557.5 109.7L556.8 112.3L556.2 113.4L555.7 116.2L555.1 117.0L554.7 117.9L555.4 117.6L556.0 117.2L556.8 116.1L557.4 114.1L559.7 109.0L560.3 108.5L562.2 107.9L565.5 103.8L566.7 103.9L567.5 104.8L568.3 105.4L568.5 104.2L569.6 103.8L568.5 103.2L568.2 102.7L568.2 101.9L569.0 100.7L568.5 99.7L570.1 98.5L570.0 97.5L570.6 96.7L571.3 95.9L572.2 95.5L572.3 94.8L572.9 94.6L573.3 94.5L574.1 95.2L575.1 94.3L575.9 94.0L576.3 94.1L576.8 94.5L577.3 94.7L577.7 94.6L578.8 94.0L579.8 95.0L580.4 95.2L580.3 94.7L579.9 94.2L580.2 93.8L580.6 93.5L582.1 93.7L582.9 94.2L583.8 95.0L585.0 95.0L585.9 94.9L586.5 95.4L587.5 95.3L587.9 96.0L589.4 97.0L589.7 97.6L590.9 98.0L592.0 98.4L593.2 98.5L594.3 98.4L594.4 99.2L595.2 99.4L596.3 99.2L597.2 100.2L599.4 101.0L601.0 102.2L602.0 102.0L603.1 102.3L604.4 104.8L604.6 106.6L605.2 106.4L605.7 105.6L606.3 104.1L607.6 103.6L608.1 104.2L609.4 105.1L610.4 106.1L610.9 106.7L611.7 106.8L611.0 107.6L611.7 107.5L612.5 106.9L613.2 108.1L613.7 109.3L613.8 110.6L613.3 111.4L612.9 111.8L612.4 112.7L611.9 112.9L611.3 113.2L611.9 113.8L612.4 114.5L613.4 112.8L614.0 112.3L615.0 112.0L615.5 113.2L615.6 114.4L614.0 114.9L614.0 115.8L613.5 116.3L613.2 116.9L613.0 118.1L612.6 119.2L611.7 123.7L611.7 124.4L612.8 123.7L615.0 121.3L615.7 118.9L616.5 116.4L617.4 115.7L618.0 115.7L618.8 115.9L618.9 116.7L618.7 117.2L617.8 118.4L617.4 119.1L617.8 119.7L619.9 117.7L620.8 117.0L621.6 117.1L623.2 116.2L626.4 116.0L626.6 115.0L627.3 114.5L629.0 114.6L632.4 115.6L633.6 116.3L635.4 117.1L636.4 117.9L640.4 119.5L643.2 119.7L644.7 118.9L646.4 119.7L647.4 120.6L649.2 121.0L651.1 121.2L652.6 120.6L656.3 120.4L660.9 119.6L663.7 119.8L666.8 120.3L669.1 121.8L670.9 122.7L672.1 123.5L673.9 124.4L677.8 126.7L679.2 128.0L681.6 129.8L684.1 130.6L685.4 132.5L686.5 133.4L689.0 136.6L692.0 138.8L693.9 141.1L697.7 142.6L699.2 144.9L701.7 145.2L702.8 145.6L704.1 146.6L706.0 147.2L708.3 147.0L710.9 147.1L713.0 146.7L718.0 147.6L718.8 148.0L719.8 149.0L721.6 152.8L722.7 157.0L723.3 160.2L724.5 162.7L725.2 167.4L725.8 168.9L725.8 170.0L726.3 170.3L726.6 173.5L726.5 174.7L726.0 176.4L726.0 177.1L726.1 177.6L725.9 178.3L725.8 179.0L726.3 180.5L726.3 181.7L725.6 183.1L724.8 186.9L722.6 193.2L720.4 196.8L717.5 200.5L715.5 202.4L714.8 202.6L714.0 202.2L714.5 203.3L714.1 204.2L712.1 206.9L710.2 208.7L708.2 211.8L708.0 211.9L705.4 213.1L703.9 214.1L701.9 215.8L700.1 218.7L699.7 219.0L699.1 218.8L699.1 220.3L697.5 222.5L697.1 222.8L697.1 222.2L697.4 221.7L697.5 221.2L697.4 220.6L697.0 221.0L696.1 222.7L696.4 224.0L695.7 225.8L693.2 231.2L690.1 235.7L689.4 237.1L686.8 240.1L684.9 241.6L684.4 241.6L683.8 241.5L683.5 239.1L682.0 237.7L681.6 237.5L681.0 239.0L680.5 239.4L679.7 239.5L680.5 240.1L680.7 240.9L680.0 242.4L679.9 243.8L678.5 245.3L677.7 246.4L677.2 247.8L677.0 249.1L677.6 248.7L677.9 249.0L678.1 249.4L678.0 250.0L677.5 251.1L677.6 253.9L677.5 254.5L677.9 255.2L678.4 254.0L678.7 254.4L677.3 261.9L677.9 265.2L678.0 269.0L678.7 272.8L679.3 276.1L679.4 276.4L678.5 280.2L677.3 284.0L676.6 287.2L676.1 290.5L675.7 292.1L675.5 293.8L676.0 297.7L676.2 298.4L674.8 300.2L673.2 301.0L672.4 301.9L670.5 305.0L669.4 309.7L669.4 312.1L669.9 317.3L669.5 319.5L668.9 320.9L668.2 321.8L666.4 322.9L664.8 325.6L664.1 328.5L662.9 329.5L662.7 331.1L661.8 332.8L659.5 335.4L658.0 336.2L657.3 336.9L656.8 338.4L655.3 340.9L654.3 344.1L654.5 345.2L654.6 345.3L655.0 349.0L654.8 350.0L653.4 351.0L648.1 352.9L646.7 353.7L643.4 357.0L643.3 357.7L643.4 358.8L643.9 359.5L643.4 360.1L642.7 361.4L641.8 361.3L636.5 361.3L633.6 361.7L632.1 361.6L631.5 361.3L630.7 360.8L630.5 360.2L630.9 359.2L630.6 358.7L629.8 358.7L629.0 359.0L628.8 359.5L628.9 360.0L629.2 360.5L629.4 361.3L629.0 361.9L627.4 362.0L625.5 362.6L623.1 362.8L621.2 363.2L620.4 362.7L621.2 362.4L622.5 362.6L623.8 362.1L623.5 361.6L621.6 360.9L619.5 361.3L618.3 362.1L615.8 362.1L612.6 362.7L612.1 363.3L612.2 364.5L612.9 364.7L613.4 365.3L612.9 365.8L612.3 366.0L609.0 366.6L606.0 368.9L604.7 369.2L603.6 370.2L603.4 371.1L603.1 371.6L602.3 371.7L600.8 371.2L598.7 371.2L597.2 371.5L589.6 375.3L586.8 376.8L583.7 379.9L578.4 383.4L575.6 385.4L575.1 386.0L574.7 386.0L573.8 386.4L574.2 386.8L574.8 386.8L574.5 388.0L573.4 388.8L571.3 391.0L570.9 390.8L571.5 389.7L570.5 389.7L569.0 389.3L568.4 389.7L568.8 390.8L568.2 391.3L567.2 391.4L566.2 391.2L565.2 390.4L565.7 391.9L567.8 392.3L568.7 392.6L569.0 393.2L567.4 395.8L566.0 396.1L565.8 396.5L566.6 396.5L567.0 397.2L566.5 400.2L565.8 400.7L565.4 400.7L565.0 401.2L565.6 402.2L566.1 402.9L566.0 404.2L565.8 405.3L565.8 406.4L566.5 408.5L566.8 410.7L567.1 411.5L567.2 412.3L566.8 413.2L567.0 414.5L566.2 416.7L566.7 419.9L566.5 422.9L566.2 424.5L565.7 425.7L564.5 427.3L564.4 428.9L561.8 430.4L558.9 432.5L556.3 434.9L553.4 438.4L550.1 443.6L547.1 451.1L543.3 456.8L541.8 458.8L539.8 461.1L537.2 463.8L533.6 466.4L529.7 468.8L528.2 469.9L526.9 471.4L526.5 470.8L526.8 469.7L526.6 469.0L526.6 468.0L527.4 467.8L528.6 468.4L529.2 468.0L529.6 467.6L531.0 467.3L533.7 464.7L535.7 463.7L536.9 462.1L537.1 461.2L537.0 459.4L537.7 459.0L539.2 459.1L539.5 458.6L539.3 458.1L539.6 456.8L541.6 455.8L542.5 454.4L542.2 451.1L542.5 451.0L543.4 451.5L543.8 451.3L544.2 449.8L544.0 449.1L543.0 448.8L539.7 450.5L538.6 450.4L538.5 449.1L536.8 448.5L536.2 447.4L536.0 446.7L535.5 446.4L535.5 447.7L535.7 448.9L537.1 450.4L536.7 450.9L536.0 451.6L535.6 453.1L535.6 455.0L535.2 454.4L534.7 454.1L534.5 456.2L533.6 456.9L533.3 457.7L533.5 458.6L533.0 459.3L530.6 460.9L528.2 462.1L527.6 462.6L527.4 463.9L527.0 465.2L525.9 466.3L525.1 468.6L525.1 469.6L525.4 471.1L525.9 472.0L525.1 472.7L524.1 473.9L523.4 475.3L521.4 480.5L519.8 483.7L518.5 485.2L516.6 486.8L511.4 490.9L511.1 490.8L510.4 490.5L509.7 490.1L509.6 489.9L509.5 489.5L509.6 488.0L509.6 484.1L509.8 483.3L510.1 482.8L511.2 482.1L512.1 481.1L513.3 479.8L514.3 478.8L513.9 478.2L513.0 477.5L511.5 477.0L510.0 476.0L508.7 474.8L508.2 473.6L507.6 472.2L507.1 471.2L506.9 470.7L506.4 470.5L505.6 469.9L505.1 469.4L504.3 469.1L503.0 468.8L501.6 468.3L499.9 466.9L498.6 465.5L498.0 464.5L497.3 463.8L493.8 462.7L492.1 461.3L491.5 461.8L490.6 461.4L489.6 460.7L489.3 460.2L488.9 459.7L488.5 459.1L488.3 458.6L487.3 457.6L486.1 456.5L485.5 456.2L485.3 456.3L485.0 456.7L484.8 457.1L484.4 457.4L483.8 457.8L483.2 458.4L482.4 458.8L481.5 459.0L480.9 458.9L480.8 458.7L480.7 457.9L481.0 456.1L480.5 455.3L479.7 454.6L478.9 453.5L476.2 451.4L472.6 448.2L471.3 447.3L470.1 447.2L469.0 447.3L468.0 447.7L467.2 449.2L466.9 449.4L464.9 449.4L463.0 449.1L462.3 448.3L462.8 447.7L464.7 446.4L465.7 445.3L465.9 444.3L466.8 443.4L468.4 442.6L470.1 441.1L472.0 439.0L473.2 437.4L473.6 436.4L474.4 435.7L475.4 435.1L476.4 434.0L477.2 432.2L478.3 430.8L479.8 429.8L480.6 429.0L480.7 428.3L481.1 427.9L481.7 427.7L482.1 427.3L482.0 426.8L482.2 426.5L482.6 426.2L483.2 426.3L484.1 426.6L484.6 426.6L484.8 426.1L484.5 425.6L483.9 425.1L484.1 424.5L485.8 423.5L487.0 423.1L487.8 422.5L488.5 421.5L489.7 420.8L491.4 420.4L491.8 420.0L491.8 419.6L492.1 419.2L493.1 419.0L493.6 418.5L493.7 417.8L494.0 417.2L494.5 416.6L495.1 416.4L495.8 416.5L496.4 416.3L497.0 415.7L497.7 415.5L498.5 415.5L498.9 415.4L500.4 415.1L501.1 414.6L501.8 413.5L502.3 413.1L502.8 413.3L503.7 412.9L504.9 411.9L505.1 411.9L506.0 411.5L507.0 409.7L507.4 408.6L507.3 407.7L507.0 407.0L507.1 406.0L507.4 403.3L507.5 402.2L508.0 401.5L508.0 400.7L507.1 399.0L506.2 397.5L505.7 395.0L505.4 394.0L504.7 393.8L504.0 392.9L503.2 392.9L502.8 392.5L502.4 392.3L501.7 392.3L501.2 392.8L500.3 392.9L499.7 393.1L499.0 393.5L498.3 393.3L497.9 392.9L497.0 392.9L497.1 391.2L498.6 388.6L499.1 387.5L498.9 386.8L499.4 384.4L500.5 380.3L500.9 377.7L500.5 376.4L500.4 375.5L501.1 374.8L501.3 374.6L499.9 373.7L499.0 372.8L498.0 372.2L496.9 371.7L496.4 372.0L495.8 372.2L494.7 372.7L493.4 373.4L492.8 373.7L491.6 374.0L490.3 374.2L489.2 374.1L488.3 373.9L487.7 373.4L487.4 372.4L487.4 371.5L487.2 370.2L486.5 369.5L486.3 369.0L486.3 368.3L486.3 367.5L486.5 367.0L486.4 366.3L486.1 365.8L486.2 365.0L486.0 363.9L485.6 363.1L485.3 362.3L485.3 361.5L485.0 360.6L485.0 359.7L485.3 358.9L485.4 358.1L485.0 357.5L484.4 357.1L483.9 356.1L483.8 354.9L483.3 354.2L482.7 353.7L482.0 353.7L481.0 353.4L480.2 353.4L478.7 353.4L478.1 353.2L477.7 352.7L476.9 352.1L476.4 351.1L475.8 350.9L474.9 351.2L474.6 351.6L474.2 352.2L473.6 352.8L472.8 352.8L472.0 353.1L471.1 353.2L470.1 353.2L469.0 352.9L467.7 352.6L466.6 352.4L465.5 352.6L464.8 352.4L463.8 352.3L462.8 352.2L461.9 351.5L461.0 351.2L460.5 351.3L459.8 351.7L459.2 351.6L458.3 351.3L458.0 350.6L458.0 350.1L458.2 349.6L458.5 348.9L458.4 348.2L458.4 347.6L458.6 347.0L458.8 346.4L458.6 345.8L458.6 345.2L458.5 344.6L458.4 343.9L458.9 343.0L459.3 342.3L459.0 341.6L459.1 341.2L459.4 340.5L459.8 339.6L459.8 338.0L459.4 337.0L459.0 336.8L458.9 336.5L459.1 336.1L458.9 335.7L458.8 335.3L459.0 335.0L458.8 334.3L458.2 334.1L458.0 333.9L457.8 333.1L457.7 332.3L457.8 331.6L457.5 331.0L457.1 330.6L456.7 330.0L456.3 329.5L456.2 328.9L455.9 328.0L456.7 327.8L457.0 327.3L457.5 326.7L458.3 326.5L459.1 326.2L459.4 325.7L457.4 324.0L456.3 322.9L457.0 321.5L458.1 319.1L459.2 316.7L460.1 315.0L460.3 314.6L461.0 314.5L460.9 313.6L460.9 313.0L460.3 313.0L461.0 310.8L462.0 307.7L462.7 305.4L463.0 305.0L463.5 304.9L463.6 304.6L463.0 304.2L462.6 303.5L461.7 301.4L460.3 298.1L460.2 296.9L459.7 296.1L458.9 296.4L457.9 296.1L455.4 294.4L453.7 293.4L453.2 292.8L453.0 291.0L452.5 288.9L452.2 286.4L452.3 285.8L453.7 283.9L453.7 282.9L453.8 282.1L453.8 281.4L453.4 281.4L452.9 281.7L452.0 281.9L451.5 281.9L446.7 281.8L441.1 281.5L436.6 281.4L432.5 281.2L432.4 279.6L432.2 276.8L432.0 274.9L431.8 271.8L430.2 269.8L428.5 267.7L427.8 267.2L429.9 267.1L431.4 267.1L431.1 261.4L430.7 260.8L430.3 259.0L430.0 258.0L429.3 257.1L429.1 256.2L429.2 255.6L429.6 255.2L429.9 254.2L429.7 253.3L429.3 252.4L428.7 251.5L427.7 250.9L426.2 250.0L424.0 248.7L422.1 247.9L421.5 248.0L418.2 248.3L417.1 248.5L416.3 248.3L413.9 248.3L412.9 247.6L412.1 246.9L410.3 244.9L410.1 243.9L409.4 243.6L408.3 243.7L407.3 243.6L405.3 242.8L403.5 241.9L402.5 242.0L401.7 241.4L400.3 240.2L399.6 239.7L399.3 239.0L399.0 238.0L398.5 237.8L397.7 238.0L396.9 238.5L395.8 238.2L394.4 237.3L393.5 236.6L393.0 236.2L391.8 235.7L390.7 235.6L388.9 236.4L387.5 236.1L385.3 235.8L383.4 235.3L382.6 233.9L382.3 233.0L381.1 232.4L380.2 231.8L379.1 230.7L378.6 230.4L377.6 230.1L376.7 229.7L376.6 229.0L376.3 228.2L376.2 228.0L375.6 226.9L375.3 226.8L375.0 227.0L374.8 227.2L374.5 227.0L374.4 226.5L374.6 225.8L374.3 225.0L373.4 224.1L372.9 223.3L372.9 222.4L372.7 221.8L372.3 221.5L372.1 221.0L372.1 220.2L372.3 219.3L372.9 218.3L372.8 216.7L372.0 214.6L371.5 213.0L371.5 212.1L371.6 211.4L372.0 210.7L373.0 209.0L373.2 207.8L372.9 206.3L372.8 205.2L373.0 204.5L372.7 203.5L372.0 202.5L371.6 202.5L370.9 202.8L370.2 203.6L369.2 203.7L368.5 203.2L365.9 203.4L362.0 203.9L360.4 204.4L359.5 204.6L358.4 204.8L356.6 205.7L352.2 209.2L351.3 209.7L350.2 209.8L349.6 210.3L348.6 210.7L346.7 212.1L345.7 213.2L345.1 214.2L344.3 214.2L343.8 214.0L342.0 214.1L341.0 214.4L340.0 215.4L338.8 217.2L338.2 217.7L337.2 218.2L336.1 218.7L334.7 219.3L334.0 219.4L333.4 219.5L332.9 219.2L332.8 218.5L332.0 218.1L330.3 217.9L327.6 217.5L324.9 217.4L323.6 217.4L322.5 217.4L320.6 217.2L319.1 217.2L317.9 217.8L316.1 218.6L315.3 218.8L314.7 218.8L314.1 218.7L313.5 218.3L312.5 217.4L311.8 217.7L311.2 218.1L311.2 216.1L311.2 213.0L311.3 210.3L311.3 208.2L311.3 205.7L311.3 203.9L311.8 203.2L312.1 202.5L311.7 201.4L311.8 200.5L312.1 199.9L312.4 199.3L311.6 199.6L311.3 199.7L310.9 200.2L309.9 200.9L309.2 201.5L308.4 202.0L307.4 203.2L306.6 203.8L305.7 204.2L304.3 205.6L303.1 205.9L300.1 206.1L296.8 206.1L293.8 206.1L293.4 206.0L293.4 204.9L293.5 204.1L292.5 203.3L292.4 202.3L292.1 201.5L291.8 200.7L291.1 200.1L290.1 199.9L288.5 199.4L286.1 198.9L283.7 198.9L281.5 198.9L282.9 197.2L284.2 195.4L284.2 193.9L283.1 192.6L282.5 191.8L281.6 190.6L280.4 189.8L279.8 188.8L279.8 188.2L279.7 187.8L279.3 187.5L278.9 187.1L278.2 186.7L277.5 186.2L277.5 185.6L277.3 185.0L276.8 184.3L276.8 183.7L276.4 182.9L276.0 182.3L275.6 181.8L274.9 181.2L274.9 180.8L275.4 180.5L275.6 179.9L275.6 179.4L275.0 179.0L274.4 178.9L273.5 177.9L272.9 177.3L272.5 177.0L272.3 176.7L272.5 176.4L272.8 176.1L272.9 175.5L272.7 175.0L272.7 174.5L273.1 174.4L273.6 174.5L274.0 174.2L274.6 174.1L275.2 174.0L275.6 173.7L275.5 173.2L275.1 172.1L274.7 171.6L274.6 171.0L274.9 169.7L275.1 168.9L275.9 168.0L278.1 166.2L280.2 164.9L281.1 164.8L281.9 164.3L282.3 163.6L282.5 162.8L282.3 162.1L282.0 161.1L281.5 159.9L281.2 159.2L281.5 158.3L282.0 157.2L283.1 155.5L284.2 153.6L284.2 153.1L284.4 151.9L284.9 149.6L285.1 148.4L285.0 147.9L285.2 147.5L285.9 147.1L287.4 146.8L288.5 146.1L290.0 144.8L291.4 143.4L292.5 143.0L294.6 141.7L295.7 140.9L296.1 140.6L297.3 140.1L299.4 139.8L301.1 139.6L302.0 139.3L303.4 139.1L304.4 138.7L305.4 138.7L307.4 138.2L308.1 137.6L308.7 136.8L309.4 136.1L310.3 135.9L311.3 136.0L312.5 136.0L314.0 135.8L314.7 136.3L315.0 137.0L315.9 137.6L316.5 137.6L317.2 137.4L318.0 138.0L318.6 137.9L319.0 137.6L319.1 136.8L319.3 136.4L319.7 134.0L320.4 129.9L321.1 126.3L321.8 122.2L322.5 118.0L323.3 113.8L323.9 110.3L324.4 107.3L324.7 105.5L325.2 103.1L325.4 100.9L325.6 100.3L325.5 99.8L325.1 99.1L325.1 98.8L325.1 98.3L325.1 98.0L324.6 97.6L324.3 97.3L324.0 97.0L323.8 96.5L323.6 96.1L323.5 95.6L323.2 95.2L323.1 94.7L323.3 94.2L323.4 93.7L323.3 93.2L323.2 92.6L322.9 92.1L322.6 91.8L321.6 91.4L320.7 90.6L319.6 89.8L318.2 88.3L317.9 87.7L317.9 85.8L317.9 83.7L318.0 80.6L318.0 79.1L318.8 79.0L319.5 78.9L320.3 78.8L320.9 78.7L321.5 78.5L321.9 78.2L322.5 78.0L322.9 78.1L323.3 77.8L323.7 77.6L324.2 77.4L324.8 77.2L325.4 77.6L325.7 78.0L326.1 78.2L326.5 78.1L326.7 78.2L327.0 78.5L327.3 78.5L327.8 78.4L328.3 78.4L328.5 78.3L328.5 78.1L328.4 77.8L328.2 77.5L328.4 77.0L328.4 76.4L328.4 75.6L328.0 75.2L327.7 74.5L327.3 73.8L326.6 73.4L326.1 73.2L325.6 73.5L325.1 73.5L324.8 73.3L324.3 73.3L323.7 73.2L323.1 73.1L322.0 73.3L321.6 73.1L321.0 73.1L320.4 73.3L320.4 70.3L320.4 67.5L320.4 65.5L321.0 65.5L321.7 65.2L322.7 65.1L323.6 64.7L324.0 64.7L324.8 64.9L325.7 65.3L326.6 65.3L328.9 65.3L331.3 65.3L334.0 65.3L336.7 65.3L339.1 65.3L339.8 65.4L339.4 64.7L338.9 63.8L339.1 63.2L339.3 62.5L339.6 62.2L340.4 62.5L341.0 63.7L341.5 64.5L342.0 65.0L342.6 65.0L343.3 64.9L344.0 64.5L345.2 62.9L346.4 61.6L347.0 61.1L347.7 60.7L348.1 60.6L348.8 60.6L349.4 61.0L349.8 61.6L351.1 63.9L352.1 65.6L352.4 66.6L352.4 69.2L352.4 71.5L352.5 71.8L352.7 71.9L354.9 71.3ZM554.8 88.7L555.9 88.8L557.4 88.6L558.4 88.0L559.6 87.9L560.7 88.0L564.6 88.6L566.9 88.8L567.7 89.0L568.5 89.3L569.1 89.6L569.3 90.2L568.7 91.3L568.3 92.4L567.9 94.0L567.6 94.3L567.1 94.2L567.4 95.6L567.3 96.2L567.1 96.7L566.5 97.8L565.5 99.3L565.2 99.6L564.5 100.1L564.0 100.7L564.1 101.3L564.4 101.9L564.0 102.7L562.9 103.8L562.2 104.1L561.7 104.2L561.1 104.1L560.1 102.9L560.0 103.8L559.7 104.7L559.4 105.2L558.1 105.1L557.4 104.7L556.2 104.1L556.0 105.6L555.3 106.6L554.6 106.9L553.4 107.1L552.8 107.5L551.5 107.2L550.4 106.5L549.7 106.4L549.2 107.0L546.6 107.1L545.4 107.6L544.6 107.4L543.5 106.4L543.3 105.7L542.7 104.2L542.1 102.4L541.7 100.9L542.0 99.5L542.8 99.6L543.6 99.8L543.8 99.7L543.8 99.2L543.6 98.9L542.3 98.9L541.4 98.1L541.3 96.9L541.5 94.3L541.5 93.7L542.2 93.0L542.3 92.3L542.2 91.6L542.5 90.4L543.0 89.3L545.2 87.9L547.6 87.4L554.8 88.7ZM618.5 363.7L618.9 364.0L618.2 364.0L617.5 364.3L616.3 364.5L615.9 364.1L616.9 363.4L617.2 362.9L617.5 363.0L617.8 363.4L618.5 363.7ZM566.9 402.8L566.7 403.0L566.0 401.5L567.4 400.0L567.9 400.6L567.5 401.8L567.1 402.6L566.9 402.8ZM605.4 372.7L605.4 373.3L605.0 373.0L603.7 373.2L603.2 372.7L605.0 370.7L605.3 371.0L605.6 371.4L605.8 371.9L605.6 372.2L605.4 372.7ZM614.3 121.3L613.1 122.4L613.5 121.1L613.3 120.2L613.4 119.4L614.2 118.7L614.5 118.6L614.4 119.5L614.4 119.7L614.3 121.3ZM681.0 243.2L680.5 243.4L680.5 242.7L681.7 241.7L681.8 240.6L682.5 241.1L682.6 241.7L682.6 241.9L681.0 243.2ZM679.1 247.7L678.7 248.4L678.3 248.3L678.1 247.8L677.7 247.4L677.9 247.0L678.2 246.8L679.1 246.8L679.1 247.7ZM609.8 101.8L609.1 102.4L608.9 102.7L608.2 102.5L608.4 102.1L608.5 102.2L608.7 101.2L609.8 101.3L609.8 101.8ZM553.5 82.8L554.0 83.4L552.4 85.9L551.5 86.3L550.5 86.3L549.2 85.6L547.2 85.7L546.6 85.5L546.5 84.4L547.3 83.2L549.0 83.3L551.9 82.3L553.5 82.8ZM547.1 62.7L545.9 63.3L545.2 63.1L544.6 61.6L544.8 60.5L545.6 60.1L546.3 60.1L546.6 60.3L547.1 62.2L547.1 62.7ZM542.9 87.6L539.7 89.9L538.7 89.2L538.5 88.7L538.7 88.3L538.6 88.1L539.0 87.3L540.8 86.6L541.6 86.5L542.8 86.7L543.0 87.3L542.9 87.6ZM556.9 87.3L553.9 87.7L552.5 87.1L552.8 86.6L553.9 85.8L555.1 85.2L556.3 85.0L557.4 85.3L557.8 86.0L557.7 86.7L556.9 87.3ZM545.5 84.3L545.3 86.1L543.3 85.3L543.4 83.5L544.4 83.0L545.3 82.1L545.5 80.9L545.6 79.3L545.9 79.0L546.2 78.9L546.4 79.0L546.6 81.4L546.6 82.9L545.5 84.3ZM548.7 81.3L547.5 81.7L547.3 81.3L547.3 79.8L547.6 79.0L549.2 78.7L549.3 78.5L549.8 78.3L550.1 78.9L550.1 79.7L548.7 81.3ZM529.3 103.2L528.0 103.4L529.6 100.4L531.0 99.0L531.1 96.3L532.6 93.8L534.0 92.8L536.0 92.5L537.0 94.0L535.7 98.3L535.3 98.3L533.5 100.5L531.5 102.1L529.3 103.2ZM568.0 419.2L567.2 419.7L567.4 416.9L567.8 416.0L568.3 415.2L568.9 414.8L569.3 415.4L569.0 416.8L567.9 418.5L568.0 419.2Z"/>
+        <g class="leads" id="obLeads"></g><g id="obDots"></g><g class="lbls" id="obLbls"></g>
+      </svg>
+      <div class="ops-legend" id="obLegend"></div>
+      <ul class="ops-list" id="obList"></ul>
     </div>
     <div class="ob-fallback" id="obFallback" hidden><b>Atuação em todo o Brasil</b><span>A partir da matriz em Itumbiara-GO e da filial em São Paulo, mobilizamos equipes para subestações de norte a sul do país.</span></div>
 
@@ -674,7 +670,6 @@ footer .social svg{width:17px;height:17px}
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 (function(){
   /* header */
@@ -699,18 +694,24 @@ footer .social svg{width:17px;height:17px}
     document.addEventListener('visibilitychange',function(){document.hidden?clearInterval(t):start()});
   })();
 
-  /* obras em andamento: lidas do Nexus a cada visita */
+  /* obras em andamento: lidas do Nexus a cada visita e desenhadas no mapa de operações */
   (function(){
     var API='https://luzion-nexus.lovable.app/api/public/site/obras';
     var COR={planejamento:'#5b7fe3',mobilizacao:'#e3a12f',execucao:'#4cae5c',relatorios:'#8a63d2'};
-    var ROT={planejamento:'Planejamento / Documentação',mobilizacao:'Mobilização',execucao:'Em Campo / Execução',relatorios:'Relatórios'};
-    var UFN={AC:'Acre',AL:'Alagoas',AP:'Amapá',AM:'Amazonas',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MT:'Mato Grosso',MS:'Mato Grosso do Sul',MG:'Minas Gerais',PA:'Pará',PB:'Paraíba',PR:'Paraná',PE:'Pernambuco',PI:'Piauí',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',RS:'Rio Grande do Sul',RO:'Rondônia',RR:'Roraima',SC:'Santa Catarina',SP:'São Paulo',SE:'Sergipe',TO:'Tocantins'};
-    var live=document.getElementById('obLive'),fb=document.getElementById('obFallback'),mapEl=document.getElementById('obMap');
+    var ROT={planejamento:'Planejamento / Documentação',mobilizacao:'Mobilização',execucao:'Em campo / Execução',relatorios:'Relatórios'};
+    var live=document.getElementById('obLive'),fb=document.getElementById('obFallback'),svg=document.getElementById('obMap');
     function fallback(){live.hidden=true;fb.hidden=false}
     function cor(e){return COR[e]||'#6b7684'}
-    function kv(t){return t?esc(String(t).replace(/\s*kv\s*$/i,''))+' kV':''}
-    function loc(o){return [o.cidade,o.uf].filter(Boolean).map(esc).join(' · ')}
-    function num(v){return typeof v==='number'&&isFinite(v)}
+    function num(v){v=typeof v==='string'?parseFloat(v):v;return typeof v==='number'&&isFinite(v)?v:null}
+    // mesma projeção do contorno do Brasil (viewBox 1000 x 514)
+    var K=Math.cos(15*Math.PI/180),W=1000,H=514,OX=270,OY=20;
+    function P(lat,lng){return [(lng+74.2)*K*12+OX,(5.5-lat)*12+OY]}
+    function nome(o){var n=String(o.subestacao).trim().replace(/^(subesta[cç][aã]o|se)\s+/i,'SE ');
+      if(o.tensao_kv&&!/kv/i.test(n))n+=' '+String(o.tensao_kv).replace(/\s*kv\s*$/i,'')+' kV';return n}
+    function local(o){return [o.cidade,o.uf].filter(Boolean).join(' · ')}
+    function spread(arr){arr.sort(function(a,b){return a.y-b.y});var gap=44,last=null;
+      arr.forEach(function(o){o.ly=last===null?Math.max(o.y,30):Math.max(o.y,last+gap);last=o.ly});
+      var over=arr.length?arr[arr.length-1].ly-(H-20):0;if(over>0)arr.forEach(function(o){o.ly-=over});return arr}
     var ctrl=('AbortController' in window)?new AbortController():null; var to=setTimeout(function(){ctrl&&ctrl.abort()},12000);
     fetch(API,{headers:{Accept:'application/json'},signal:ctrl?ctrl.signal:undefined}).then(function(r){if(!r.ok)throw 'HTTP '+r.status;return r.json()}).then(function(d){
       clearTimeout(to);
@@ -718,33 +719,26 @@ footer .social svg{width:17px;height:17px}
       if(!Array.isArray(d))throw 'resposta sem lista de obras';
       d=d.filter(function(o){return o&&o.subestacao});
       if(!d.length)throw 'lista vazia';
-      if(!d.length)throw 0;
-      // rótulos das etapas vindos do Nexus
       d.forEach(function(o){if(o.etapa&&o.etapa_label)ROT[o.etapa]=o.etapa_label});
-      document.getElementById('obLegend').innerHTML=Object.keys(COR).map(function(k){return '<span><i class="ob-dot" style="background:'+COR[k]+'"></i>'+esc(ROT[k])+'</span>'}).join('');
-      document.getElementById('obCount').innerHTML='<span class="num">'+d.length+'</span><small>'+(d.length===1?'obra em andamento':'obras em andamento')+'</small>';
-      // mapa
-      var map=null,mk={};
-      mapEl.classList.remove('loading');
-      if(window.L){
-        map=L.map(mapEl,{scrollWheelZoom:false,zoomSnap:.25,attributionControl:true}).fitBounds([[-33.8,-73.9],[5.3,-34.8]]);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:12,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'}).addTo(map);
-        var pts=[];
-        d.forEach(function(o,i){if(!num(o.lat)||!num(o.lng))return;
-          var m=L.circleMarker([o.lat,o.lng],{radius:9,color:'#fff',weight:3,fillColor:cor(o.etapa),fillOpacity:1}).addTo(map);
-          m.bindPopup('<div class="ob-pop"><b>'+esc(o.subestacao)+'</b>'+(o.tensao_kv?'<span class="kv">'+kv(o.tensao_kv)+'</span><br>':'')+(loc(o)?'<span class="loc">'+loc(o)+'</span><br>':'')+'<span class="st"><i class="ob-dot" style="background:'+cor(o.etapa)+'"></i>'+esc(o.etapa_label||ROT[o.etapa]||'')+'</span></div>');
-          mk[i]=m;pts.push([o.lat,o.lng]);});
-        if(pts.length>1)map.fitBounds(pts,{padding:[40,40],maxZoom:6});
-        setTimeout(function(){map.invalidateSize()},200);
-      }else{mapEl.hidden=true}
-      // lista por UF
-      var g={};d.forEach(function(o,i){var u=(o.uf||'').toUpperCase()||'—';(g[u]=g[u]||[]).push(i)});
-      document.getElementById('obList').innerHTML=Object.keys(g).sort(function(a,b){return a==='—'?1:b==='—'?-1:a.localeCompare(b)}).map(function(u){
-        return '<li><div class="ob-uf"><b>'+esc(u==='—'?'Outras':u)+'</b><span>'+esc(UFN[u]||(u==='—'?'Local a definir':''))+'</span></div><ul>'+g[u].map(function(i){var o=d[i],tag=mk[i]?'button type="button" data-i="'+i+'"':'div';
-          return '<li><'+tag+' class="ob-item"><i class="ob-dot" style="background:'+cor(o.etapa)+'"></i><span><b>'+esc(o.subestacao)+'</b>'+(o.tensao_kv?'<em>'+kv(o.tensao_kv)+'</em>':'')+'<small>'+[o.cidade?esc(o.cidade):'',esc(o.etapa_label||ROT[o.etapa]||'')].filter(Boolean).join(' · ')+'</small></span></'+tag.split(' ')[0]+'></li>'}).join('')+'</ul></li>';
-      }).join('');
-      document.querySelectorAll('#obList button[data-i]').forEach(function(b){b.addEventListener('click',function(){var m=mk[b.getAttribute('data-i')];if(!m||!map)return;
-        map.flyTo(m.getLatLng(),Math.max(map.getZoom(),6),{duration:reduce?0:.8});m.openPopup();mapEl.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})})});
+      document.getElementById('obCount').innerHTML='<b>'+d.length+'</b><span>'+(d.length===1?'obra em andamento':'obras em andamento')+'</span>';
+      document.getElementById('obLegend').innerHTML='<span><i style="background:var(--navy)"></i>Matriz · Itumbiara-GO</span>'+Object.keys(COR).map(function(k){return '<span><i style="background:'+COR[k]+'"></i>'+esc(ROT[k])+'</span>'}).join('');
+      var pts=[];d.forEach(function(o){var la=num(o.lat),ln=num(o.lng);if(la===null||ln===null)return;var xy=P(la,ln);pts.push({o:o,x:xy[0],y:xy[1]})});
+      var esq=[],dir=[];pts.slice().sort(function(a,b){return a.x-b.x}).forEach(function(p,i,all){(i<Math.ceil(all.length/2)?esq:dir).push(p)});
+      var leads='',lbls='',dots='';
+      [['L',spread(esq)],['R',spread(dir)]].forEach(function(s){s[1].forEach(function(p){
+        var n=esc(nome(p.o)),c=esc(local(p.o)),ly=p.ly.toFixed(1),L=s[0]==='L',ax=L?OX-12:W-OX+12,bx=L?ax+24:ax-24,tx=L?ax-8:ax+8,an=L?' text-anchor="end"':'';
+        leads+='<circle class="lead-dot" cx="'+ax+'" cy="'+ly+'" r="2.5"/><path class="lead" d="M'+ax+' '+ly+'L'+bx+' '+ly+'L'+p.x.toFixed(1)+' '+p.y.toFixed(1)+'"/>';
+        lbls+='<g class="lbl"><text class="n" x="'+tx+'" y="'+(p.ly-2).toFixed(1)+'"'+an+'>'+n+'</text><text class="c" x="'+tx+'" y="'+(p.ly+13).toFixed(1)+'"'+an+'>'+c+'</text></g>';
+        dots+='<g class="op" fill="'+cor(p.o.etapa)+'"><title>'+n+' · '+c+' · '+esc(p.o.etapa_label||ROT[p.o.etapa]||'')+'</title><circle class="halo" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="15"/><circle class="dot" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="7"/></g>';})});
+      var h=P(-18.42,-49.22);
+      dots='<g class="op hub"><title>Matriz · Itumbiara-GO</title><circle class="halo" cx="'+h[0].toFixed(1)+'" cy="'+h[1].toFixed(1)+'" r="13"/><circle class="dot" cx="'+h[0].toFixed(1)+'" cy="'+h[1].toFixed(1)+'" r="6"/><text class="hub-lbl" x="'+(h[0]+11).toFixed(1)+'" y="'+(h[1]-9).toFixed(1)+'">Matriz</text></g>'+dots;
+      document.getElementById('obLeads').innerHTML=leads;document.getElementById('obDots').innerHTML=dots;document.getElementById('obLbls').innerHTML=lbls;
+      svg.classList.remove('loading');
+      // no celular, sem rótulos laterais: aproxima o mapa no Brasil
+      var mq=window.matchMedia&&matchMedia('(max-width:760px)');function vb(){svg.setAttribute('viewBox',mq&&mq.matches?'255 10 490 494':'0 0 1000 514')}vb();if(mq&&mq.addEventListener)mq.addEventListener('change',vb);
+      // lista (celular e obras sem coordenadas)
+      document.getElementById('obList').innerHTML=d.slice().sort(function(a,b){return (num(b.lat)||-99)-(num(a.lat)||-99)}).map(function(o){
+        return '<li><i style="background:'+cor(o.etapa)+'"></i><div><b>'+esc(nome(o))+'</b><span>'+[local(o),o.etapa_label||ROT[o.etapa]||''].filter(Boolean).map(esc).join(' · ')+'</span></div></li>'}).join('');
     }).catch(function(e){clearTimeout(to);if(window.console)console.warn('Nexus /site/obras:',e);fallback()});
   })();
 
