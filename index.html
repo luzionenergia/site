@@ -89,7 +89,7 @@ p{margin:0}
 /* hero */
 .hero{min-height:min(92svh,900px);display:flex;align-items:flex-end;padding-block:calc(68px + 4rem) 0}
 .hero .shade{background:linear-gradient(90deg,rgba(6,16,29,.82) 0%,rgba(6,16,29,.55) 45%,rgba(6,16,29,0) 75%),linear-gradient(180deg,rgba(6,16,29,.6) 0%,rgba(6,16,29,.1) 30%,rgba(6,16,29,.4) 62%,rgba(6,16,29,.97) 100%)}
-.hero .bg img{object-position:50% 40%;animation:drift 18s ease-out both}
+.hero .bg img{object-position:50% 40%}
 @keyframes drift{from{transform:scale(1.08)}to{transform:scale(1)}}
 .hero-inner{width:100%}
 .hero h1{font-size:clamp(2.6rem,7vw,5.6rem);line-height:.94;text-transform:uppercase;letter-spacing:.01em;max-width:15ch;margin-top:1.25rem}
@@ -182,43 +182,6 @@ p{margin:0}
 .works-stats{display:flex;flex-wrap:wrap;gap:2.5rem;margin-bottom:2.5rem}
 .works-stats div b{display:block;font:700 2.6rem/1 var(--f-display);color:var(--navy)}
 .works-stats div span{color:var(--ink-2);font-size:.9rem}
-.panel{border:1px solid var(--rule);border-radius:6px;background:var(--paper)}
-.gantt-wrap{overflow-x:auto;padding:1.5rem}
-.gantt{min-width:720px;font-size:.85rem}
-.g-axis,.g-row{display:grid;grid-template-columns:200px 1fr;align-items:center}
-.g-axis .yrs{display:grid;grid-template-columns:repeat(5,1fr);border-left:1px solid var(--rule)}
-.g-axis .yrs span{font:500 .72rem/1 var(--f-mono);color:var(--ink-2);padding:0 0 .6rem .5rem;border-right:1px solid var(--rule)}
-.g-row{min-height:38px;border-top:1px solid var(--rule)}
-.g-row .nm{font:600 .95rem/1.15 var(--f-display);text-transform:uppercase;letter-spacing:.03em;padding-right:1rem}
-.g-row .nm small{display:block;font:400 .72rem/1.3 var(--f-mono);text-transform:none;color:var(--ink-2);letter-spacing:0}
-.g-track{position:relative;height:38px;background:repeating-linear-gradient(90deg,transparent 0 calc(20% - 1px),var(--rule) calc(20% - 1px) 20%);border-left:1px solid var(--rule)}
-.g-bar{position:absolute;top:12px;height:14px;border-radius:2px;background:var(--navy)}
-.g-bar.live{background:linear-gradient(90deg,var(--navy),var(--teal))}
-.g-bar.live::after{content:"";position:absolute;right:-5px;top:-3px;width:10px;height:20px;border-radius:2px;background:var(--live)}
-.g-now{position:absolute;top:0;bottom:0;width:0;border-left:1.5px dashed var(--teal-ink)}
-.g-legend{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1rem;font:500 .72rem/1 var(--f-mono);color:var(--ink-2);letter-spacing:.06em;text-transform:uppercase}
-.g-legend i{display:inline-block;width:18px;height:8px;border-radius:2px;margin-right:.4rem;vertical-align:middle}
-
-.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:3rem 0 1.25rem}
-.chip{font:600 .78rem/1 var(--f-display);letter-spacing:.14em;text-transform:uppercase;padding:.65rem 1rem;border-radius:32px;border:1.5px solid var(--rule);background:var(--sheet);color:var(--ink);cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--spectral)}
-.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
-.proj{border:1px solid var(--rule);border-radius:6px;padding:1.5rem;background:var(--sheet);display:flex;flex-direction:column;gap:1rem;min-width:0}
-.proj header{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start}
-.proj h3{font-size:1.45rem;text-transform:uppercase;line-height:1.05}
-.proj .who{font-size:.85rem;color:var(--ink-2);margin-top:.3rem}
-.status{flex:none;font:500 .66rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;padding:.4rem .55rem;border-radius:3px;border:1px solid var(--rule);white-space:nowrap}
-.status.live{border-color:var(--live);color:#8a5e00;background:#fff7e2}
-.status.done{color:var(--teal-ink);border-color:#a8d9e8;background:#eef8fb}
-.proj .meta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem;font-size:.85rem}
-.proj .meta .label{color:var(--ink-2);font-size:.64rem;display:block;margin-bottom:.35rem}
-.proj ul{margin:0;padding:0;list-style:none}
-.proj .ses li{padding:.2rem 0;border-bottom:1px dotted var(--rule)}
-.proj .ses li b{font-weight:600}
-.proj .ses li span{font-family:var(--f-mono);font-size:.75rem;color:var(--navy);margin-left:.35rem}
-.proj .period{font:500 .78rem/1 var(--f-mono);color:var(--ink-2);padding-top:.9rem;border-top:1px solid var(--rule);margin-top:auto}
-@media (max-width:800px){.projects{grid-template-columns:1fr}}
-@media (max-width:440px){.proj .meta{grid-template-columns:1fr}}
 
 .kv{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem;margin-top:clamp(3rem,6vw,5rem);align-items:start}
 .kv .intro{grid-column:1/span 4}
@@ -234,21 +197,8 @@ p{margin:0}
 .bar .v{color:var(--ink-2)}
 .bars .scale{display:grid;grid-template-columns:96px 1fr 42px;gap:.75rem;font:400 .68rem/1 var(--f-mono);color:var(--ink-2)}
 .bars .scale div{display:flex;justify-content:space-between}
-.clients{margin-top:clamp(3rem,6vw,4.5rem);padding-top:1.5rem;border-top:2px solid var(--ink);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:1rem 2rem}
-.clients .label{grid-column:1/span 3;color:var(--ink-2);padding-top:.35rem}
-.clients p{grid-column:4/span 9;font:600 clamp(1.15rem,2vw,1.5rem)/1.45 var(--f-display);text-transform:uppercase;letter-spacing:.05em;color:var(--navy)}
-.clients p span{color:var(--rule)}
-@media (max-width:860px){.kv .intro,.kv .chart,.clients .label,.clients p{grid-column:1/-1}}
+@media (max-width:860px){.kv .intro,.kv .chart{grid-column:1/-1}}
 
-/* timeline */
-.tl{position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0;margin:0;padding:0;list-style:none;border-top:1px solid rgba(238,241,248,.22)}
-.tl li{padding:1.75rem 1.25rem 0 0;position:relative}
-.tl li::before{content:"";position:absolute;top:-6px;left:0;width:11px;height:11px;border-radius:50%;background:var(--void);border:2px solid var(--teal)}
-.tl li:last-child::before{background:var(--teal)}
-.tl .y{font:700 1.9rem/1 var(--f-display);color:var(--spectral)}
-.tl h3{font:600 .82rem/1.25 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin:.6rem 0 .5rem}
-.tl p{font-size:.86rem;color:var(--spectral-2)}
-@media (max-width:1000px){.tl{grid-template-columns:1fr;border-top:0;border-left:1px solid rgba(238,241,248,.22);margin-left:6px}.tl li{padding:0 0 2rem 1.75rem}.tl li::before{top:4px;left:-6px}.tl p{max-width:60ch}}
 
 /* differentials */
 .diff{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem}
@@ -317,11 +267,106 @@ form.msg .ghost{justify-content:center}
 footer{background:#040b15;color:var(--spectral-2);padding-block:2.5rem calc(2.5rem + env(safe-area-inset-bottom,0px));font-size:.82rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:1.5rem 3rem;justify-content:space-between;align-items:center}
 footer img{height:26px;width:auto;opacity:.9}
-footer .social{display:flex;gap:1.25rem}
-footer .social a{text-decoration:none;font:500 .72rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase}
-footer .social a:hover{color:var(--teal)}
 
-@media (max-width:860px){.sec-head,.svc,.more,.kv,.clients,.diff,.presence,.contact-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:860px){.sec-head,.svc,.more,.kv,.diff,.presence,.contact-grid,.atlas{grid-template-columns:minmax(0,1fr)}}
+/* carrossel do topo */
+.slides .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
+.slides .slide.on{opacity:1}
+.slides .slide img{width:100%;height:100%;object-fit:cover}
+.slides .slide.on img{animation:drift 9s ease-out both}
+.slide-dots{display:flex;gap:.5rem;margin-top:clamp(2rem,5vw,3.5rem)}
+.slide-dots+.readout{margin-top:1.25rem}
+.slide-dots button{width:34px;height:4px;border:0;border-radius:2px;background:rgba(238,241,248,.3);cursor:pointer;padding:0;position:relative}
+.slide-dots button::after{content:"";position:absolute;inset:-10px 0}
+.slide-dots button[aria-current="true"]{background:var(--teal)}
+
+/* atuação: mapa */
+.atlas{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem;align-items:start}
+.atlas .map{grid-column:1/span 7;position:relative;background:var(--void);border-radius:8px;padding:clamp(1rem,3vw,2rem);overflow:hidden}
+.atlas .map::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(238,241,248,.07) 1px,transparent 1px);background-size:14px 14px}
+.atlas svg{position:relative;width:100%;height:auto;display:block}
+.br-shape{fill:#0c1d33;stroke:rgba(26,160,198,.55);stroke-width:1.1;stroke-linejoin:round}
+.arc{fill:none;stroke:var(--teal);stroke-width:1.2;stroke-opacity:.55;stroke-dasharray:var(--len);stroke-dashoffset:0}
+.atlas.anim .arc{animation:draw 1.6s cubic-bezier(.3,.6,.2,1) both}
+@keyframes draw{from{stroke-dashoffset:var(--len)}to{stroke-dashoffset:0}}
+.pt circle.dot{fill:var(--teal);stroke:var(--void);stroke-width:1.5}
+.pt circle.halo{fill:var(--teal);opacity:.18}
+.pt.live circle.dot{fill:var(--live)}
+.pt.live circle.halo{fill:var(--live)}
+.pt.hub circle.dot{fill:#fff;stroke:var(--teal);stroke-width:3}
+.pt.hub circle.halo{animation:pulse 2.6s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{from{transform:scale(.6);opacity:.5}to{transform:scale(2.4);opacity:0}}
+.pt text{font:600 11px var(--f-display);letter-spacing:.12em;text-transform:uppercase;fill:var(--spectral)}
+.pt text.sub{font:500 9px var(--f-mono);letter-spacing:.06em;fill:var(--spectral-2);text-transform:none}
+.pt.on circle.halo{opacity:.5}
+.arc.on{stroke-opacity:1;stroke-width:2}
+.map-legend{position:relative;display:flex;flex-wrap:wrap;gap:1rem 1.5rem;margin-top:1rem;font:500 .68rem/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--spectral-2)}
+.map-legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:.45rem;vertical-align:-1px}
+.sites{grid-column:8/span 5;margin:0;padding:0;list-style:none;min-width:0}
+.sites>li{padding:1rem 0;border-top:1px solid var(--rule)}
+.sites>li:last-child{border-bottom:1px solid var(--rule)}
+.sites .uf{display:flex;align-items:baseline;gap:.75rem}
+.sites .uf b{font:700 1.5rem/1 var(--f-display);color:var(--navy);min-width:2.6ch}
+.sites .uf span{font:600 .95rem/1.2 var(--f-display);text-transform:uppercase;letter-spacing:.06em}
+.sites ul{margin:.6rem 0 0;padding:0 0 0 calc(2.6ch + .75rem + .2rem);list-style:none;display:grid;gap:.15rem}
+.sites ul li{font-size:.88rem;color:var(--ink-2);cursor:default;border-radius:3px;padding:.1rem .3rem;margin-left:-.3rem}
+.sites ul li em{font-style:normal;font:500 .72rem var(--f-mono);color:var(--navy);margin-left:.35rem}
+.sites ul li.on{background:#e6f4f9;color:var(--ink)}
+.sites ul li .tag{font:500 .6rem/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:#8a5e00;border:1px solid var(--live);background:#fff7e2;border-radius:3px;padding:.2rem .35rem;margin-left:.4rem;vertical-align:1px}
+@media (max-width:900px){.atlas .map,.sites{grid-column:1/-1}}
+
+/* clientes: logotipos */
+.clients{margin-top:clamp(3rem,6vw,4.5rem);padding-top:1.5rem;border-top:2px solid var(--ink)}
+.clients .label{color:var(--ink-2)}
+.logos{margin:1.25rem 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.logos li{height:104px;display:flex;align-items:center;justify-content:center;padding:1rem 1.25rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--sheet);transition:background .2s}
+.logos li:hover{background:var(--paper)}
+.logos img{max-height:46px;max-width:100%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.65;transition:filter .25s,opacity .25s}
+.logos li:hover img{filter:none;opacity:1}
+.logos span{font:700 1.05rem/1.1 var(--f-display);text-transform:uppercase;letter-spacing:.08em;color:#8a96a8;text-align:center;transition:color .2s}
+.logos li:hover span{color:var(--navy)}
+@media (max-width:860px){.logos{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:480px){.logos{grid-template-columns:repeat(2,minmax(0,1fr))}.logos li{height:84px}}
+
+/* trajetória: linha energizada */
+.cable{position:relative;--fill:100%}
+.cable ol{margin:0;padding:0;list-style:none;display:grid;gap:clamp(2.5rem,6vw,4.5rem)}
+.wire{position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:rgba(238,241,248,.12)}
+.wire i{position:absolute;left:0;top:0;width:100%;height:var(--fill);background:linear-gradient(180deg,rgba(26,160,198,.2),var(--teal));box-shadow:0 0 12px 1px rgba(26,160,198,.7)}
+.wire i::after{content:"";position:absolute;left:50%;bottom:-6px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#bdeefc;box-shadow:0 0 16px 6px rgba(26,160,198,.85)}
+.node{display:grid;grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr);align-items:center}
+.node .y{grid-column:1;text-align:right;font:700 clamp(3rem,7vw,5.6rem)/.9 var(--f-display);letter-spacing:.01em;color:transparent;-webkit-text-stroke:1.2px rgba(238,241,248,.35);transition:color .5s,-webkit-text-stroke-color .5s,text-shadow .5s}
+.node .y small{font-size:.38em;letter-spacing:.06em}
+.node .k{grid-column:2;justify-self:center;width:16px;height:16px;border-radius:50%;background:var(--void);border:2px solid rgba(238,241,248,.3);position:relative;z-index:1;transition:border-color .4s,background .4s,box-shadow .4s}
+.node .c{grid-column:3;max-width:44ch}
+.node .c .m{font:500 .68rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--spectral-2)}
+.node h3{font-size:clamp(1.3rem,2.2vw,1.7rem);text-transform:uppercase;margin:.5rem 0 .5rem;letter-spacing:.03em}
+.node p{color:var(--spectral-2);font-size:.95rem}
+.node:nth-child(even) .y{grid-column:3;text-align:left;grid-row:1}
+.node:nth-child(even) .c{grid-column:1;grid-row:1;justify-self:end;text-align:right}
+.node.lit .y{color:var(--spectral);-webkit-text-stroke-color:transparent;text-shadow:0 0 28px rgba(26,160,198,.45)}
+.node.lit .k{border-color:var(--teal);background:var(--teal);box-shadow:0 0 0 6px rgba(26,160,198,.18),0 0 18px rgba(26,160,198,.8)}
+.node.lit .c .m{color:var(--teal)}
+@media (max-width:760px){
+  .wire{left:7px;margin-left:0}
+  .node,.node:nth-child(even){grid-template-columns:16px minmax(0,1fr);column-gap:1.25rem;row-gap:.6rem;align-items:start}
+  .node .k,.node:nth-child(even) .k{grid-column:1;grid-row:1;margin-top:.55em}
+  .node .y,.node:nth-child(even) .y{grid-column:2;grid-row:1;text-align:left;font-size:3rem}
+  .node .c,.node:nth-child(even) .c{grid-column:2;grid-row:2;justify-self:start;text-align:left}
+}
+
+/* redes sociais */
+.socials{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.socials a{display:inline-flex;align-items:center;gap:.6rem;padding:.55rem 1rem .55rem .55rem;border:1.5px solid var(--ghost-line);border-radius:32px;text-decoration:none;color:var(--spectral);font:600 .78rem/1 var(--f-display);letter-spacing:.14em;text-transform:uppercase;background:var(--ghost);transition:background .2s,border-color .2s,color .2s}
+.socials a span.i{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:rgba(238,241,248,.1)}
+.socials a svg{width:17px;height:17px}
+.socials a:hover{border-color:var(--teal);background:rgba(26,160,198,.14)}
+.socials a:hover span.i{background:var(--teal);color:#04121f}
+footer .social{display:flex;gap:.6rem}
+footer .social a{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid rgba(238,241,248,.2);color:var(--spectral-2);transition:color .2s,border-color .2s,background .2s}
+footer .social a:hover{color:#04121f;background:var(--teal);border-color:var(--teal)}
+footer .social svg{width:17px;height:17px}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -336,7 +381,7 @@ footer .social a:hover{color:var(--teal)}
     <nav class="nav" id="nav" aria-label="Principal">
       <a href="#servicos">Serviços</a>
       <a href="#metodo">Método</a>
-      <a href="#obras">Obras</a>
+      <a href="#atuacao">Atuação</a>
       <a href="#empresa">Empresa</a>
       <a class="ghost" href="#contato">Fale conosco</a>
     </nav>
@@ -346,10 +391,13 @@ footer .social a:hover{color:var(--teal)}
 <main>
 <!-- HERO -->
 <section class="scene dark hero" id="inicio">
-  <div class="bg"><picture>
-    <source media="(max-width:760px)" srcset="assets/hero-m.jpg">
-    <img src="assets/hero.jpg" alt="Pátio de subestação de alta tensão ao entardecer" width="2000" height="1440" fetchpriority="high">
-  </picture></div>
+  <!-- Carrossel: para adicionar uma foto, copie uma linha <picture class="slide"> e troque o arquivo e o texto alt. -->
+  <div class="bg slides" id="slides">
+    <picture class="slide on"><source media="(max-width:760px)" srcset="assets/hero-m.jpg"><img src="assets/hero.jpg" alt="Pátio de subestação de alta tensão ao entardecer" width="2000" height="1440" fetchpriority="high"></picture>
+    <picture class="slide"><img loading="lazy" src="assets/aereo-se.jpg" alt="Vista aérea de subestação de alta tensão" width="1800" height="1012"></picture>
+    <picture class="slide"><img loading="lazy" src="assets/linha-drone.jpg" alt="Linha de transmissão vista por drone ao entardecer" width="1600" height="900"></picture>
+    <picture class="slide"><img loading="lazy" src="assets/noite.jpg" alt="Ensaio noturno em pátio de subestação" width="1800" height="1560"></picture>
+  </div>
   <div class="shade"></div>
   <div class="wrap hero-inner">
     <p class="label kicker fade-up">Comissionamento · Ensaios de campo · Desde 2011</p>
@@ -357,8 +405,9 @@ footer .social a:hover{color:var(--teal)}
     <p class="lede fade-up d2">Comissionamento de subestações de alta e extra-alta tensão e ensaios de campo, do startup ao diagnóstico, em instalações de até 800&nbsp;kVcc e 750&nbsp;kVca. Equipe própria, laudos rastreáveis e atendimento em todo o Brasil.</p>
     <div class="ctas fade-up d3">
       <a class="ghost solid-teal" href="#contato">Solicitar proposta</a>
-      <a class="ghost" href="#obras">Ver obras recentes</a>
+      <a class="ghost" href="#atuacao">Ver onde atuamos</a>
     </div>
+    <div class="slide-dots fade-up d4" id="dots" role="group" aria-label="Fotos do topo"></div>
     <div class="readout fade-up d4" aria-label="Números da Luzion">
       <div><b class="num">+200</b><span class="label">Projetos entregues</span></div>
       <div><b class="num">800<small>kVcc</small></b><span class="label">Maior tensão atendida</span></div>
@@ -462,12 +511,12 @@ footer .social a:hover{color:var(--teal)}
   </div>
 </section>
 
-<!-- OBRAS -->
-<section class="sec works" id="obras">
+<!-- ATUAÇÃO -->
+<section class="sec works" id="atuacao">
   <div class="wrap">
     <div class="sec-head">
-      <div class="t"><p class="label kicker">Portfólio 2022 – 2026</p><h2>Obras recentes</h2></div>
-      <p class="d">Obras executadas e em execução para transmissoras e EPCistas, com subestações, níveis de tensão, períodos e escopo.</p>
+      <div class="t"><p class="label kicker">Atuação</p><h2>De Itumbiara para o Brasil</h2></div>
+      <p class="d">A partir da matriz em Itumbiara-GO, mobilizamos equipes para subestações de norte a sul. O mapa mostra as obras executadas e em execução de 2022 a 2026.</p>
     </div>
     <div class="works-stats">
       <div><b class="num">8</b><span>projetos</span></div>
@@ -475,18 +524,17 @@ footer .social a:hover{color:var(--teal)}
       <div><b class="num">500 kV</b><span>maior tensão nestas obras</span></div>
       <div><b class="num">+15</b><span>projetos em andamento em 2026</span></div>
     </div>
-
-    <div class="panel gantt-wrap" role="region" aria-label="Linha do tempo das obras" tabindex="0">
-      <div class="gantt" id="gantt"></div>
-      <div class="g-legend"><span><i style="background:var(--navy)"></i>Concluído</span><span><i style="background:linear-gradient(90deg,var(--navy),var(--teal))"></i>Em andamento</span><span><i style="border-left:1.5px dashed var(--teal-ink);width:1px;height:12px;border-radius:0"></i>Outubro / 2026</span></div>
+    <div class="atlas" id="atlas">
+      <div class="map">
+        <svg viewBox="0 0 460 474" role="img" aria-labelledby="mapT"><title id="mapT">Mapa do Brasil com as subestações atendidas pela Luzion a partir da matriz em Itumbiara-GO</title>
+          <path class="br-shape" d="M84.9 51.3L87.9 54.1L90.1 56.1L91.0 56.8L91.6 57.0L92.8 56.8L94.4 56.6L95.1 56.3L95.9 55.6L97.2 54.7L98.3 54.3L98.7 54.2L99.2 54.3L100.1 54.9L100.6 55.9L100.1 57.0L100.2 57.7L101.2 57.7L101.9 56.5L102.5 55.6L103.6 54.8L104.7 53.7L105.4 52.7L106.3 52.1L107.7 51.4L108.8 50.9L109.8 51.0L110.5 50.5L111.5 49.6L112.1 48.8L112.6 48.6L113.5 48.6L114.7 48.5L115.9 47.6L116.9 46.6L117.4 44.7L117.8 43.1L118.2 42.8L118.5 42.6L118.9 42.4L120.0 42.3L121.9 41.4L123.2 40.6L124.5 40.4L124.8 40.1L125.2 39.3L125.5 37.9L125.3 37.1L123.0 36.8L121.6 36.8L119.1 36.6L117.9 36.2L117.7 36.0L117.6 35.7L117.9 35.1L118.1 33.9L117.8 32.4L116.6 29.9L115.7 27.5L115.6 25.9L115.6 24.1L115.6 23.0L115.0 22.1L111.6 19.2L110.5 17.8L110.1 16.9L108.8 15.2L109.1 14.7L109.8 14.7L110.5 15.2L111.1 16.1L111.6 16.3L112.1 16.3L115.3 16.3L116.0 16.5L116.4 16.8L116.8 17.2L117.4 18.3L118.0 18.8L119.2 18.8L121.2 18.8L122.2 18.7L122.9 19.0L123.7 19.3L125.4 18.7L125.9 18.7L126.4 18.9L128.2 20.9L129.3 21.8L130.2 22.9L131.5 22.9L132.5 21.9L132.8 18.7L133.2 17.8L133.7 17.5L134.3 17.5L135.1 17.0L135.9 16.3L136.6 16.1L139.6 16.8L140.5 16.5L143.5 15.6L146.6 14.5L147.4 13.2L148.7 12.8L149.7 11.8L150.6 11.9L151.8 12.0L152.6 11.8L153.0 11.6L153.4 11.1L154.1 9.8L155.0 9.2L156.0 8.7L156.7 8.1L157.3 7.3L157.6 6.6L157.6 6.1L157.2 5.0L156.8 4.0L156.3 3.7L156.0 3.6L157.0 3.4L157.9 3.7L159.3 3.7L159.8 3.5L160.7 3.6L161.8 2.9L162.5 3.1L163.0 3.1L163.4 3.7L163.7 4.3L164.7 5.0L164.6 6.1L164.4 7.1L164.3 8.2L164.2 9.1L163.8 10.0L163.1 10.8L163.0 11.2L162.9 11.6L163.3 11.9L164.1 12.0L165.0 12.0L165.7 12.2L166.5 12.3L167.6 13.0L168.0 13.4L168.1 13.8L167.8 14.6L167.6 15.3L167.9 15.7L168.2 16.1L169.0 17.7L169.4 18.3L169.7 18.5L169.8 18.8L169.5 19.4L169.2 20.2L168.4 21.0L168.3 21.6L167.7 22.0L166.3 23.0L166.5 24.5L166.6 25.2L166.6 25.8L166.1 26.6L165.2 29.0L164.9 30.1L164.6 32.8L164.7 33.7L165.1 34.9L165.9 37.6L166.3 38.1L167.4 38.7L167.6 40.5L167.5 42.5L167.4 43.2L167.6 43.5L168.1 43.7L168.4 43.9L168.5 44.5L168.5 45.0L169.3 45.4L170.0 45.6L170.6 46.4L171.8 47.7L172.3 47.9L172.5 48.4L173.5 49.5L175.0 49.9L176.6 50.3L177.2 51.0L177.8 51.6L178.2 51.6L178.7 51.5L179.3 51.0L179.8 50.6L180.7 50.7L181.8 50.6L182.0 50.2L182.1 49.8L181.9 48.7L182.3 48.4L183.2 48.2L183.4 47.6L183.6 47.3L183.8 47.0L184.1 46.9L184.5 47.1L185.1 47.2L185.8 47.4L186.1 47.8L186.7 47.8L187.4 47.8L187.6 47.5L187.8 47.1L188.0 46.2L188.4 46.2L189.3 46.0L190.1 45.6L191.3 45.5L192.5 45.6L193.1 45.3L193.6 44.7L194.6 43.1L195.1 42.7L195.7 42.4L196.2 42.5L197.2 42.2L198.0 41.8L198.3 41.9L198.9 42.8L199.3 43.0L199.7 43.0L201.3 43.4L202.1 43.3L202.9 43.0L203.8 42.9L204.4 43.1L204.9 42.9L205.4 42.7L205.7 42.8L206.5 42.9L208.3 43.4L210.7 43.9L211.4 43.7L211.8 43.3L211.9 42.3L212.0 41.5L211.4 40.8L210.7 40.1L210.1 39.2L209.4 38.9L209.5 38.4L210.0 37.9L210.5 37.6L210.7 37.3L211.0 36.0L211.2 35.8L211.5 35.7L211.7 35.8L212.2 36.1L214.1 37.1L214.9 37.0L218.1 36.7L218.5 36.1L219.2 36.0L220.4 35.4L220.8 35.4L221.2 35.5L221.7 35.4L222.5 34.9L222.8 34.8L222.9 35.4L223.4 36.0L224.0 36.6L224.3 36.7L225.3 36.5L225.8 36.7L226.0 37.2L226.1 37.7L226.5 38.1L227.0 38.1L227.3 38.2L227.8 38.5L228.2 39.1L229.1 39.5L230.7 40.1L231.5 40.2L232.2 40.3L232.7 40.6L233.1 40.2L234.8 39.2L235.6 38.7L236.1 38.2L236.5 37.8L236.8 37.7L237.0 38.0L237.2 38.3L237.8 38.5L239.2 38.8L239.8 39.0L240.7 38.6L241.5 38.1L241.9 37.9L242.4 38.5L242.8 39.2L243.1 39.5L243.6 39.5L244.8 39.6L245.6 39.8L246.1 39.8L246.8 39.5L247.2 38.8L248.3 38.2L249.2 37.6L249.8 36.9L250.6 35.7L250.8 35.1L250.9 34.2L252.1 31.6L252.5 31.2L252.7 30.3L253.2 29.4L253.2 28.6L253.5 27.8L254.2 27.2L254.6 26.7L255.4 25.6L256.0 24.6L257.3 22.2L257.4 21.6L258.0 21.2L258.1 20.7L258.7 20.1L259.3 19.6L259.6 18.8L260.0 18.1L261.0 17.5L261.4 17.3L262.4 15.2L262.6 14.3L263.6 14.2L265.1 15.3L266.4 16.9L268.0 21.9L268.3 26.6L269.0 29.1L270.9 34.2L271.0 35.1L271.3 36.3L272.0 37.5L272.6 39.5L272.7 39.8L272.2 40.4L272.9 40.4L273.5 40.7L273.8 42.0L274.3 42.9L275.2 44.0L277.0 44.4L278.3 44.6L279.9 45.2L281.0 46.1L281.9 49.0L281.6 50.8L281.7 52.0L281.2 52.5L280.0 53.4L279.7 53.8L277.1 56.0L276.5 57.0L275.1 58.3L273.8 61.0L271.8 63.3L271.0 63.9L270.0 64.1L269.3 64.4L267.7 66.4L265.6 67.0L265.5 68.1L264.2 70.7L263.2 72.1L262.5 72.6L260.8 75.1L260.6 76.3L260.6 78.2L259.4 79.4L258.2 80.2L258.1 81.8L257.6 82.4L257.1 82.8L254.7 82.3L250.9 84.2L249.6 84.6L253.7 84.7L255.1 85.7L257.9 85.0L261.4 82.7L262.7 82.2L265.5 80.7L266.6 79.6L268.6 78.4L269.0 77.8L270.1 77.2L270.8 78.0L270.8 78.5L269.9 79.4L270.1 80.0L270.7 80.7L270.9 81.7L271.0 82.5L271.4 83.9L272.6 85.7L272.7 86.3L272.5 87.1L273.1 87.8L273.7 88.2L275.8 90.2L277.5 89.1L278.5 88.8L279.1 88.3L280.5 88.0L281.6 88.4L283.8 89.1L285.3 88.4L288.4 86.8L287.5 89.7L286.8 92.3L286.2 93.4L285.7 96.2L285.1 97.0L284.7 97.9L285.4 97.6L286.0 97.2L286.8 96.1L287.4 94.1L289.7 89.0L290.3 88.5L292.2 87.9L295.5 83.8L296.7 83.9L297.5 84.8L298.3 85.4L298.5 84.2L299.6 83.8L298.5 83.2L298.2 82.7L298.2 81.9L299.0 80.7L298.5 79.7L300.1 78.5L300.0 77.5L300.6 76.7L301.3 75.9L302.2 75.5L302.3 74.8L302.9 74.6L303.3 74.5L304.1 75.2L305.1 74.3L305.9 74.0L306.3 74.1L306.8 74.5L307.3 74.7L307.7 74.6L308.8 74.0L309.8 75.0L310.4 75.2L310.3 74.7L309.9 74.2L310.2 73.8L310.6 73.5L312.1 73.7L312.9 74.2L313.8 75.0L315.0 75.0L315.9 74.9L316.5 75.4L317.5 75.3L317.9 76.0L319.4 77.0L319.7 77.6L320.9 78.0L322.0 78.4L323.2 78.5L324.3 78.4L324.4 79.2L325.2 79.4L326.3 79.2L327.2 80.2L329.4 81.0L331.0 82.2L332.0 82.0L333.1 82.3L334.4 84.8L334.6 86.6L335.2 86.4L335.7 85.6L336.3 84.1L337.6 83.6L338.1 84.2L339.4 85.1L340.4 86.1L340.9 86.7L341.7 86.8L341.0 87.6L341.7 87.5L342.5 86.9L343.2 88.1L343.7 89.3L343.8 90.6L343.3 91.4L342.9 91.8L342.4 92.7L341.9 92.9L341.3 93.2L341.9 93.8L342.4 94.5L343.4 92.8L344.0 92.3L345.0 92.0L345.5 93.2L345.6 94.4L344.0 94.9L344.0 95.8L343.5 96.3L343.2 96.9L343.0 98.1L342.6 99.2L341.7 103.7L341.7 104.4L342.8 103.7L345.0 101.3L345.7 98.9L346.5 96.4L347.4 95.7L348.0 95.7L348.8 95.9L348.9 96.7L348.7 97.2L347.8 98.4L347.4 99.1L347.8 99.7L349.9 97.7L350.8 97.0L351.6 97.1L353.2 96.2L356.4 96.0L356.6 95.0L357.3 94.5L359.0 94.6L362.4 95.6L363.6 96.3L365.4 97.1L366.4 97.9L370.4 99.5L373.2 99.7L374.7 98.9L376.4 99.7L377.4 100.6L379.2 101.0L381.1 101.2L382.6 100.6L386.3 100.4L390.9 99.6L393.7 99.8L396.8 100.3L399.1 101.8L400.9 102.7L402.1 103.5L403.9 104.4L407.8 106.7L409.2 108.0L411.6 109.8L414.1 110.6L415.4 112.5L416.5 113.4L419.0 116.6L422.0 118.8L423.9 121.1L427.7 122.6L429.2 124.9L431.7 125.2L432.8 125.6L434.1 126.6L436.0 127.2L438.3 127.0L440.9 127.1L443.0 126.7L448.0 127.6L448.8 128.0L449.8 129.0L451.6 132.8L452.7 137.0L453.3 140.2L454.5 142.7L455.2 147.4L455.8 148.9L455.8 150.0L456.3 150.3L456.6 153.5L456.5 154.7L456.0 156.4L456.0 157.1L456.1 157.6L455.9 158.3L455.8 159.0L456.3 160.5L456.3 161.7L455.6 163.1L454.8 166.9L452.6 173.2L450.4 176.8L447.5 180.5L445.5 182.4L444.8 182.6L444.0 182.2L444.5 183.3L444.1 184.2L442.1 186.9L440.2 188.7L438.2 191.8L438.0 191.9L435.4 193.1L433.9 194.1L431.9 195.8L430.1 198.7L429.7 199.0L429.1 198.8L429.1 200.3L427.5 202.5L427.1 202.8L427.1 202.2L427.4 201.7L427.5 201.2L427.4 200.6L427.0 201.0L426.1 202.7L426.4 204.0L425.7 205.8L423.2 211.2L420.1 215.7L419.4 217.1L416.8 220.1L414.9 221.6L414.4 221.6L413.8 221.5L413.5 219.1L412.0 217.7L411.6 217.5L411.0 219.0L410.5 219.4L409.7 219.5L410.5 220.1L410.7 220.9L410.0 222.4L409.9 223.8L408.5 225.3L407.7 226.4L407.2 227.8L407.0 229.1L407.6 228.7L407.9 229.0L408.1 229.4L408.0 230.0L407.5 231.1L407.6 233.9L407.5 234.5L407.9 235.2L408.4 234.0L408.7 234.4L407.3 241.9L407.9 245.2L408.0 249.0L408.7 252.8L409.3 256.1L409.4 256.4L408.5 260.2L407.3 264.0L406.6 267.2L406.1 270.5L405.7 272.1L405.5 273.8L406.0 277.7L406.2 278.4L404.8 280.2L403.2 281.0L402.4 281.9L400.5 285.0L399.4 289.7L399.4 292.1L399.9 297.3L399.5 299.5L398.9 300.9L398.2 301.8L396.4 302.9L394.8 305.6L394.1 308.5L392.9 309.5L392.7 311.1L391.8 312.8L389.5 315.4L388.0 316.2L387.3 316.9L386.8 318.4L385.3 320.9L384.3 324.1L384.5 325.2L384.6 325.3L385.0 329.0L384.8 330.0L383.4 331.0L378.1 332.9L376.7 333.7L373.4 337.0L373.3 337.7L373.4 338.8L373.9 339.5L373.4 340.1L372.7 341.4L371.8 341.3L366.5 341.3L363.6 341.7L362.1 341.6L361.5 341.3L360.7 340.8L360.5 340.2L360.9 339.2L360.6 338.7L359.8 338.7L359.0 339.0L358.8 339.5L358.9 340.0L359.2 340.5L359.4 341.3L359.0 341.9L357.4 342.0L355.5 342.6L353.1 342.8L351.2 343.2L350.4 342.7L351.2 342.4L352.5 342.6L353.8 342.1L353.5 341.6L351.6 340.9L349.5 341.3L348.3 342.1L345.8 342.1L342.6 342.7L342.1 343.3L342.2 344.5L342.9 344.7L343.4 345.3L342.9 345.8L342.3 346.0L339.0 346.6L336.0 348.9L334.7 349.2L333.6 350.2L333.4 351.1L333.1 351.6L332.3 351.7L330.8 351.2L328.7 351.2L327.2 351.5L319.6 355.3L316.8 356.8L313.7 359.9L308.4 363.4L305.6 365.4L305.1 366.0L304.7 366.0L303.8 366.4L304.2 366.8L304.8 366.8L304.5 368.0L303.4 368.8L301.3 371.0L300.9 370.8L301.5 369.7L300.5 369.7L299.0 369.3L298.4 369.7L298.8 370.8L298.2 371.3L297.2 371.4L296.2 371.2L295.2 370.4L295.7 371.9L297.8 372.3L298.7 372.6L299.0 373.2L297.4 375.8L296.0 376.1L295.8 376.5L296.6 376.5L297.0 377.2L296.5 380.2L295.8 380.7L295.4 380.7L295.0 381.2L295.6 382.2L296.1 382.9L296.0 384.2L295.8 385.3L295.8 386.4L296.5 388.5L296.8 390.7L297.1 391.5L297.2 392.3L296.8 393.2L297.0 394.5L296.2 396.7L296.7 399.9L296.5 402.9L296.2 404.5L295.7 405.7L294.5 407.3L294.4 408.9L291.8 410.4L288.9 412.5L286.3 414.9L283.4 418.4L280.1 423.6L277.1 431.1L273.3 436.8L271.8 438.8L269.8 441.1L267.2 443.8L263.6 446.4L259.7 448.8L258.2 449.9L256.9 451.4L256.5 450.8L256.8 449.7L256.6 449.0L256.6 448.0L257.4 447.8L258.6 448.4L259.2 448.0L259.6 447.6L261.0 447.3L263.7 444.7L265.7 443.7L266.9 442.1L267.1 441.2L267.0 439.4L267.7 439.0L269.2 439.1L269.5 438.6L269.3 438.1L269.6 436.8L271.6 435.8L272.5 434.4L272.2 431.1L272.5 431.0L273.4 431.5L273.8 431.3L274.2 429.8L274.0 429.1L273.0 428.8L269.7 430.5L268.6 430.4L268.5 429.1L266.8 428.5L266.2 427.4L266.0 426.7L265.5 426.4L265.5 427.7L265.7 428.9L267.1 430.4L266.7 430.9L266.0 431.6L265.6 433.1L265.6 435.0L265.2 434.4L264.7 434.1L264.5 436.2L263.6 436.9L263.3 437.7L263.5 438.6L263.0 439.3L260.6 440.9L258.2 442.1L257.6 442.6L257.4 443.9L257.0 445.2L255.9 446.3L255.1 448.6L255.1 449.6L255.4 451.1L255.9 452.0L255.1 452.7L254.1 453.9L253.4 455.3L251.4 460.5L249.8 463.7L248.5 465.2L246.6 466.8L241.4 470.9L241.1 470.8L240.4 470.5L239.7 470.1L239.6 469.9L239.5 469.5L239.6 468.0L239.6 464.1L239.8 463.3L240.1 462.8L241.2 462.1L242.1 461.1L243.3 459.8L244.3 458.8L243.9 458.2L243.0 457.5L241.5 457.0L240.0 456.0L238.7 454.8L238.2 453.6L237.6 452.2L237.1 451.2L236.9 450.7L236.4 450.5L235.6 449.9L235.1 449.4L234.3 449.1L233.0 448.8L231.6 448.3L229.9 446.9L228.6 445.5L228.0 444.5L227.3 443.8L223.8 442.7L222.1 441.3L221.5 441.8L220.6 441.4L219.6 440.7L219.3 440.2L218.9 439.7L218.5 439.1L218.3 438.6L217.3 437.6L216.1 436.5L215.5 436.2L215.3 436.3L215.0 436.7L214.8 437.1L214.4 437.4L213.8 437.8L213.2 438.4L212.4 438.8L211.5 439.0L210.9 438.9L210.8 438.7L210.7 437.9L211.0 436.1L210.5 435.3L209.7 434.6L208.9 433.5L206.2 431.4L202.6 428.2L201.3 427.3L200.1 427.2L199.0 427.3L198.0 427.7L197.2 429.2L196.9 429.4L194.9 429.4L193.0 429.1L192.3 428.3L192.8 427.7L194.7 426.4L195.7 425.3L195.9 424.3L196.8 423.4L198.4 422.6L200.1 421.1L202.0 419.0L203.2 417.4L203.6 416.4L204.4 415.7L205.4 415.1L206.4 414.0L207.2 412.2L208.3 410.8L209.8 409.8L210.6 409.0L210.7 408.3L211.1 407.9L211.7 407.7L212.1 407.3L212.0 406.8L212.2 406.5L212.6 406.2L213.2 406.3L214.1 406.6L214.6 406.6L214.8 406.1L214.5 405.6L213.9 405.1L214.1 404.5L215.8 403.5L217.0 403.1L217.8 402.5L218.5 401.5L219.7 400.8L221.4 400.4L221.8 400.0L221.8 399.6L222.1 399.2L223.1 399.0L223.6 398.5L223.7 397.8L224.0 397.2L224.5 396.6L225.1 396.4L225.8 396.5L226.4 396.3L227.0 395.7L227.7 395.5L228.5 395.5L228.9 395.4L230.4 395.1L231.1 394.6L231.8 393.5L232.3 393.1L232.8 393.3L233.7 392.9L234.9 391.9L235.1 391.9L236.0 391.5L237.0 389.7L237.4 388.6L237.3 387.7L237.0 387.0L237.1 386.0L237.4 383.3L237.5 382.2L238.0 381.5L238.0 380.7L237.1 379.0L236.2 377.5L235.7 375.0L235.4 374.0L234.7 373.8L234.0 372.9L233.2 372.9L232.8 372.5L232.4 372.3L231.7 372.3L231.2 372.8L230.3 372.9L229.7 373.1L229.0 373.5L228.3 373.3L227.9 372.9L227.0 372.9L227.1 371.2L228.6 368.6L229.1 367.5L228.9 366.8L229.4 364.4L230.5 360.3L230.9 357.7L230.5 356.4L230.4 355.5L231.1 354.8L231.3 354.6L229.9 353.7L229.0 352.8L228.0 352.2L226.9 351.7L226.4 352.0L225.8 352.2L224.7 352.7L223.4 353.4L222.8 353.7L221.6 354.0L220.3 354.2L219.2 354.1L218.3 353.9L217.7 353.4L217.4 352.4L217.4 351.5L217.2 350.2L216.5 349.5L216.3 349.0L216.3 348.3L216.3 347.5L216.5 347.0L216.4 346.3L216.1 345.8L216.2 345.0L216.0 343.9L215.6 343.1L215.3 342.3L215.3 341.5L215.0 340.6L215.0 339.7L215.3 338.9L215.4 338.1L215.0 337.5L214.4 337.1L213.9 336.1L213.8 334.9L213.3 334.2L212.7 333.7L212.0 333.7L211.0 333.4L210.2 333.4L208.7 333.4L208.1 333.2L207.7 332.7L206.9 332.1L206.4 331.1L205.8 330.9L204.9 331.2L204.6 331.6L204.2 332.2L203.6 332.8L202.8 332.8L202.0 333.1L201.1 333.2L200.1 333.2L199.0 332.9L197.7 332.6L196.6 332.4L195.5 332.6L194.8 332.4L193.8 332.3L192.8 332.2L191.9 331.5L191.0 331.2L190.5 331.3L189.8 331.7L189.2 331.6L188.3 331.3L188.0 330.6L188.0 330.1L188.2 329.6L188.5 328.9L188.4 328.2L188.4 327.6L188.6 327.0L188.8 326.4L188.6 325.8L188.6 325.2L188.5 324.6L188.4 323.9L188.9 323.0L189.3 322.3L189.0 321.6L189.1 321.2L189.4 320.5L189.8 319.6L189.8 318.0L189.4 317.0L189.0 316.8L188.9 316.5L189.1 316.1L188.9 315.7L188.8 315.3L189.0 315.0L188.8 314.3L188.2 314.1L188.0 313.9L187.8 313.1L187.7 312.3L187.8 311.6L187.5 311.0L187.1 310.6L186.7 310.0L186.3 309.5L186.2 308.9L185.9 308.0L186.7 307.8L187.0 307.3L187.5 306.7L188.3 306.5L189.1 306.2L189.4 305.7L187.4 304.0L186.3 302.9L187.0 301.5L188.1 299.1L189.2 296.7L190.1 295.0L190.3 294.6L191.0 294.5L190.9 293.6L190.9 293.0L190.3 293.0L191.0 290.8L192.0 287.7L192.7 285.4L193.0 285.0L193.5 284.9L193.6 284.6L193.0 284.2L192.6 283.5L191.7 281.4L190.3 278.1L190.2 276.9L189.7 276.1L188.9 276.4L187.9 276.1L185.4 274.4L183.7 273.4L183.2 272.8L183.0 271.0L182.5 268.9L182.2 266.4L182.3 265.8L183.7 263.9L183.7 262.9L183.8 262.1L183.8 261.4L183.4 261.4L182.9 261.7L182.0 261.9L181.5 261.9L176.7 261.8L171.1 261.5L166.6 261.4L162.5 261.2L162.4 259.6L162.2 256.8L162.0 254.9L161.8 251.8L160.2 249.8L158.5 247.7L157.8 247.2L159.9 247.1L161.4 247.1L161.1 241.4L160.7 240.8L160.3 239.0L160.0 238.0L159.3 237.1L159.1 236.2L159.2 235.6L159.6 235.2L159.9 234.2L159.7 233.3L159.3 232.4L158.7 231.5L157.7 230.9L156.2 230.0L154.0 228.7L152.1 227.9L151.5 228.0L148.2 228.3L147.1 228.5L146.3 228.3L143.9 228.3L142.9 227.6L142.1 226.9L140.3 224.9L140.1 223.9L139.4 223.6L138.3 223.7L137.3 223.6L135.3 222.8L133.5 221.9L132.5 222.0L131.7 221.4L130.3 220.2L129.6 219.7L129.3 219.0L129.0 218.0L128.5 217.8L127.7 218.0L126.9 218.5L125.8 218.2L124.4 217.3L123.5 216.6L123.0 216.2L121.8 215.7L120.7 215.6L118.9 216.4L117.5 216.1L115.3 215.8L113.4 215.3L112.6 213.9L112.3 213.0L111.1 212.4L110.2 211.8L109.1 210.7L108.6 210.4L107.6 210.1L106.7 209.7L106.6 209.0L106.3 208.2L106.2 208.0L105.6 206.9L105.3 206.8L105.0 207.0L104.8 207.2L104.5 207.0L104.4 206.5L104.6 205.8L104.3 205.0L103.4 204.1L102.9 203.3L102.9 202.4L102.7 201.8L102.3 201.5L102.1 201.0L102.1 200.2L102.3 199.3L102.9 198.3L102.8 196.7L102.0 194.6L101.5 193.0L101.5 192.1L101.6 191.4L102.0 190.7L103.0 189.0L103.2 187.8L102.9 186.3L102.8 185.2L103.0 184.5L102.7 183.5L102.0 182.5L101.6 182.5L100.9 182.8L100.2 183.6L99.2 183.7L98.5 183.2L95.9 183.4L92.0 183.9L90.4 184.4L89.5 184.6L88.4 184.8L86.6 185.7L82.2 189.2L81.3 189.7L80.2 189.8L79.6 190.3L78.6 190.7L76.7 192.1L75.7 193.2L75.1 194.2L74.3 194.2L73.8 194.0L72.0 194.1L71.0 194.4L70.0 195.4L68.8 197.2L68.2 197.7L67.2 198.2L66.1 198.7L64.7 199.3L64.0 199.4L63.4 199.5L62.9 199.2L62.8 198.5L62.0 198.1L60.3 197.9L57.6 197.5L54.9 197.4L53.6 197.4L52.5 197.4L50.6 197.2L49.1 197.2L47.9 197.8L46.1 198.6L45.3 198.8L44.7 198.8L44.1 198.7L43.5 198.3L42.5 197.4L41.8 197.7L41.2 198.1L41.2 196.1L41.2 193.0L41.3 190.3L41.3 188.2L41.3 185.7L41.3 183.9L41.8 183.2L42.1 182.5L41.7 181.4L41.8 180.5L42.1 179.9L42.4 179.3L41.6 179.6L41.3 179.7L40.9 180.2L39.9 180.9L39.2 181.5L38.4 182.0L37.4 183.2L36.6 183.8L35.7 184.2L34.3 185.6L33.1 185.9L30.1 186.1L26.8 186.1L23.8 186.1L23.4 186.0L23.4 184.9L23.5 184.1L22.5 183.3L22.4 182.3L22.1 181.5L21.8 180.7L21.1 180.1L20.1 179.9L18.5 179.4L16.1 178.9L13.7 178.9L11.5 178.9L12.9 177.2L14.2 175.4L14.2 173.9L13.1 172.6L12.5 171.8L11.6 170.6L10.4 169.8L9.8 168.8L9.8 168.2L9.7 167.8L9.3 167.5L8.9 167.1L8.2 166.7L7.5 166.2L7.5 165.6L7.3 165.0L6.8 164.3L6.8 163.7L6.4 162.9L6.0 162.3L5.6 161.8L4.9 161.2L4.9 160.8L5.4 160.5L5.6 159.9L5.6 159.4L5.0 159.0L4.4 158.9L3.5 157.9L2.9 157.3L2.5 157.0L2.3 156.7L2.5 156.4L2.8 156.1L2.9 155.5L2.7 155.0L2.7 154.5L3.1 154.4L3.6 154.5L4.0 154.2L4.6 154.1L5.2 154.0L5.6 153.7L5.5 153.2L5.1 152.1L4.7 151.6L4.6 151.0L4.9 149.7L5.1 148.9L5.9 148.0L8.1 146.2L10.2 144.9L11.1 144.8L11.9 144.3L12.3 143.6L12.5 142.8L12.3 142.1L12.0 141.1L11.5 139.9L11.2 139.2L11.5 138.3L12.0 137.2L13.1 135.5L14.2 133.6L14.2 133.1L14.4 131.9L14.9 129.6L15.1 128.4L15.0 127.9L15.2 127.5L15.9 127.1L17.4 126.8L18.5 126.1L20.0 124.8L21.4 123.4L22.5 123.0L24.6 121.7L25.7 120.9L26.1 120.6L27.3 120.1L29.4 119.8L31.1 119.6L32.0 119.3L33.4 119.1L34.4 118.7L35.4 118.7L37.4 118.2L38.1 117.6L38.7 116.8L39.4 116.1L40.3 115.9L41.3 116.0L42.5 116.0L44.0 115.8L44.7 116.3L45.0 117.0L45.9 117.6L46.5 117.6L47.2 117.4L48.0 118.0L48.6 117.9L49.0 117.6L49.1 116.8L49.3 116.4L49.7 114.0L50.4 109.9L51.1 106.3L51.8 102.2L52.5 98.0L53.3 93.8L53.9 90.3L54.4 87.3L54.7 85.5L55.2 83.1L55.4 80.9L55.6 80.3L55.5 79.8L55.1 79.1L55.1 78.8L55.1 78.3L55.1 78.0L54.6 77.6L54.3 77.3L54.0 77.0L53.8 76.5L53.6 76.1L53.5 75.6L53.2 75.2L53.1 74.7L53.3 74.2L53.4 73.7L53.3 73.2L53.2 72.6L52.9 72.1L52.6 71.8L51.6 71.4L50.7 70.6L49.6 69.8L48.2 68.3L47.9 67.7L47.9 65.8L47.9 63.7L48.0 60.6L48.0 59.1L48.8 59.0L49.5 58.9L50.3 58.8L50.9 58.7L51.5 58.5L51.9 58.2L52.5 58.0L52.9 58.1L53.3 57.8L53.7 57.6L54.2 57.4L54.8 57.2L55.4 57.6L55.7 58.0L56.1 58.2L56.5 58.1L56.7 58.2L57.0 58.5L57.3 58.5L57.8 58.4L58.3 58.4L58.5 58.3L58.5 58.1L58.4 57.8L58.2 57.5L58.4 57.0L58.4 56.4L58.4 55.6L58.0 55.2L57.7 54.5L57.3 53.8L56.6 53.4L56.1 53.2L55.6 53.5L55.1 53.5L54.8 53.3L54.3 53.3L53.7 53.2L53.1 53.1L52.0 53.3L51.6 53.1L51.0 53.1L50.4 53.3L50.4 50.3L50.4 47.5L50.4 45.5L51.0 45.5L51.7 45.2L52.7 45.1L53.6 44.7L54.0 44.7L54.8 44.9L55.7 45.3L56.6 45.3L58.9 45.3L61.3 45.3L64.0 45.3L66.7 45.3L69.1 45.3L69.8 45.4L69.4 44.7L68.9 43.8L69.1 43.2L69.3 42.5L69.6 42.2L70.4 42.5L71.0 43.7L71.5 44.5L72.0 45.0L72.6 45.0L73.3 44.9L74.0 44.5L75.2 42.9L76.4 41.6L77.0 41.1L77.7 40.7L78.1 40.6L78.8 40.6L79.4 41.0L79.8 41.6L81.1 43.9L82.1 45.6L82.4 46.6L82.4 49.2L82.4 51.5L82.5 51.8L82.7 51.9L84.9 51.3ZM284.8 68.7L285.9 68.8L287.4 68.6L288.4 68.0L289.6 67.9L290.7 68.0L294.6 68.6L296.9 68.8L297.7 69.0L298.5 69.3L299.1 69.6L299.3 70.2L298.7 71.3L298.3 72.4L297.9 74.0L297.6 74.3L297.1 74.2L297.4 75.6L297.3 76.2L297.1 76.7L296.5 77.8L295.5 79.3L295.2 79.6L294.5 80.1L294.0 80.7L294.1 81.3L294.4 81.9L294.0 82.7L292.9 83.8L292.2 84.1L291.7 84.2L291.1 84.1L290.1 82.9L290.0 83.8L289.7 84.7L289.4 85.2L288.1 85.1L287.4 84.7L286.2 84.1L286.0 85.6L285.3 86.6L284.6 86.9L283.4 87.1L282.8 87.5L281.5 87.2L280.4 86.5L279.7 86.4L279.2 87.0L276.6 87.1L275.4 87.6L274.6 87.4L273.5 86.4L273.3 85.7L272.7 84.2L272.1 82.4L271.7 80.9L272.0 79.5L272.8 79.6L273.6 79.8L273.8 79.7L273.8 79.2L273.6 78.9L272.3 78.9L271.4 78.1L271.3 76.9L271.5 74.3L271.5 73.7L272.2 73.0L272.3 72.3L272.2 71.6L272.5 70.4L273.0 69.3L275.2 67.9L277.6 67.4L284.8 68.7ZM348.5 343.7L348.9 344.0L348.2 344.0L347.5 344.3L346.3 344.5L345.9 344.1L346.9 343.4L347.2 342.9L347.5 343.0L347.8 343.4L348.5 343.7ZM296.9 382.8L296.7 383.0L296.0 381.5L297.4 380.0L297.9 380.6L297.5 381.8L297.1 382.6L296.9 382.8ZM335.4 352.7L335.4 353.3L335.0 353.0L333.7 353.2L333.2 352.7L335.0 350.7L335.3 351.0L335.6 351.4L335.8 351.9L335.6 352.2L335.4 352.7ZM344.3 101.3L343.1 102.4L343.5 101.1L343.3 100.2L343.4 99.4L344.2 98.7L344.5 98.6L344.4 99.5L344.4 99.7L344.3 101.3ZM411.0 223.2L410.5 223.4L410.5 222.7L411.7 221.7L411.8 220.6L412.5 221.1L412.6 221.7L412.6 221.9L411.0 223.2ZM409.1 227.7L408.7 228.4L408.3 228.3L408.1 227.8L407.7 227.4L407.9 227.0L408.2 226.8L409.1 226.8L409.1 227.7ZM339.8 81.8L339.1 82.4L338.9 82.7L338.2 82.5L338.4 82.1L338.5 82.2L338.7 81.2L339.8 81.3L339.8 81.8ZM283.5 62.8L284.0 63.4L282.4 65.9L281.5 66.3L280.5 66.3L279.2 65.6L277.2 65.7L276.6 65.5L276.5 64.4L277.3 63.2L279.0 63.3L281.9 62.3L283.5 62.8ZM277.1 42.7L275.9 43.3L275.2 43.1L274.6 41.6L274.8 40.5L275.6 40.1L276.3 40.1L276.6 40.3L277.1 42.2L277.1 42.7ZM272.9 67.6L269.7 69.9L268.7 69.2L268.5 68.7L268.7 68.3L268.6 68.1L269.0 67.3L270.8 66.6L271.6 66.5L272.8 66.7L273.0 67.3L272.9 67.6ZM286.9 67.3L283.9 67.7L282.5 67.1L282.8 66.6L283.9 65.8L285.1 65.2L286.3 65.0L287.4 65.3L287.8 66.0L287.7 66.7L286.9 67.3ZM275.5 64.3L275.3 66.1L273.3 65.3L273.4 63.5L274.4 63.0L275.3 62.1L275.5 60.9L275.6 59.3L275.9 59.0L276.2 58.9L276.4 59.0L276.6 61.4L276.6 62.9L275.5 64.3ZM278.7 61.3L277.5 61.7L277.3 61.3L277.3 59.8L277.6 59.0L279.2 58.7L279.3 58.5L279.8 58.3L280.1 58.9L280.1 59.7L278.7 61.3ZM259.3 83.2L258.0 83.4L259.6 80.4L261.0 79.0L261.1 76.3L262.6 73.8L264.0 72.8L266.0 72.5L267.0 74.0L265.7 78.3L265.3 78.3L263.5 80.5L261.5 82.1L259.3 83.2ZM298.0 399.2L297.2 399.7L297.4 396.9L297.8 396.0L298.3 395.2L298.9 394.8L299.3 395.4L299.0 396.8L297.9 398.5L298.0 399.2Z"/>
+          <g><path class="arc" data-pt="sp" d="M289.5 287.0Q291.0 324.4 319.5 348.6" style="--len:74;animation-delay:0.15s"/><path class="arc" data-pt="acu" d="M289.5 287.0Q328.2 328.5 384.8 328.0" style="--len:112;animation-delay:0.30s"/><path class="arc" data-pt="ita" d="M289.5 287.0Q316.1 311.8 352.4 309.0" style="--len:72;animation-delay:0.45s"/><path class="arc" data-pt="jai" d="M289.5 287.0Q329.8 282.7 353.9 250.1" style="--len:80;animation-delay:0.60s"/><path class="arc" data-pt="cap" d="M289.5 287.0Q330.3 299.7 367.2 278.3" style="--len:84;animation-delay:0.75s"/><path class="arc" data-pt="gv" d="M289.5 287.0Q330.5 308.2 373.8 292.2" style="--len:91;animation-delay:0.90s"/><path class="arc" data-pt="via" d="M289.5 287.0Q334.9 321.1 390.6 310.7" style="--len:112;animation-delay:1.05s"/><path class="arc" data-pt="jn" d="M289.5 287.0Q337.2 317.5 391.9 303.0" style="--len:112;animation-delay:1.20s"/><path class="arc" data-pt="aca" d="M289.5 287.0Q335.1 210.6 309.5 125.4" style="--len:176;animation-delay:1.35s"/><path class="arc" data-pt="slz" d="M289.5 287.0Q347.9 209.9 330.5 114.8" style="--len:191;animation-delay:1.50s"/><path class="arc" data-pt="de" d="M289.5 287.0Q336.5 206.5 308.9 117.5" style="--len:184;animation-delay:1.65s"/></g>
+          <g><g class="pt live" data-pt="sp"><title>São Paulo</title><circle class="halo" cx="319.5" cy="348.6" r="9.6"/><circle class="dot" cx="319.5" cy="348.6" r="4"/><text x="309.5" y="352.6" text-anchor="end">São Paulo · SP</text><text class="sub" x="309.5" y="364.6" text-anchor="end">filial</text></g><g class="pt live" data-pt="acu"><title>Porto do Açu</title><circle class="halo" cx="384.8" cy="328.0" r="9.6"/><circle class="dot" cx="384.8" cy="328.0" r="4"/></g><g class="pt" data-pt="ita"><title>Itabirito</title><circle class="halo" cx="352.4" cy="309.0" r="9.6"/><circle class="dot" cx="352.4" cy="309.0" r="4"/></g><g class="pt" data-pt="jai"><title>Jaíba</title><circle class="halo" cx="353.9" cy="250.1" r="9.6"/><circle class="dot" cx="353.9" cy="250.1" r="4"/></g><g class="pt" data-pt="cap"><title>Capelinha</title><circle class="halo" cx="367.2" cy="278.3" r="9.6"/><circle class="dot" cx="367.2" cy="278.3" r="4"/></g><g class="pt" data-pt="gv"><title>Gov. Valadares</title><circle class="halo" cx="373.8" cy="292.2" r="9.6"/><circle class="dot" cx="373.8" cy="292.2" r="4"/></g><g class="pt" data-pt="via"><title>Viana</title><circle class="halo" cx="390.6" cy="310.7" r="9.6"/><circle class="dot" cx="390.6" cy="310.7" r="4"/></g><g class="pt" data-pt="jn"><title>João Neiva</title><circle class="halo" cx="391.9" cy="303.0" r="9.6"/><circle class="dot" cx="391.9" cy="303.0" r="4"/></g><g class="pt" data-pt="aca"><title>Açailândia</title><circle class="halo" cx="309.5" cy="125.4" r="9.6"/><circle class="dot" cx="309.5" cy="125.4" r="4"/></g><g class="pt" data-pt="slz"><title>Santa Luzia</title><circle class="halo" cx="330.5" cy="114.8" r="9.6"/><circle class="dot" cx="330.5" cy="114.8" r="4"/></g><g class="pt" data-pt="de"><title>Dom Eliseu</title><circle class="halo" cx="308.9" cy="117.5" r="9.6"/><circle class="dot" cx="308.9" cy="117.5" r="4"/></g><g class="pt hub" data-pt="itu"><title>Itumbiara</title><circle class="halo" cx="289.5" cy="287.0" r="16.8"/><circle class="dot" cx="289.5" cy="287.0" r="7"/><text x="277.5" y="291.0" text-anchor="end">Itumbiara · GO</text><text class="sub" x="277.5" y="303.0" text-anchor="end">matriz</text></g></g>
+        </svg>
+        <div class="map-legend"><span><i style="background:#fff;border:2px solid var(--teal)"></i>Matriz</span><span><i style="background:var(--live)"></i>Em andamento</span><span><i style="background:var(--teal)"></i>Concluída</span></div>
+      </div>
+      <ol class="sites" id="sites"><li><div class="uf"><b>MA</b><span>Maranhão e Pará</span></div><ul><li data-pt="aca">SE Açailândia<em>500/230/69 kV</em></li><li data-pt="slz">SE Santa Luzia<em>500/230/138 kV</em></li><li data-pt="de">SE Dom Eliseu 2 (PA)<em>230/69 kV</em></li><li data-pt="">SE Encruzo Novo<em>230 kV</em></li></ul></li><li><div class="uf"><b>MG</b><span>Minas Gerais</span></div><ul><li data-pt="ita">SE Itabirito 2<em>500/345 kV</em></li><li data-pt="jai">SE Jaíba<em>500/230 kV</em></li><li data-pt="cap">SE Capelinha<em>500 kV</em></li><li data-pt="gv">SE Governador Valadares<em>500 kV</em></li></ul></li><li><div class="uf"><b>ES</b><span>Espírito Santo</span></div><ul><li data-pt="via">SE Viana e Viana 2<em>500/345 kV</em></li><li data-pt="jn">SE João Neiva<em>500 kV</em></li></ul></li><li><div class="uf"><b>RJ</b><span>Rio de Janeiro</span></div><ul><li data-pt="acu">SE Porto do Açu, GNA I e Campos<em>345/138 kV</em><span class="tag">em andamento</span></li></ul></li><li><div class="uf"><b>SP</b><span>São Paulo</span></div><ul><li data-pt="sp">SE Ramon Rebert<em>345/88/20 kV</em><span class="tag">em andamento</span></li><li data-pt="sp">SE Miguel Reale<em>345/88/20 kV</em></li></ul></li><li><div class="uf"><b>GO</b><span>Goiás</span></div><ul><li data-pt="itu">SE Itumbiara<em>500/345 kV</em><span class="tag">em andamento</span></li></ul></li></ol>
     </div>
-
-    <div class="filters" role="group" aria-label="Filtrar obras">
-      <button class="chip" type="button" data-f="all" aria-pressed="true">Todas</button>
-      <button class="chip" type="button" data-f="live" aria-pressed="false">Em andamento</button>
-      <button class="chip" type="button" data-f="done" aria-pressed="false">Concluídas</button>
-    </div>
-    <div class="projects" id="projects"></div>
 
     <div class="kv">
       <div class="intro">
@@ -499,7 +547,19 @@ footer .social a:hover{color:var(--teal)}
 
     <div class="clients">
       <p class="label">Clientes e contratantes</p>
-      <p>ISA Energia <span>/</span> Siemens <span>/</span> Axia Energia <span>/</span> State Grid <span>/</span> Neoenergia <span>/</span> TAESA <span>/</span> EDF <span>/</span> SENDI <span>/</span> Grantel <span>/</span> Grupo Cobra</p>
+      <!-- Para usar o logotipo: troque <span>Nome</span> por <img src="assets/clientes/arquivo.png" alt="Nome"> -->
+      <ul class="logos">
+        <li><span>ISA Energia</span></li>
+        <li><span>Siemens</span></li>
+        <li><span>Axia Energia</span></li>
+        <li><span>State Grid</span></li>
+        <li><span>Neoenergia</span></li>
+        <li><span>TAESA</span></li>
+        <li><span>EDF</span></li>
+        <li><span>SENDI</span></li>
+        <li><span>Grantel</span></li>
+        <li><span>Grupo Cobra</span></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -511,15 +571,18 @@ footer .social a:hover{color:var(--teal)}
       <div class="t"><p class="label kicker">Trajetória</p><h2>Quinze anos de especialização</h2></div>
       <p class="d">Começamos na montagem elétrica de subestações. Em 2014 escolhemos fazer uma coisa só, e bem feita: comissionamento.</p>
     </div>
-    <ol class="tl">
-      <li><span class="y">2011</span><h3>Fundação</h3><p>Início em Itumbiara-GO com montagem elétrica de subestações e formação da equipe técnica.</p></li>
-      <li><span class="y">2014</span><h3>Foco em comissionamento</h3><p>Fim da montagem. Ensaios de N0, ensaios funcionais e interligação de proteção e controle.</p></li>
-      <li><span class="y">2022</span><h3>Filial São Paulo</h3><p>Base na Av. Paulista para os projetos da Grande São Paulo.</p></li>
-      <li><span class="y">800 kV</span><h3>Alta tensão</h3><p>Diagnósticos avançados em ativos de até 800 kV em todo o Brasil.</p></li>
-      <li><span class="y">2023</span><h3>Educação técnica</h3><p>Palestras e cursos sobre O&amp;M de subestações para profissionais do setor.</p></li>
-      <li><span class="y">2025</span><h3>Malhas de aterramento</h3><p>Especialização em malhas de aterramento em áreas energizadas.</p></li>
-      <li><span class="y">2026</span><h3>Consultoria e IA</h3><p>Consultoria em comissionamento e inteligência artificial na análise e aprovação de ensaios.</p></li>
-    </ol>
+    <div class="cable" id="cable">
+      <div class="wire" aria-hidden="true"><i></i></div>
+      <ol>
+        <li class="node lit"><span class="y">2011</span><span class="k" aria-hidden="true"></span><div class="c"><span class="m">Marco 01</span><h3>Fundação</h3><p>Início em Itumbiara-GO com montagem elétrica de subestações e formação da equipe técnica.</p></div></li>
+        <li class="node lit"><span class="y">2014</span><span class="k" aria-hidden="true"></span><div class="c"><span class="m">Marco 02</span><h3>Foco em comissionamento</h3><p>Fim da montagem. Ensaios de N0, ensaios funcionais e interligação de proteção e controle.</p></div></li>
+        <li class="node lit"><span class="y">2022</span><span class="k" aria-hidden="true"></span><div class="c"><span class="m">Marco 03</span><h3>Filial São Paulo</h3><p>Base na Av. Paulista para os projetos da Grande São Paulo.</p></div></li>
+        <li class="node lit"><span class="y">800 <small>kV</small></span><span class="k" aria-hidden="true"></span><div class="c"><span class="m">Marco 04</span><h3>Alta tensão</h3><p>Diagnósticos avançados em ativos de até 800 kV em todo o Brasil.</p></div></li>
+        <li class="node lit"><span class="y">2023</span><span class="k" aria-hidden="true"></span><div class="c"><span class="m">Marco 05</span><h3>Educação técnica</h3><p>Palestras e cursos sobre O&amp;M de subestações para profissionais do setor.</p></div></li>
+        <li class="node lit"><span class="y">2025</span><span class="k" aria-hidden="true"></span><div class="c"><span class="m">Marco 06</span><h3>Malhas de aterramento</h3><p>Especialização em malhas de aterramento em áreas energizadas.</p></div></li>
+        <li class="node lit"><span class="y">2026</span><span class="k" aria-hidden="true"></span><div class="c"><span class="m">Marco 07</span><h3>Consultoria e IA</h3><p>Consultoria em comissionamento e inteligência artificial na análise e aprovação de ensaios.</p></div></li>
+      </ol>
+    </div>
   </div>
 </section>
 
@@ -585,8 +648,13 @@ footer .social a:hover{color:var(--teal)}
         <li><span class="label">WhatsApp</span><a href="https://wa.me/5564996671258" target="_blank" rel="noopener">+55 (64) 99667-1258</a><button class="copy" type="button" data-copy="+55 64 99667-1258">Copiar</button></li>
         <li><span class="label">Comercial</span><span class="v">comercial@luzionenergia.com.br</span><button class="copy" type="button" data-copy="comercial@luzionenergia.com.br">Copiar</button></li>
         <li><span class="label">Telefone</span><span class="v">(64) 3431-1258</span><button class="copy" type="button" data-copy="(64) 3431-1258">Copiar</button></li>
-        <li><span class="label">Instagram</span><a href="https://www.instagram.com/luzionenergia/" target="_blank" rel="noopener">@luzionenergia</a><span></span></li>
       </ul>
+      <div class="socials" aria-label="Redes sociais">
+        <a href="https://wa.me/5564996671258" target="_blank" rel="noopener"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.1.6l-.5.6c.6 1.2 1.6 2.2 2.8 2.8l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.4.4-2.4 0a9 9 0 0 1-4.3-4.3c-.4-1-.3-1.8 0-2.4z" fill="currentColor" stroke="none"/></svg></span>WhatsApp</a>
+        <a href="https://www.instagram.com/luzionenergia/" target="_blank" rel="noopener"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span>Instagram</a>
+        <a href="https://www.linkedin.com/search/results/companies/?keywords=Luzion%20Energia" target="_blank" rel="noopener"><span class="i"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.48 2.48 0 1 1 0 4.96 2.48 2.48 0 0 1 0-4.96zM3 9.75h3.96V21H3zM9.4 9.75h3.8v1.54h.05c.53-1 1.82-2.05 3.75-2.05 4 0 4.75 2.64 4.75 6.07V21h-3.96v-5.06c0-1.2-.02-2.76-1.68-2.76-1.69 0-1.95 1.32-1.95 2.67V21H9.4z"/></svg></span>LinkedIn</a>
+        <a href="https://www.tiktok.com/@luzionenergia" target="_blank" rel="noopener"><span class="i"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 3c.3 2.3 1.7 3.9 4 4.1v3.1a7.1 7.1 0 0 1-3.9-1.2v6.2c0 3.6-2.6 5.8-5.7 5.8a5.6 5.6 0 0 1-5.6-5.6c0-3.4 2.9-5.9 6.5-5.5v3.2c-1.7-.3-3.3.7-3.3 2.4 0 1.4 1.1 2.4 2.4 2.4 1.5 0 2.5-1 2.5-2.9V3z"/></svg></span>TikTok</a>
+      </div>
     </div>
     <div class="r">
       <form class="msg" id="msgForm" novalidate>
@@ -617,10 +685,11 @@ footer .social a:hover{color:var(--teal)}
   <div class="wrap">
     <img src="assets/logo-branca.png" alt="Luzion Energia" width="720" height="170">
     <p>Luzion Serviços e Soluções em Energia Ltda · CNPJ 14.207.734/0001-50</p>
-    <div class="social">
-      <a href="https://www.instagram.com/luzionenergia/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.linkedin.com/search/results/all/?keywords=Luzion%20Energia" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.tiktok.com/@luzionenergia" target="_blank" rel="noopener">TikTok</a>
+    <div class="social" aria-label="Redes sociais">
+      <a href="https://wa.me/5564996671258" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.1.6l-.5.6c.6 1.2 1.6 2.2 2.8 2.8l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.4.4-2.4 0a9 9 0 0 1-4.3-4.3c-.4-1-.3-1.8 0-2.4z" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.instagram.com/luzionenergia/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.linkedin.com/search/results/companies/?keywords=Luzion%20Energia" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.48 2.48 0 1 1 0 4.96 2.48 2.48 0 0 1 0-4.96zM3 9.75h3.96V21H3zM9.4 9.75h3.8v1.54h.05c.53-1 1.82-2.05 3.75-2.05 4 0 4.75 2.64 4.75 6.07V21h-3.96v-5.06c0-1.2-.02-2.76-1.68-2.76-1.69 0-1.95 1.32-1.95 2.67V21H9.4z"/></svg></a>
+      <a href="https://www.tiktok.com/@luzionenergia" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 3c.3 2.3 1.7 3.9 4 4.1v3.1a7.1 7.1 0 0 1-3.9-1.2v6.2c0 3.6-2.6 5.8-5.7 5.8a5.6 5.6 0 0 1-5.6-5.6c0-3.4 2.9-5.9 6.5-5.5v3.2c-1.7-.3-3.3.7-3.3 2.4 0 1.4 1.1 2.4 2.4 2.4 1.5 0 2.5-1 2.5-2.9V3z"/></svg></a>
     </div>
   </div>
 </footer>
@@ -634,56 +703,42 @@ footer .social a:hover{color:var(--teal)}
   btn.addEventListener('click',function(){var o=top.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
   document.querySelectorAll('#nav a').forEach(function(a){a.addEventListener('click',function(){top.classList.remove('open');btn.setAttribute('aria-expanded','false')})});
 
-  /* obras: dados do Portfólio de Obras 2025-2026 */
-  var P=[
-    {n:'OITI',c:'Cliente final EDF · Contratante SENDI',s:'live',p:'jul/2026 – atual',a:[2026,7],b:[2026,10],
-     se:[['Porto do Açu','345/138 kV'],['GNA I',''],['Campos',''],['Seccionamento LTs GNA–Campos C1 e C2','']],
-     e:['Comissionamento N0','Cablagem','Malha de aterramento','Suporte ao N1','Injeção de corrente e tensão','Cubículos de MT']},
-    {n:'Grande São Paulo',c:'Cliente final ISA Energia · Contratante Siemens',s:'live',p:'jan/2023 – atual',a:[2023,1],b:[2026,10],
-     se:[['Ramon Rebert','345/88/20 kV']],
-     e:['Retrofit','Comissionamento N0','GIS (SF₆)','Cablagem','Suporte ao N1','Injeção de corrente e tensão','Cubículos de 20 kV','VLF em cabos de MT','Banco de capacitores']},
-    {n:'12OP / 5OP',c:'Cliente final Axia Energia · Contratante Grantel',s:'live',p:'mar/2026 – atual',a:[2026,3],b:[2026,10],
-     se:[['Itumbiara','500/345 kV']],
-     e:['Retrofit de equipamentos de pátio','Comissionamento N0','Cablagem','Suporte ao N1','Injeção de corrente e tensão']},
-    {n:'Reator de Barra LTMC',c:'Cliente final State Grid · Contratante Grantel',s:'done',p:'jun – ago/2026',a:[2026,6],b:[2026,8],
-     se:[['Itabirito 2','500/345 kV']],
-     e:['Comissionamento N0','Cablagem','Malha de aterramento','Suporte ao N1','Injeção de corrente e tensão']},
-    {n:'REA',c:'Cliente Neoenergia',s:'done',p:'mai – jun/2026',a:[2026,5],b:[2026,6],
-     se:[['Paraíso 2','230/138 kV']],
-     e:['Comissionamento N0','Cablagem','Malha de aterramento','Suporte ao N1','Injeção de corrente e tensão']},
-    {n:'Tangará',c:'Cliente final TAESA · Contratante SENDI',s:'done',p:'jun/2025 – abr/2026',a:[2025,6],b:[2026,4],
-     se:[['Encruzo Novo','230 kV'],['Santa Luzia','500/230/138 kV'],['Açailândia','500/230/69 kV'],['Dom Eliseu 2','230/69 kV']],
-     e:['Comissionamento N0','Cablagem','Malha de aterramento','Suporte ao N1','Injeção de corrente e tensão','Cubículos de MT','Ensaio de curto-circuito','Apoio no compensador síncrono']},
-    {n:'Piraquê',c:'Cliente final ISA Energia · Contratante Grupo Cobra',s:'done',p:'jun/2025 – abr/2026',a:[2025,6],b:[2026,4],
-     se:[['Jaíba','500/230 kV'],['Capelinha','500 kV'],['Governador Valadares','500 kV'],['Viana','345 kV'],['Viana 2','500/345 kV'],['João Neiva','500 kV']],
-     e:['Comissionamento N0','Suporte ao N1','Injeção de corrente e tensão','Cubículos de 20 kV','VLF em cabos de MT']},
-    {n:'Grande São Paulo',c:'Cliente final ISA Energia · Contratante Siemens',s:'done',p:'nov/2022 – set/2026',a:[2022,11],b:[2026,9],
-     se:[['Miguel Reale','345/88/20 kV']],
-     e:['Comissionamento N0','GIS (SF₆)','Cablagem','Suporte ao N1','Injeção de corrente e tensão','Cubículos de 20 kV','VLF em cabos de MT']}
-  ];
-  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-  var M0=2022*12, SPAN=60; function pos(ym){return ((ym[0]*12+ym[1]-1)-M0)/SPAN*100}
-  var g='<div class="g-axis"><span></span><div class="yrs"><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span></div></div>';
-  var now=pos([2026,10])+ (1/SPAN*100);
-  P.forEach(function(p){
-    var l=pos(p.a),r=pos(p.b)+100/SPAN;
-    g+='<div class="g-row"><div class="nm">'+esc(p.n)+'<small>'+esc(p.se.length>1?p.se.length+' subestações':'SE '+p.se[0][0])+'</small></div><div class="g-track"><span class="g-bar '+(p.s==='live'?'live':'')+'" style="left:'+l.toFixed(2)+'%;width:'+(r-l).toFixed(2)+'%" title="'+esc(p.p)+'"></span><span class="g-now" style="left:'+now.toFixed(2)+'%"></span></div></div>';
-  });
-  document.getElementById('gantt').innerHTML=g;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var box=document.getElementById('projects');
-  function render(f){
-    box.innerHTML=P.filter(function(p){return f==='all'||p.s===f}).map(function(p){
-      return '<article class="proj"><header><div><h3>'+esc(p.n)+'</h3><p class="who">'+esc(p.c)+'</p></div><span class="status '+p.s+'">'+(p.s==='live'?'Em andamento':'Concluído')+'</span></header>'+
-      '<div class="meta"><div><span class="label">Subestações</span><ul class="ses">'+p.se.map(function(s){return '<li><b>'+esc(s[0].indexOf('Seccionamento')===0?s[0]:'SE '+s[0])+'</b>'+(s[1]?'<span>'+esc(s[1])+'</span>':'')+'</li>'}).join('')+'</ul></div>'+
-      '<div><span class="label">Escopo executado</span><ul>'+p.e.map(function(e){return '<li>'+esc(e)+'</li>'}).join('')+'</ul></div></div>'+
-      '<p class="period">'+esc(p.p)+'</p></article>';
-    }).join('');
-  }
-  render('all');
-  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
-    document.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',x===c)});render(c.dataset.f);
-  })});
+  /* carrossel do topo */
+  (function(){
+    var sl=[].slice.call(document.querySelectorAll('#slides .slide')),dots=document.getElementById('dots'),i=0,t;
+    if(sl.length<2){dots.hidden=true;return}
+    sl.forEach(function(_,k){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Foto '+(k+1));b.addEventListener('click',function(){go(k);start()});dots.appendChild(b)});
+    function go(k){sl[i].classList.remove('on');i=(k+sl.length)%sl.length;sl[i].classList.add('on');
+      [].forEach.call(dots.children,function(b,n){b.setAttribute('aria-current',n===i)});}
+    function start(){clearInterval(t);if(!reduce)t=setInterval(function(){go(i+1)},6500)}
+    go(0);start();
+    document.addEventListener('visibilitychange',function(){document.hidden?clearInterval(t):start()});
+  })();
+
+  /* mapa: destaque cruzado entre lista e pontos */
+  (function(){
+    var atlas=document.getElementById('atlas');
+    function hl(id,on){document.querySelectorAll('[data-pt="'+id+'"]').forEach(function(e){e.classList.toggle('on',on)})}
+    document.querySelectorAll('#atlas [data-pt]').forEach(function(e){var id=e.getAttribute('data-pt');if(!id)return;
+      e.addEventListener('mouseenter',function(){hl(id,true)});e.addEventListener('mouseleave',function(){hl(id,false)})});
+    if(!reduce&&'IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){atlas.classList.remove('anim');void atlas.offsetWidth;atlas.classList.add('anim');io.disconnect()}})},{threshold:.35});
+      io.observe(atlas);
+    }
+  })();
+
+  /* trajetória: cabo energizando conforme a rolagem */
+  (function(){
+    var cable=document.getElementById('cable');if(!cable||reduce)return;
+    var nodes=[].slice.call(cable.querySelectorAll('.node')),ticking=false;
+    function upd(){ticking=false;var r=cable.getBoundingClientRect(),vh=window.innerHeight;
+      var f=Math.max(0,Math.min(1,(vh*0.6-r.top)/r.height));cable.style.setProperty('--fill',(f*100).toFixed(2)+'%');
+      var lim=r.top+f*r.height;nodes.forEach(function(n){var k=n.querySelector('.k').getBoundingClientRect();n.classList.toggle('lit',k.top+k.height/2<=lim+2)});}
+    window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd)}},{passive:true});
+    window.addEventListener('resize',upd);upd();
+  })();
 
   /* classes de tensão: Apresentação Institucional 2026 */
   var K=[['500 kV',75],['230 kV',57],['69 / 34,5 kV',40],['138 kV',38],['440 kV',12],['345 kV',6],['750 kV CA',3],['800 kV CC',2]], MAX=80;
