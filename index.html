@@ -712,10 +712,12 @@ footer .social svg{width:17px;height:17px}
     function loc(o){return [o.cidade,o.uf].filter(Boolean).map(esc).join(' · ')}
     function num(v){return typeof v==='number'&&isFinite(v)}
     var ctrl=('AbortController' in window)?new AbortController():null; var to=setTimeout(function(){ctrl&&ctrl.abort()},12000);
-    fetch(API,{headers:{Accept:'application/json'},signal:ctrl?ctrl.signal:undefined}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
+    fetch(API,{headers:{Accept:'application/json'},signal:ctrl?ctrl.signal:undefined}).then(function(r){if(!r.ok)throw 'HTTP '+r.status;return r.json()}).then(function(d){
       clearTimeout(to);
-      if(!Array.isArray(d))throw 0;
+      if(d&&!Array.isArray(d))d=d.obras||d.data||d.items||d.results;
+      if(!Array.isArray(d))throw 'resposta sem lista de obras';
       d=d.filter(function(o){return o&&o.subestacao});
+      if(!d.length)throw 'lista vazia';
       if(!d.length)throw 0;
       // rótulos das etapas vindos do Nexus
       d.forEach(function(o){if(o.etapa&&o.etapa_label)ROT[o.etapa]=o.etapa_label});
@@ -743,7 +745,7 @@ footer .social svg{width:17px;height:17px}
       }).join('');
       document.querySelectorAll('#obList button[data-i]').forEach(function(b){b.addEventListener('click',function(){var m=mk[b.getAttribute('data-i')];if(!m||!map)return;
         map.flyTo(m.getLatLng(),Math.max(map.getZoom(),6),{duration:reduce?0:.8});m.openPopup();mapEl.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})})});
-    }).catch(function(){clearTimeout(to);fallback()});
+    }).catch(function(e){clearTimeout(to);if(window.console)console.warn('Nexus /site/obras:',e);fallback()});
   })();
 
   /* trajetória: cabo energizando conforme a rolagem */
