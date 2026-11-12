@@ -189,20 +189,28 @@ p{margin:0}
 /* differentials */
 .diff{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem}
 .diff .ldr{grid-column:1/span 5}
-.diff .ldr figure{margin:0 0 0;position:relative}
-.diff .ldr img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px}
-.diff ul{grid-column:7/span 6;margin:0;padding:0;list-style:none}
-.diff li{display:grid;grid-template-columns:40px 1fr;gap:1rem;padding:1.25rem 0;border-top:1px solid var(--rule)}
-.diff li svg{width:26px;height:26px;color:var(--teal-ink);margin-top:2px}
-.diff li h3{font-size:1.15rem;text-transform:uppercase;letter-spacing:.05em}
-.diff li p{color:var(--ink-2);font-size:.93rem;margin-top:.3rem}
-.brands{margin-top:2rem;padding:1.25rem;border:1px solid var(--rule);border-radius:6px;background:var(--sheet)}
+.diff>ul{grid-column:7/span 6;margin:0;padding:0;list-style:none}
+.diff>ul>li{display:grid;grid-template-columns:40px 1fr;gap:1rem;padding:1.25rem 0;border-top:1px solid var(--rule)}
+.diff>ul>li svg{width:26px;height:26px;color:var(--teal-ink);margin-top:2px}
+.diff>ul>li h3{font-size:1.15rem;text-transform:uppercase;letter-spacing:.05em}
+.diff>ul>li p{color:var(--ink-2);font-size:.93rem;margin-top:.3rem}
+.diff .ldr{min-width:0}
+.eq{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem}
+.eq figure{margin:0;position:relative;min-width:0}
+.eq figure:first-child{grid-column:1/-1}
+.eq img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:4px}
+.eq figure:first-child img{aspect-ratio:4/5}
+.eq figure:first-child:not(:only-child) img{aspect-ratio:4/3}
+.eq figcaption{position:absolute;left:10px;bottom:10px;background:rgba(6,16,29,.82);color:var(--spectral);padding:.35rem .55rem;border-radius:3px;font:500 .64rem/1.2 var(--f-mono);letter-spacing:.1em;text-transform:uppercase}
+.eq figure:not(:first-child) figcaption{display:none}
+.brands{margin-top:1rem;padding:1.25rem;border:1px solid var(--rule);border-radius:6px;background:var(--sheet)}
+.brands ul{display:flex;flex-wrap:wrap;gap:.5rem;margin:.9rem 0 0;padding:0;list-style:none}
+.brands li{padding:.4rem .7rem;border:1px solid var(--rule);border-radius:3px;font:600 .9rem/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--navy);white-space:nowrap}
 .brands .label{color:var(--ink-2)}
-.brands p{margin-top:.6rem;font:600 1.05rem/1.5 var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
 .esg{display:flex;flex-wrap:wrap;gap:1rem 2.5rem;margin-top:1.5rem}
 .esg div b{display:block;font:700 2.2rem/1 var(--f-display);color:var(--navy)}
 .esg div span{font-size:.85rem;color:var(--ink-2)}
-@media (max-width:860px){.diff .ldr,.diff ul{grid-column:1/-1}.diff .ldr img{aspect-ratio:16/10}}
+@media (max-width:860px){.diff .ldr,.diff>ul{grid-column:1/-1}.eq figure:first-child img{aspect-ratio:16/10}}
 
 /* presence */
 .presence{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem;align-items:start}
@@ -574,10 +582,13 @@ footer .social svg{width:17px;height:17px}
     </div>
     <div class="diff">
       <div class="ldr">
-        <figure><img loading="lazy" src="assets/montagem.jpg" alt="Equipe da Luzion instalando bucha de transformador em subestação" width="1100" height="1320"></figure>
+        <!-- Galeria de equipamentos: a 1ª foto fica grande; para adicionar fotos, copie uma linha <figure> dentro de .eq (até 4 no total). Arquivos em assets/. -->
+        <div class="eq">
+          <figure><img loading="lazy" src="assets/montagem.jpg" alt="Equipe da Luzion instalando bucha de transformador em subestação" width="1100" height="1320"><figcaption>Montagem de bucha · subestação</figcaption></figure>
+        </div>
         <div class="brands">
-          <p class="label">Instrumentação · calibração rastreável RBC/INMETRO</p>
-          <p>OMICRON · Megger · Fluke · Doble · SMC · B2 Electronics · Wisegroup · Utili</p>
+          <p class="label">Instrumentação própria · calibração rastreável RBC/INMETRO</p>
+          <ul><li>OMICRON</li><li>Megger</li><li>Fluke</li><li>Doble</li><li>SMC</li><li>B2 Electronics</li><li>Wisegroup</li><li>Utili</li></ul>
         </div>
       </div>
       <ul>
