@@ -188,9 +188,9 @@ p{margin:0}
 
 /* differentials */
 .diff{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem}
-.diff .lead{grid-column:1/span 5}
-.diff .lead figure{margin:0 0 0;position:relative}
-.diff .lead img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px}
+.diff .ldr{grid-column:1/span 5}
+.diff .ldr figure{margin:0 0 0;position:relative}
+.diff .ldr img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px}
 .diff ul{grid-column:7/span 6;margin:0;padding:0;list-style:none}
 .diff li{display:grid;grid-template-columns:40px 1fr;gap:1rem;padding:1.25rem 0;border-top:1px solid var(--rule)}
 .diff li svg{width:26px;height:26px;color:var(--teal-ink);margin-top:2px}
@@ -202,7 +202,7 @@ p{margin:0}
 .esg{display:flex;flex-wrap:wrap;gap:1rem 2.5rem;margin-top:1.5rem}
 .esg div b{display:block;font:700 2.2rem/1 var(--f-display);color:var(--navy)}
 .esg div span{font-size:.85rem;color:var(--ink-2)}
-@media (max-width:860px){.diff .lead,.diff ul{grid-column:1/-1}.diff .lead img{aspect-ratio:16/10}}
+@media (max-width:860px){.diff .ldr,.diff ul{grid-column:1/-1}.diff .ldr img{aspect-ratio:16/10}}
 
 /* presence */
 .presence{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem;align-items:start}
