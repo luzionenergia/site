@@ -452,7 +452,7 @@ footer .ft-brand{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
 footer .ft-brand img{height:24px}
 .ft-hours{display:flex;flex-direction:column;gap:.3rem}
 .ft-hours p{margin:0;line-height:1.35}
-.ft-hours .label{display:inline-block;min-width:8.9em;margin-right:.5rem;color:var(--teal)}
+.ft-hours .label{display:inline-block;margin-right:.8rem;color:var(--teal)}
 .ft-hours a,.ft-bottom a{color:var(--spectral);text-decoration:none;border-bottom:1px solid rgba(238,241,248,.3)}
 .ft-hours a:hover,.ft-bottom a:hover{color:var(--teal);border-color:var(--teal)}
 footer .social{display:flex;flex-wrap:wrap;gap:.5rem}
@@ -463,7 +463,7 @@ footer .social a{position:relative}
 footer .social a[data-tip]::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translate(-50%,4px);white-space:nowrap;background:var(--spectral);color:#04121f;font:500 .68rem/1 var(--f-mono);letter-spacing:.06em;padding:.4rem .55rem;border-radius:4px;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s}
 footer .social a[data-tip]:hover::after,footer .social a[data-tip]:focus-visible::after{opacity:1;transform:translate(-50%,0)}
 footer .social a.priv{border-color:rgba(26,160,198,.45)}
-@media (max-width:760px){footer .ft{gap:1rem}.ft-hours .label{display:block;margin-bottom:.1rem}footer .ft>*{flex-basis:100%}footer .social a{width:36px;height:36px}footer .social a.priv[data-tip]::after{left:auto;right:0;transform:translate(0,4px)}footer .social a.priv[data-tip]:hover::after{transform:none}}
+@media (max-width:760px){footer .ft{gap:1rem}footer .ft>*{flex-basis:100%}footer .social a{width:36px;height:36px}footer .social a.priv[data-tip]::after{left:auto;right:0;transform:translate(0,4px)}footer .social a.priv[data-tip]:hover::after{transform:none}}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
@@ -925,8 +925,7 @@ footer .social a.priv{border-color:rgba(26,160,198,.45)}
       <p>© 2026 Luzion Energia. Todos os direitos reservados.</p>
     </div>
     <div class="ft-hours">
-      <p><span class="label">Atendimento</span>Seg. a sex., 07:30 às 17:30 (escritório)</p>
-      <p><span class="label">Emergências</span><a href="https://wa.me/5564996671258" target="_blank" rel="noopener">WhatsApp +55 (64) 99667-1258</a></p>
+      <p><span class="label">Atendimento</span>Segunda a sexta, 07:30 às 17:30 (BRT)</p>
     </div>
     <div class="social" aria-label="Redes sociais">
       <a href="https://wa.me/5564996671258" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp" data-tip="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.1.6l-.5.6c.6 1.2 1.6 2.2 2.8 2.8l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.4.4-2.4 0a9 9 0 0 1-4.3-4.3c-.4-1-.3-1.8 0-2.4z" fill="currentColor" stroke="none"/></svg></a>
