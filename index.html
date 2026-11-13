@@ -597,7 +597,6 @@ footer .social svg{width:17px;height:17px}
             <figure><img loading="lazy" src="assets/equip/wika-ga11.jpg" alt="Analisador de gás SF6 WIKA GA11" width="1000" height="1000"><figcaption>WIKA GA11 · análise de gás SF₆</figcaption></figure>
             <figure><img loading="lazy" src="assets/equip/captan-12.jpg" alt="Equipamento Wisegrid CAPTAN 12" width="1000" height="1000"><figcaption>Wisegrid CAPTAN 12</figcaption></figure>
             <figure><img loading="lazy" src="assets/equip/megger-fluke.jpg" alt="Instrumento de medição em maleta amarela dentro de painel de controle" width="1000" height="1000"><figcaption>Megger e Fluke · ensaio em painel</figcaption></figure>
-            <figure><img loading="lazy" src="assets/equip/montagem.jpg" alt="Equipe da Luzion instalando bucha de transformador em subestação" width="1000" height="1000"><figcaption>Montagem de bucha · subestação</figcaption></figure>
           </div>
           <button class="eq-nav prev" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
           <button class="eq-nav next" type="button" aria-label="Próxima foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
@@ -738,7 +737,7 @@ footer .social svg{width:17px;height:17px}
     box.querySelector('.prev').addEventListener('click',function(){go(i-1);stop()});
     box.querySelector('.next').addEventListener('click',function(){go(i+1);stop()});
     t.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){go(i-1);stop()}if(e.key==='ArrowRight'){go(i+1);stop()}});
-    function play(){if(reduce||timer)return;timer=setInterval(function(){go(i+1)},5000)}
+    function play(){if(reduce||timer)return;timer=setInterval(function(){go(i+1)},3000)}
     function stop(){clearInterval(timer);timer=null}
     box.addEventListener('mouseenter',stop);box.addEventListener('mouseleave',play);
     t.addEventListener('touchstart',stop,{passive:true});
