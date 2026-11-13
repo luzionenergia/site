@@ -406,7 +406,7 @@ footer .social svg{width:17px;height:17px}
 <section class="scene dark hero" id="inicio">
   <!-- Capa: o vídeo passa primeiro e depois as fotos, em sequência. Para adicionar uma foto, copie uma linha <picture class="slide"> e troque o arquivo e o texto alt. -->
   <div class="bg slides" id="slides">
-    <div class="slide on vid"><video id="heroVid" muted playsinline preload="auto" poster="assets/hero-poster.jpg" aria-label="Voo de drone sobre o pátio de uma subestação de alta tensão" data-src="assets/hero.mp4" data-src-m="assets/hero-m.mp4"></video></div>
+    <div class="slide on vid"><video id="heroVid" muted playsinline preload="auto" poster="assets/hero-poster.jpg" aria-label="Voo de drone sobre o pátio de uma subestação de alta tensão" data-src="assets/hero.mp4" data-src-2k="assets/hero-2k.mp4" data-src-m="assets/hero-m.mp4"></video></div>
     <picture class="slide"><source media="(max-width:760px)" srcset="assets/hero-m.jpg"><img loading="lazy" src="assets/hero.jpg" alt="Pátio de subestação de alta tensão ao entardecer" width="2000" height="1440"></picture>
     <picture class="slide"><img loading="lazy" src="assets/aereo-se.jpg" alt="Vista aérea de subestação de alta tensão" width="1800" height="1012"></picture>
     <picture class="slide"><img loading="lazy" src="assets/linha-drone.jpg" alt="Linha de transmissão vista por drone ao entardecer" width="1600" height="900"></picture>
@@ -773,7 +773,8 @@ footer .social svg{width:17px;height:17px}
   (function(){
     var sl=[].slice.call(document.querySelectorAll('#slides .slide')),dots=document.getElementById('dots'),i=0,t;
     var v=document.getElementById('heroVid'),snd=document.getElementById('heroSound');
-    v.src=(window.matchMedia&&matchMedia('(max-width:760px)').matches)?v.getAttribute('data-src-m'):v.getAttribute('data-src');
+    var px=Math.max(screen.width,screen.height)*(window.devicePixelRatio||1);
+    v.src=(window.matchMedia&&matchMedia('(max-width:760px)').matches)?v.getAttribute('data-src-m'):(px>=2200?v.getAttribute('data-src-2k'):v.getAttribute('data-src'));
     v.muted=true;
     function playV(){v.currentTime=0;var pr=v.play();if(pr&&pr.catch)pr.catch(function(){next()})}
     sl.forEach(function(_,k){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label',k===0?'Vídeo':'Foto '+k);b.addEventListener('click',function(){go(k)});dots.appendChild(b)});
