@@ -151,13 +151,14 @@ p{margin:0}
 }
 
 .more{margin-top:clamp(3rem,6vw,4.5rem);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem}
-.more h3{grid-column:1/span 4;font-size:1.5rem;text-transform:uppercase;line-height:1.1}
+.more h3{grid-column:1/-1;font-size:1.5rem;text-transform:uppercase;line-height:1.1}
 .more h3 span{display:block;margin-top:.75rem;font:400 .95rem/1.6 var(--f-body);text-transform:none;color:var(--ink-2)}
-.more dl{grid-column:5/span 8;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:2rem}
+.more dl{grid-column:1/-1;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:2.5rem}
 .more dl div{padding:1rem 0;border-top:1px solid var(--rule)}
 .more dt{font:700 1.05rem/1.2 var(--f-display);text-transform:uppercase;letter-spacing:.04em;color:var(--navy)}
 .more dd{margin:.35rem 0 0;color:var(--ink-2);font-size:.92rem}
 @media (max-width:860px){.more h3,.more dl{grid-column:1/-1}}
+@media (max-width:860px){.more dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.more dl{grid-template-columns:1fr}}
 
 /* why commission */
