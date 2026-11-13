@@ -174,6 +174,37 @@ p{margin:0}
 @media (max-width:700px){.why-grid{grid-template-columns:1fr}}
 
 /* method */
+/* metodologia: linha de processo */
+.proc{--p:0;position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;margin:0;padding:0;list-style:none}
+.proc-rail{position:absolute;top:36px;left:calc((100% - 4.5rem)/8);right:calc((100% - 4.5rem)/8);height:3px;margin-top:-1.5px;background:var(--rule);border-radius:3px;overflow:hidden}
+.proc-rail i{position:absolute;inset:0;background:linear-gradient(90deg,var(--teal-ink),var(--teal));transform-origin:0 50%;transform:scaleX(var(--p));transition:transform .15s linear}
+.ph{position:relative;display:flex;flex-direction:column;align-items:center}
+.ph-node{position:relative;z-index:1;width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:var(--paper);border:2px solid var(--rule);transition:background .45s,border-color .45s,box-shadow .45s,transform .45s}
+.ph-num{font:700 1.7rem/1 var(--f-display);color:var(--ink-2);letter-spacing:.02em;transition:color .45s}
+.ph.on .ph-node{background:var(--navy);border-color:var(--teal);box-shadow:0 0 0 7px rgba(26,160,198,.14),0 8px 26px rgba(26,160,198,.35);transform:scale(1.04)}
+.ph.on .ph-num{color:#fff}
+.ph-card{margin-top:1.25rem;width:100%;flex:1;padding:1.25rem 1.25rem 1.4rem;background:var(--sheet);border:1px solid var(--rule);border-top:3px solid var(--rule);border-radius:8px;transition:transform .25s,box-shadow .25s,border-color .25s}
+.ph.on .ph-card{border-top-color:var(--teal)}
+.ph-card:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(6,16,29,.12);border-color:var(--teal)}
+.ph-ico{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:10px;background:rgba(26,160,198,.12);color:var(--teal-ink);margin-bottom:.9rem}
+.ph-ico svg{width:24px;height:24px}
+.ph .n{display:block;font:500 .72rem/1 var(--f-mono);color:var(--teal-ink);letter-spacing:.12em;text-transform:uppercase}
+.ph h3{font-size:1.45rem;text-transform:uppercase;margin:.5rem 0 .45rem}
+.ph p{color:var(--ink-2);font-size:.93rem;line-height:1.55;margin:0}
+.ok{position:absolute;z-index:2;top:36px;left:calc(100% + .75rem);transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:.3rem;white-space:nowrap;padding:.32rem .6rem;border-radius:999px;background:var(--paper);border:1px solid var(--rule);font:500 .6rem/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);transition:background .45s,color .45s,border-color .45s}
+.ok svg{width:12px;height:12px}
+.ph.done .ok{background:var(--teal);border-color:var(--teal);color:#fff}
+@media (max-width:1100px){.ok{font-size:0;gap:0;padding:.35rem}.ok svg{width:14px;height:14px}}
+@media (max-width:760px){
+  .proc{grid-template-columns:1fr;gap:1.25rem}
+  .proc-rail{top:28px;bottom:calc(var(--last,56px) - 28px);left:27px;right:auto;width:3px;height:auto;margin:0}
+  .proc-rail i{transform-origin:50% 0;transform:scaleY(var(--p))}
+  .ph{display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:1rem;align-items:start}
+  .ph-node{width:56px;height:56px}.ph-num{font-size:1.35rem}
+  .ph-card{margin-top:0}
+  .ok,.ok{position:static;transform:none;grid-column:2;justify-self:start;margin-top:.6rem;font-size:.6rem;gap:.3rem;padding:.32rem .6rem}
+  .ok svg{width:12px;height:12px}
+}
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;counter-reset:s;border-top:2px solid var(--ink)}
 .steps li{list-style:none;padding:1.5rem 1.5rem 1.5rem 0;border-right:1px solid var(--rule)}
 .steps li+li{padding-left:1.5rem}
@@ -574,11 +605,12 @@ footer .social svg{width:17px;height:17px}
       <div class="t"><p class="label kicker">Metodologia</p><h2>Quatro fases, cada uma aprovada</h2></div>
       <p class="d">Cada fase é documentada e aprovada pelo cliente antes de seguirmos para a próxima.</p>
     </div>
-    <ol class="steps steps-wrap">
-      <li><span class="n">FASE 01</span><h3>Planejamento</h3><p>Análise da documentação técnica, procedimentos, cronograma de testes e mobilização de equipe e instrumentação.</p></li>
-      <li><span class="n">FASE 02</span><h3>Execução</h3><p>Ensaios em campo com instrumentação calibrada e equipe especializada, seguindo os procedimentos aprovados.</p></li>
-      <li><span class="n">FASE 03</span><h3>Validação</h3><p>Análise crítica dos resultados contra valores de referência do fabricante e normas ABNT, IEC e IEEE.</p></li>
-      <li><span class="n">FASE 04</span><h3>Entrega</h3><p>Relatório técnico com rastreabilidade e acompanhamento presencial na energização.</p></li>
+    <ol class="proc" id="proc">
+      <li class="proc-rail" aria-hidden="true"><i></i></li>
+      <li class="ph"><span class="ph-node"><span class="ph-num">01</span></span><div class="ph-card"><span class="ph-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9z"/><path d="M15 5h3v16H6V5h3"/><path d="M9 12h6M9 16h4"/></svg></span><span class="n">Fase 01</span><h3>Planejamento</h3><p>Análise da documentação técnica, procedimentos, cronograma de testes e mobilização de equipe e instrumentação.</p></div><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Aprovado pelo cliente</span></li>
+      <li class="ph"><span class="ph-node"><span class="ph-num">02</span></span><div class="ph-card"><span class="ph-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span class="n">Fase 02</span><h3>Execução</h3><p>Ensaios em campo com instrumentação calibrada e equipe especializada, seguindo os procedimentos aprovados.</p></div><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Aprovado pelo cliente</span></li>
+      <li class="ph"><span class="ph-node"><span class="ph-num">03</span></span><div class="ph-card"><span class="ph-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 16V10M11 16V6M16 16v-4"/><path d="m15 5 2 2 4-4"/></svg></span><span class="n">Fase 03</span><h3>Validação</h3><p>Análise crítica dos resultados contra valores de referência do fabricante e normas ABNT, IEC e IEEE.</p></div><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Aprovado pelo cliente</span></li>
+      <li class="ph"><span class="ph-node"><span class="ph-num">04</span></span><div class="ph-card"><span class="ph-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4"/><path d="m9 14 2 2 4-4"/></svg></span><span class="n">Fase 04</span><h3>Entrega</h3><p>Relatório técnico com rastreabilidade e acompanhamento presencial na energização.</p></div></li>
     </ol>
   </div>
 </section>
@@ -800,6 +832,15 @@ footer .social svg{width:17px;height:17px}
       snd.setAttribute('aria-pressed',on?'true':'false');snd.setAttribute('aria-label',on?'Desligar o som do vídeo':'Ligar o som do vídeo')});
     document.addEventListener('visibilitychange',function(){if(document.hidden){clearTimeout(t);v.pause()}else go(i)});
     go(0);
+  })();
+
+  /* metodologia: a linha se preenche ao rolar */
+  (function(){
+    var pr=document.getElementById('proc');if(!pr)return;var ph=[].slice.call(pr.querySelectorAll('.ph')),tk=false;
+    function upd(){tk=false;var r=pr.getBoundingClientRect(),vh=innerHeight,p=reduce?1:(vh*.8-r.top)/(r.height*.9);p=Math.max(0,Math.min(1,p));
+      pr.style.setProperty('--p',p.toFixed(3));ph.forEach(function(e,k){var on=p>=k/(ph.length-1)-.001;e.classList.toggle('on',on);e.classList.toggle('done',p>=(k+1)/(ph.length-1)-.001)})}
+    function sz(){pr.style.setProperty('--last',ph[ph.length-1].offsetHeight+'px');upd()}
+    addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',sz);sz();
   })();
 
   /* carrosséis de fotos (Rigor técnico e GIS) */
