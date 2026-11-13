@@ -330,6 +330,9 @@ form.msg p.h{color:var(--spectral-2);font-size:.88rem;margin-top:-.4rem}
 .field textarea{min-height:96px;resize:vertical}
 .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:transparent}
 form.msg .ghost{justify-content:center}
+form.msg .send{display:grid;grid-template-columns:1fr;gap:.6rem}
+form.msg .send .ghost{padding-inline:.8rem;letter-spacing:.12em}
+
 .form-note{font-size:.78rem;color:var(--spectral-2)}
 @media (max-width:900px){.contact-grid .l,.contact-grid .r{grid-column:1/-1}}
 @media (max-width:480px){.lines li{grid-template-columns:1fr auto}.lines li .label{grid-column:1/-1}}
@@ -873,18 +876,11 @@ footer .social svg{width:17px;height:17px}
         <li><span class="label">Comercial</span><span class="v">comercial@luzionenergia.com.br</span><button class="copy" type="button" data-copy="comercial@luzionenergia.com.br">Copiar</button></li>
         <li><span class="label">Telefone</span><span class="v">(64) 3431-1258</span><button class="copy" type="button" data-copy="(64) 3431-1258">Copiar</button></li>
       </ul>
-      <div class="socials" aria-label="Redes sociais">
-        <a href="https://wa.me/5564996671258" target="_blank" rel="noopener"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.1.6l-.5.6c.6 1.2 1.6 2.2 2.8 2.8l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.4.4-2.4 0a9 9 0 0 1-4.3-4.3c-.4-1-.3-1.8 0-2.4z" fill="currentColor" stroke="none"/></svg></span>WhatsApp</a>
-        <a href="mailto:comercial@luzionenergia.com.br?subject=Contato%20pelo%20site"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></span>E-mail</a>
-        <a href="https://www.instagram.com/luzionenergia" target="_blank" rel="noopener"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></span>Instagram</a>
-        <a href="https://www.linkedin.com/company/luzionenergia" target="_blank" rel="noopener"><span class="i"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.48 2.48 0 1 1 0 4.96 2.48 2.48 0 0 1 0-4.96zM3 9.75h3.96V21H3zM9.4 9.75h3.8v1.54h.05c.53-1 1.82-2.05 3.75-2.05 4 0 4.75 2.64 4.75 6.07V21h-3.96v-5.06c0-1.2-.02-2.76-1.68-2.76-1.69 0-1.95 1.32-1.95 2.67V21H9.4z"/></svg></span>LinkedIn</a>
-        <a href="https://www.tiktok.com/@luzion.energia" target="_blank" rel="noopener"><span class="i"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 3c.3 2.3 1.7 3.9 4 4.1v3.1a7.1 7.1 0 0 1-3.9-1.2v6.2c0 3.6-2.6 5.8-5.7 5.8a5.6 5.6 0 0 1-5.6-5.6c0-3.4 2.9-5.9 6.5-5.5v3.2c-1.7-.3-3.3.7-3.3 2.4 0 1.4 1.1 2.4 2.4 2.4 1.5 0 2.5-1 2.5-2.9V3z"/></svg></span>TikTok</a>
-      </div>
     </div>
     <div class="r">
       <form class="msg" id="msgForm" novalidate>
         <h3>Pedir proposta</h3>
-        <p class="h">A mensagem abre no WhatsApp da equipe comercial.</p>
+        <p class="h">Envie pelo WhatsApp ou por e-mail para a equipe comercial.</p>
         <div class="field"><label for="f-nome">Nome e empresa</label><input id="f-nome" name="nome" autocomplete="name" placeholder="Ex.: Ana Souza, Transmissora X"></div>
         <div class="field"><label for="f-serv">Serviço</label>
           <select id="f-serv" name="servico">
@@ -905,8 +901,12 @@ footer .social svg{width:17px;height:17px}
             <option>Outro</option>
           </select></div>
         <div class="field"><label for="f-msg">Subestação, tensão e escopo</label><textarea id="f-msg" name="mensagem" placeholder="Ex.: SE 500/230 kV, comissionamento N0 e suporte ao N1, início em março"></textarea></div>
-        <a class="ghost solid-teal" id="sendWa" href="https://wa.me/5564996671258" target="_blank" rel="noopener">
+        <div class="send">
+          <a class="ghost solid-teal" id="sendWa" href="https://wa.me/5564996671258" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>Enviar pelo WhatsApp</a>
+          <a class="ghost" id="sendMail" href="mailto:comercial@luzionenergia.com.br">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>Enviar por e-mail</a>
+        </div>
       </form>
     </div>
   </div>
@@ -1077,10 +1077,12 @@ footer .social svg{width:17px;height:17px}
   function sel(b){var el=b.previousElementSibling,r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}
 
   /* formulário -> link do WhatsApp */
-  var form=document.getElementById('msgForm'),wa=document.getElementById('sendWa');
+  var form=document.getElementById('msgForm'),wa=document.getElementById('sendWa'),ml=document.getElementById('sendMail');
   function upd(){
     var t='Olá, Luzion! Sou '+(form.nome.value||'[nome / empresa]')+'.\nServiço: '+form.servico.value+'\n'+(form.mensagem.value||'');
     wa.href='https://wa.me/5564996671258?text='+encodeURIComponent(t.trim());
+    var body='Olá, Luzion!\n\nNome e empresa: '+(form.nome.value||'')+'\nServiço: '+form.servico.value+'\nSubestação, tensão e escopo: '+(form.mensagem.value||'')+'\n';
+    ml.href='mailto:comercial@luzionenergia.com.br?subject='+encodeURIComponent('Pedido de proposta – '+form.servico.value)+'&body='+encodeURIComponent(body);
   }
   form.addEventListener('input',upd);form.addEventListener('submit',function(e){e.preventDefault()});upd();
 })();
