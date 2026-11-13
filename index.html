@@ -271,16 +271,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:1.5rem 3rem;justify-content:space-b
 footer img{height:26px;width:auto;opacity:.9}
 
 @media (max-width:860px){.sec-head,.svc,.more,.diff,.presence,.contact-grid{grid-template-columns:minmax(0,1fr)}}
-/* carrossel do topo */
-.slides .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
-.slides .slide.on{opacity:1}
-.slides .slide img{width:100%;height:100%;object-fit:cover}
-.slides .slide.on img{animation:drift 9s ease-out both}
-.slide-dots{display:flex;gap:.5rem;margin-top:clamp(2rem,5vw,3.5rem)}
-.slide-dots+.readout{margin-top:1.25rem}
-.slide-dots button{width:34px;height:4px;border:0;border-radius:2px;background:rgba(238,241,248,.3);cursor:pointer;padding:0;position:relative}
-.slide-dots button::after{content:"";position:absolute;inset:-10px 0}
-.slide-dots button[aria-current="true"]{background:var(--teal)}
+/* vídeo da capa */
+.hero-video video{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
+.hero .ctas+.readout{margin-top:clamp(2rem,5vw,3.5rem)}
+.sound{position:absolute;z-index:2;right:clamp(16px,3vw,32px);top:calc(68px + 1rem);display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .8rem;border:1px solid rgba(238,241,248,.35);border-radius:999px;background:rgba(6,16,29,.45);color:#eef1f8;font:500 .7rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .2s,border-color .2s}
+.sound:hover{background:rgba(6,16,29,.7);border-color:var(--teal)}
+.sound svg{width:18px;height:18px}
+.sound .on,.sound[aria-pressed="true"] .off{display:none}
+.sound[aria-pressed="true"] .on{display:block}
 
 
 [hidden]{display:none!important}
@@ -396,14 +394,12 @@ footer .social svg{width:17px;height:17px}
 <main>
 <!-- HERO -->
 <section class="scene dark hero" id="inicio">
-  <!-- Carrossel: para adicionar uma foto, copie uma linha <picture class="slide"> e troque o arquivo e o texto alt. -->
-  <div class="bg slides" id="slides">
-    <picture class="slide on"><source media="(max-width:760px)" srcset="assets/hero-m.jpg"><img src="assets/hero.jpg" alt="Pátio de subestação de alta tensão ao entardecer" width="2000" height="1440" fetchpriority="high"></picture>
-    <picture class="slide"><img loading="lazy" src="assets/aereo-se.jpg" alt="Vista aérea de subestação de alta tensão" width="1800" height="1012"></picture>
-    <picture class="slide"><img loading="lazy" src="assets/linha-drone.jpg" alt="Linha de transmissão vista por drone ao entardecer" width="1600" height="900"></picture>
-    <picture class="slide"><img loading="lazy" src="assets/noite.jpg" alt="Ensaio noturno em pátio de subestação" width="1800" height="1560"></picture>
+  <!-- Vídeo da capa: assets/hero.mp4 (mudo, em loop). Para trocar, substitua o arquivo e o pôster assets/hero-poster.jpg. -->
+  <div class="bg hero-video">
+    <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg" aria-label="Voo de drone sobre o pátio de uma subestação de alta tensão"><source src="assets/hero.mp4" type="video/mp4"></video>
   </div>
   <div class="shade"></div>
+  <button class="sound" id="heroSound" type="button" aria-pressed="false" aria-label="Ligar o som do vídeo"><svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg><svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg><span>Som</span></button>
   <div class="wrap hero-inner">
     <p class="label kicker fade-up">Comissionamento · Ensaios de campo · Desde 2011</p>
     <h1 class="fade-up d1">Subestações prontas para <em>energizar</em></h1>
@@ -412,7 +408,6 @@ footer .social svg{width:17px;height:17px}
       <a class="ghost solid-teal" href="#contato">Solicitar proposta</a>
       <a class="ghost" href="#atuacao">Ver onde atuamos</a>
     </div>
-    <div class="slide-dots fade-up d4" id="dots" role="group" aria-label="Fotos do topo"></div>
     <div class="readout fade-up d4" aria-label="Números da Luzion">
       <div><b class="num">+200</b><span class="label">Projetos entregues</span></div>
       <div><b class="num">800<small>kVcc</small></b><span class="label">Maior tensão atendida</span></div>
@@ -759,16 +754,14 @@ footer .social svg{width:17px;height:17px}
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 
-  /* carrossel do topo */
+  /* vídeo da capa: começa mudo; o botão liga e desliga o som */
   (function(){
-    var sl=[].slice.call(document.querySelectorAll('#slides .slide')),dots=document.getElementById('dots'),i=0,t;
-    if(sl.length<2){dots.hidden=true;return}
-    sl.forEach(function(_,k){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Foto '+(k+1));b.addEventListener('click',function(){go(k);start()});dots.appendChild(b)});
-    function go(k){sl[i].classList.remove('on');i=(k+sl.length)%sl.length;sl[i].classList.add('on');
-      [].forEach.call(dots.children,function(b,n){b.setAttribute('aria-current',n===i)});}
-    function start(){clearInterval(t);if(!reduce)t=setInterval(function(){go(i+1)},6500)}
-    go(0);start();
-    document.addEventListener('visibilitychange',function(){document.hidden?clearInterval(t):start()});
+    var v=document.getElementById('heroVid'),b=document.getElementById('heroSound');if(!v)return;
+    v.muted=true;
+    if(reduce){v.removeAttribute('autoplay');v.pause()}else{var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}
+    b.addEventListener('click',function(){var on=v.muted;v.muted=!on;if(on){v.volume=.8;var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}
+      b.setAttribute('aria-pressed',on?'true':'false');b.setAttribute('aria-label',on?'Desligar o som do vídeo':'Ligar o som do vídeo')});
+    document.addEventListener('visibilitychange',function(){if(document.hidden)v.pause();else if(!reduce){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}});
   })();
 
   /* carrosséis de fotos (Rigor técnico e GIS) */
