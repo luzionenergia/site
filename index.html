@@ -150,13 +150,13 @@ p{margin:0}
   .svc>figure,.svc>.eq,.svc .txt,.svc:nth-of-type(even)>figure,.svc:nth-of-type(even)>.eq,.svc:nth-of-type(even) .txt{grid-column:1/-1;order:0}
 }
 
-.more{margin-top:clamp(3rem,6vw,4.5rem);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2rem}
+.more{margin-top:clamp(1.75rem,3.5vw,2.5rem);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:1.25rem}
 .more h3{grid-column:1/-1;font-size:1.5rem;text-transform:uppercase;line-height:1.1}
-.more h3 span{display:block;margin-top:.75rem;font:400 .95rem/1.6 var(--f-body);text-transform:none;color:var(--ink-2)}
+.more h3 span{display:block;margin-top:.5rem;font:400 .95rem/1.6 var(--f-body);text-transform:none;color:var(--ink-2)}
 .more dl{grid-column:1/-1;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:2.5rem}
-.more dl div{padding:1rem 0;border-top:1px solid var(--rule)}
+.more dl div{padding:.7rem 0 .6rem;border-top:1px solid var(--rule)}
 .more dt{font:700 1.05rem/1.2 var(--f-display);text-transform:uppercase;letter-spacing:.04em;color:var(--navy)}
-.more dd{margin:.35rem 0 0;color:var(--ink-2);font-size:.92rem}
+.more dd{margin:.25rem 0 0;color:var(--ink-2);font-size:.92rem;line-height:1.5}
 @media (max-width:860px){.more h3,.more dl{grid-column:1/-1}}
 @media (max-width:860px){.more dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.more dl{grid-template-columns:1fr}}
@@ -434,7 +434,7 @@ footer .social svg{width:17px;height:17px}
 </section>
 
 <!-- SERVIÇOS -->
-<section class="sec" id="servicos">
+<section class="sec" id="servicos" style="padding-bottom:clamp(2.5rem,5vw,4rem)">
   <div class="wrap">
     <div class="sec-head">
       <div class="t"><p class="label kicker">Serviços</p><h2>Do primeiro ensaio à energização</h2></div>
