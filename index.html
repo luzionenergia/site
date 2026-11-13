@@ -479,7 +479,22 @@ footer .social svg{width:17px;height:17px}
     </article>
 
     <article class="svc">
-      <figure><img loading="lazy" src="assets/aterramento.jpg" alt="Equipe da Luzion medindo malha de aterramento em subestação, vista aérea" width="1600" height="900"><figcaption>Medição de malha · vista por drone</figcaption></figure>
+      <!-- Carrossel de malha de aterramento: fotos quadradas em assets/aterramento/. Para incluir uma foto, copie uma linha <figure>. -->
+      <div class="eq" aria-roledescription="carrossel" aria-label="Malha de aterramento">
+        <div class="eq-track" tabindex="0">
+          <figure><img loading="lazy" src="assets/aterramento/drone-controle.jpg" alt="Técnico da Luzion pilotando drone para planejamento da malha" width="1000" height="1000"><figcaption>Planejamento com drone</figcaption></figure>
+          <figure><img loading="lazy" src="assets/aterramento/drone-area.jpg" alt="Técnico da Luzion com controle de drone ao lado de bobina de cabo" width="1000" height="1000"><figcaption>Levantamento da área com drone</figcaption></figure>
+          <figure><img loading="lazy" src="assets/aterramento/lancamento-cabo.jpg" alt="Bobina de cabo de cobre montada em cavalete para lançamento da malha" width="780" height="780"><figcaption>Lançamento de cabo da malha</figcaption></figure>
+          <figure><img loading="lazy" src="assets/aterramento/escavacao.jpg" alt="Vala escavada para instalação da malha de aterramento" width="900" height="900"><figcaption>Escavação da malha</figcaption></figure>
+          <figure><img loading="lazy" src="assets/aterramento/continuidade.jpg" alt="Técnico medindo continuidade da malha de aterramento no pátio" width="1000" height="1000"><figcaption>Continuidade · método Kelvin</figcaption></figure>
+          <figure><img loading="lazy" src="assets/aterramento/compano-continuidade.jpg" alt="Equipamento OMICRON COMPANO 100 medindo continuidade" width="1000" height="1000"><figcaption>Continuidade com COMPANO 100</figcaption></figure>
+          <figure><img loading="lazy" src="assets/aterramento/cpc-cpcu1.jpg" alt="Equipamentos OMICRON CPC 100 e CP CU1 em medição de malha" width="1000" height="1000"><figcaption>Medição com CPC 100 e CP CU1</figcaption></figure>
+          <figure><img loading="lazy" src="assets/aterramento/impedancia.jpg" alt="Gráfico de impedância da malha de aterramento no software de ensaio" width="1000" height="1000"><figcaption>Curva de impedância da malha</figcaption></figure>
+        </div>
+        <button class="eq-nav prev" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+        <button class="eq-nav next" type="button" aria-label="Próxima foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+        <div class="eq-dots"></div>
+      </div>
       <div class="txt">
         <p class="label kicker">NBR 15749 · IEEE 81</p>
         <h3>Malha de aterramento</h3>
