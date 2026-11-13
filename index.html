@@ -429,7 +429,20 @@ footer .social svg{width:17px;height:17px}
     </div>
 
     <article class="svc">
-      <figure><img loading="lazy" src="assets/comissionamento.jpg" alt="Técnico da Luzion executando ensaio em equipamento de pátio" width="1100" height="1173"><figcaption>Ensaios de equipamentos de pátio</figcaption></figure>
+      <!-- Carrossel de comissionamento: fotos quadradas em assets/comissionamento/. Para incluir uma foto, copie uma linha <figure>. -->
+      <div class="eq" aria-roledescription="carrossel" aria-label="Comissionamento de subestações">
+        <div class="eq-track" tabindex="0">
+          <figure><img loading="lazy" src="assets/comissionamento/fator-potencia.jpg" alt="Técnico da Luzion executando ensaio de fator de potência em pátio de subestação" width="620" height="620"><figcaption>Ensaio de fator de potência</figcaption></figure>
+          <figure><img loading="lazy" src="assets/comissionamento/patio.jpg" alt="Equipe da Luzion ensaiando equipamentos de pátio com plataforma elevatória" width="600" height="600"><figcaption>Ensaios em equipamentos de pátio</figcaption></figure>
+          <figure><img loading="lazy" src="assets/comissionamento/preparacao.jpg" alt="Técnico da Luzion preparando equipamento de ensaio em campo" width="675" height="675"><figcaption>Preparação de ensaio em campo</figcaption></figure>
+          <figure><img loading="lazy" src="assets/comissionamento/equipamento-patio.jpg" alt="Técnico da Luzion operando equipamento de ensaio junto a equipamento de pátio" width="506" height="506"><figcaption>Ensaio de equipamento de pátio</figcaption></figure>
+          <figure><img loading="lazy" src="assets/comissionamento/subestacao.jpg" alt="Equipamento de ensaio posicionado no pátio de subestação" width="506" height="506"><figcaption>Ensaio em pátio de subestação</figcaption></figure>
+          <figure><img loading="lazy" src="assets/comissionamento/painel.jpg" alt="Técnico da Luzion realizando ensaio em painel" width="386" height="386"><figcaption>Ensaio em painel</figcaption></figure>
+        </div>
+        <button class="eq-nav prev" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+        <button class="eq-nav next" type="button" aria-label="Próxima foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+        <div class="eq-dots"></div>
+      </div>
       <div class="txt">
         <p class="label kicker">Comissionamento N0 e N1</p>
         <h3>Comissionamento de subestações</h3>
