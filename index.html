@@ -337,7 +337,7 @@ form.msg .send .ghost{padding-inline:.8rem;letter-spacing:.12em}
 @media (max-width:900px){.contact-grid .l,.contact-grid .r{grid-column:1/-1}}
 @media (max-width:480px){.lines li{grid-template-columns:1fr auto}.lines li .label{grid-column:1/-1}}
 
-footer{background:#040b15;color:var(--spectral-2);padding-block:2.5rem calc(2.5rem + env(safe-area-inset-bottom,0px));font-size:.82rem}
+footer{background:#040b15;color:var(--spectral-2);padding-block:1.4rem calc(1.4rem + env(safe-area-inset-bottom,0px));font-size:.8rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:1.5rem 3rem;justify-content:space-between;align-items:center}
 footer img{height:26px;width:auto;opacity:.9}
 
@@ -446,19 +446,24 @@ footer img{height:26px;width:auto;opacity:.9}
 .socials a svg{width:17px;height:17px}
 .socials a:hover{border-color:var(--teal);background:rgba(26,160,198,.14)}
 .socials a:hover span.i{background:var(--teal);color:#04121f}
-footer .ft{align-items:flex-start}
-.ft-brand p{margin-top:.6rem}
-.ft-brand .ft-cnpj{font-size:.72rem;opacity:.7;margin-top:.25rem}
-.ft-hours p{margin:0 0 .55rem;line-height:1.4}
-.ft-hours .label{display:block;color:var(--teal);margin-bottom:.2rem}
+footer .ft{align-items:center;gap:1rem 2.5rem}
+footer .ft-brand{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.ft-brand p{margin:0;line-height:1.3}
+footer .ft-brand img{height:24px}
+.ft-hours{display:flex;flex-direction:column;gap:.3rem}
+.ft-hours p{margin:0;line-height:1.35}
+.ft-hours .label{display:inline-block;min-width:8.9em;margin-right:.5rem;color:var(--teal)}
 .ft-hours a,.ft-bottom a{color:var(--spectral);text-decoration:none;border-bottom:1px solid rgba(238,241,248,.3)}
 .ft-hours a:hover,.ft-bottom a:hover{color:var(--teal);border-color:var(--teal)}
-footer .ft-bottom{margin-top:1.75rem;padding-top:1.1rem;border-top:1px solid rgba(238,241,248,.1);justify-content:flex-end}
-@media (max-width:760px){footer .ft-bottom{justify-content:flex-start}}
-footer .social{display:flex;gap:.6rem}
+footer .social{display:flex;flex-wrap:wrap;gap:.5rem}
 footer .social a{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid rgba(238,241,248,.2);color:var(--spectral-2);transition:color .2s,border-color .2s,background .2s}
 footer .social a:hover{color:#04121f;background:var(--teal);border-color:var(--teal)}
 footer .social svg{width:17px;height:17px}
+footer .social a{position:relative}
+footer .social a[data-tip]::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translate(-50%,4px);white-space:nowrap;background:var(--spectral);color:#04121f;font:500 .68rem/1 var(--f-mono);letter-spacing:.06em;padding:.4rem .55rem;border-radius:4px;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s}
+footer .social a[data-tip]:hover::after,footer .social a[data-tip]:focus-visible::after{opacity:1;transform:translate(-50%,0)}
+footer .social a.priv{border-color:rgba(26,160,198,.45)}
+@media (max-width:760px){footer .ft{gap:1rem}.ft-hours .label{display:block;margin-bottom:.1rem}footer .ft>*{flex-basis:100%}footer .social a{width:36px;height:36px}footer .social a.priv[data-tip]::after{left:auto;right:0;transform:translate(0,4px)}footer .social a.priv[data-tip]:hover::after{transform:none}}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
@@ -918,21 +923,20 @@ footer .social svg{width:17px;height:17px}
     <div class="ft-brand">
       <img src="assets/logo-branca.png" alt="Luzion Energia" width="720" height="170">
       <p>© 2026 Luzion Energia. Todos os direitos reservados.</p>
-      <p class="ft-cnpj">Luzion Serviços e Soluções em Energia Ltda · CNPJ 14.207.734/0001-50</p>
     </div>
     <div class="ft-hours">
-      <p><span class="label">Atendimento</span>Segunda a sexta, 07:30 às 17:30 (escritório)</p>
+      <p><span class="label">Atendimento</span>Seg. a sex., 07:30 às 17:30 (escritório)</p>
       <p><span class="label">Emergências</span><a href="https://wa.me/5564996671258" target="_blank" rel="noopener">WhatsApp +55 (64) 99667-1258</a></p>
     </div>
     <div class="social" aria-label="Redes sociais">
-      <a href="https://wa.me/5564996671258" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.1.6l-.5.6c.6 1.2 1.6 2.2 2.8 2.8l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.4.4-2.4 0a9 9 0 0 1-4.3-4.3c-.4-1-.3-1.8 0-2.4z" fill="currentColor" stroke="none"/></svg></a>
-      <a href="mailto:comercial@luzionenergia.com.br?subject=Contato%20pelo%20site" aria-label="E-mail" title="comercial@luzionenergia.com.br"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></a>
-      <a href="https://www.instagram.com/luzionenergia" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
-      <a href="https://www.linkedin.com/company/luzionenergia" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.48 2.48 0 1 1 0 4.96 2.48 2.48 0 0 1 0-4.96zM3 9.75h3.96V21H3zM9.4 9.75h3.8v1.54h.05c.53-1 1.82-2.05 3.75-2.05 4 0 4.75 2.64 4.75 6.07V21h-3.96v-5.06c0-1.2-.02-2.76-1.68-2.76-1.69 0-1.95 1.32-1.95 2.67V21H9.4z"/></svg></a>
-      <a href="https://www.tiktok.com/@luzion.energia" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 3c.3 2.3 1.7 3.9 4 4.1v3.1a7.1 7.1 0 0 1-3.9-1.2v6.2c0 3.6-2.6 5.8-5.7 5.8a5.6 5.6 0 0 1-5.6-5.6c0-3.4 2.9-5.9 6.5-5.5v3.2c-1.7-.3-3.3.7-3.3 2.4 0 1.4 1.1 2.4 2.4 2.4 1.5 0 2.5-1 2.5-2.9V3z"/></svg></a>
+      <a href="https://wa.me/5564996671258" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp" data-tip="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.1.6l-.5.6c.6 1.2 1.6 2.2 2.8 2.8l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.4.4-2.4 0a9 9 0 0 1-4.3-4.3c-.4-1-.3-1.8 0-2.4z" fill="currentColor" stroke="none"/></svg></a>
+      <a href="mailto:comercial@luzionenergia.com.br?subject=Contato%20pelo%20site" aria-label="E-mail" title="comercial@luzionenergia.com.br" data-tip="E-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></a>
+      <a href="https://www.instagram.com/luzionenergia" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram" data-tip="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.linkedin.com/company/luzionenergia" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" data-tip="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.48 2.48 0 1 1 0 4.96 2.48 2.48 0 0 1 0-4.96zM3 9.75h3.96V21H3zM9.4 9.75h3.8v1.54h.05c.53-1 1.82-2.05 3.75-2.05 4 0 4.75 2.64 4.75 6.07V21h-3.96v-5.06c0-1.2-.02-2.76-1.68-2.76-1.69 0-1.95 1.32-1.95 2.67V21H9.4z"/></svg></a>
+      <a href="https://www.tiktok.com/@luzion.energia" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok" data-tip="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 3c.3 2.3 1.7 3.9 4 4.1v3.1a7.1 7.1 0 0 1-3.9-1.2v6.2c0 3.6-2.6 5.8-5.7 5.8a5.6 5.6 0 0 1-5.6-5.6c0-3.4 2.9-5.9 6.5-5.5v3.2c-1.7-.3-3.3.7-3.3 2.4 0 1.4 1.1 2.4 2.4 2.4 1.5 0 2.5-1 2.5-2.9V3z"/></svg></a>
+      <a class="priv" href="politica-de-privacidade.html" aria-label="Política de privacidade" title="Política de privacidade" data-tip="Política de privacidade"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.6 3.1 8.3 7.5 9.5 4.4-1.2 7.5-4.9 7.5-9.5V6z"/><path d="m8.8 12 2.2 2.2 4.3-4.4"/></svg></a>
     </div>
   </div>
-  <div class="wrap ft-bottom"><a href="politica-de-privacidade.html">Política de privacidade</a></div>
 </footer>
 
 <script>
