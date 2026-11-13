@@ -175,6 +175,24 @@ p{margin:0}
 
 /* method */
 /* metodologia: linha de processo */
+/* metodologia sobre foto de campo */
+.metodo .bg img{object-position:100% 50%}
+.metodo .shade{background:linear-gradient(180deg,rgba(6,16,29,.7) 0%,rgba(6,16,29,.3) 40%,rgba(6,16,29,.25) 70%,rgba(6,16,29,.75) 100%),linear-gradient(90deg,rgba(6,16,29,.85) 0%,rgba(6,16,29,.35) 45%,rgba(6,16,29,0) 75%)}
+.metodo-mark{position:absolute;z-index:-1;right:clamp(16px,4vw,56px);bottom:clamp(.9rem,2vw,1.5rem);width:clamp(120px,13vw,190px);height:auto;opacity:.5;pointer-events:none}
+.metodo .ph-node{background:rgba(6,16,29,.75);border-color:rgba(238,241,248,.3)}
+.metodo .ph-num{color:var(--spectral-2)}
+.metodo .proc-rail{background:rgba(238,241,248,.2)}
+.metodo .ph-card{background:rgba(9,22,40,.6);border-color:rgba(238,241,248,.14);border-top-color:rgba(238,241,248,.25);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.metodo .ph.on .ph-card{border-top-color:var(--teal)}
+.metodo .ph-card:hover{border-color:var(--teal);box-shadow:0 16px 40px rgba(0,0,0,.4)}
+.metodo .ph-ico{background:rgba(26,160,198,.2);color:var(--teal)}
+.metodo .ph .n{color:var(--teal)}
+.metodo .ph h3{color:#fff}
+.metodo .ph p{color:var(--spectral-2)}
+.metodo .ok{background:rgba(6,16,29,.85);border-color:rgba(238,241,248,.25);color:var(--spectral-2)}
+.metodo .ph.done .ok{background:var(--teal);border-color:var(--teal);color:#fff}
+@media (max-width:760px){.metodo-mark{width:110px}.metodo .bg img{object-position:40% 50%}}
+
 .proc{--p:0;position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;margin:0;padding:0;list-style:none}
 .proc-rail{position:absolute;top:36px;left:calc((100% - 4.5rem)/8);right:calc((100% - 4.5rem)/8);height:3px;margin-top:-1.5px;background:var(--rule);border-radius:3px;overflow:hidden}
 .proc-rail i{position:absolute;inset:0;background:linear-gradient(90deg,var(--teal-ink),var(--teal));transform-origin:0 50%;transform:scaleX(var(--p));transition:transform .15s linear}
@@ -599,7 +617,11 @@ footer .social svg{width:17px;height:17px}
 </section>
 
 <!-- MÉTODO -->
-<section class="sec" id="metodo">
+<section class="sec dark scene metodo" id="metodo" style="padding-bottom:calc(var(--sec) + 1.5rem)">
+  <!-- Fundo da Metodologia: assets/metodo-bg.jpg (CPC 100 e CP CU1 em campo). -->
+  <picture class="bg"><source media="(max-width:760px)" srcset="assets/metodo-bg-m.jpg"><img loading="lazy" src="assets/metodo-bg.jpg" alt="" width="1920" height="852"></picture>
+  <div class="shade"></div>
+  <img class="metodo-mark" src="assets/logo-branca.png" alt="" aria-hidden="true" width="720" height="170" loading="lazy">
   <div class="wrap">
     <div class="sec-head">
       <div class="t"><p class="label kicker">Metodologia</p><h2>Quatro fases, cada uma aprovada</h2></div>
